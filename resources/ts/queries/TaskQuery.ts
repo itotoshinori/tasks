@@ -1,0 +1,91 @@
+import * as api from "../api/TaskAPI"
+import { useQuery, useMutation, useQueryClient } from 'react-query'
+import { toast } from "react-toastify"
+import { AxiosError } from "axios"
+
+const useTasks = () => {
+    return useQuery('tasks', async () => api.getTasks())
+}
+
+const useTask = (id: number) => {
+    return useQuery(['task', id], async () => {
+        return api.getTask(id);
+    });
+}
+
+const useCreateTask = () => {
+    const queryClient = useQueryClient()
+
+    return useMutation(api.postTasks, {
+        onSuccess: () => {
+            queryClient.invalidateQueries('tasks')
+            toast.success('登録に成功しました')
+        },
+        onError: (error: AxiosError) => {
+            if (error.response?.data.errors) {
+                Object.values(error.response?.data.errors).map(
+                    (message: any) => {
+                        message.map((message: string) => {
+                            toast.error(message)
+                        })
+                    }
+                )
+            } else {
+                toast.error('登録に失敗しました')
+            }
+        }
+    })
+}
+
+const useUpdateTask = () => {
+    const queryClient = useQueryClient()
+
+    return useMutation(api.updateTask, {
+        onSuccess: () => {
+            queryClient.invalidateQueries('tasks')
+            toast.success('更新に成功しました')
+        },
+        onError: (error: AxiosError) => {
+            if (error.response?.data.errors) {
+                Object.values(error.response?.data.errors).map(
+                    (message: any) => {
+                        message.map((message: string) => {
+                            toast.error(message)
+                        })
+                    }
+                )
+            } else {
+                toast.error('更新に失敗しました。データは更新されてません。')
+            }
+        }
+    })
+}
+
+const useDeleteTask = () => {
+    const queryClient = useQueryClient()
+
+    return useMutation(api.deleteTask, {
+        onSuccess: () => {
+            queryClient.invalidateQueries('tasks')
+            toast.success('削除に成功しました')
+        },
+        onError: () => {
+            toast.error('削除に失敗しました')
+        }
+    })
+}
+
+const useUpdateDoneTask = () => {
+    const queryClient = useQueryClient()
+
+    return useMutation(api.updatetoDoneTask, {
+        onSuccess: () => {
+            queryClient.invalidateQueries('tasks')
+            toast.success('処理に成功しました')
+        },
+        onError: () => {
+            toast.error('処理に失敗しました')
+        }
+    })
+}
+export { useTasks,useTask, useUpdateDoneTask, useCreateTask, useUpdateTask,useDeleteTask }

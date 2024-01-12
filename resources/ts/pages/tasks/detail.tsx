@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useTask, useUpdateTask } from '../../queries/TaskQuery'
-import { formatDate, getWeek } from '../../functions/dateSet'
+import { formatDate, getWeek, getYearDate } from '../../functions/dateSet'
 import { toast } from 'react-toastify';
 
 export const DetailPage: React.VFC = () => {
@@ -13,7 +13,6 @@ export const DetailPage: React.VFC = () => {
     const [body, setBody] = useState('')
     const [link, setLink] = useState('')
     const [term, setTerm] = useState<any>('')
-
 
     if (status === 'loading') {
         return <div className="loader" />
@@ -35,6 +34,10 @@ export const DetailPage: React.VFC = () => {
         setBody(task.body)
         setLink(task.link)
         setTerm(task.term)
+    }
+
+    const llikGoogleCalendar = (): string => {
+        return `https://calendar.google.com/calendar/u/0/r/eventedit?text=${task.title}&&dates=${getYearDate(task.term)}T120000/${getYearDate(task.term)}T130000`
     }
 
     const handleUpdate = (e: React.MouseEvent<HTMLButtonElement>) => {
@@ -67,7 +70,7 @@ export const DetailPage: React.VFC = () => {
                 {task.body && (
                     <>
                         <div className="mt-1">■本文</div>
-                        <div>{task?.body}</div>
+                        <div className="body_text">{task?.body}</div>
                     </>
                 )}
                 <div className="mt-1">■状況</div>
@@ -85,8 +88,9 @@ export const DetailPage: React.VFC = () => {
                     </>
                 )}
                 <div className="mt-4">
-                    <span className="change_mode_text" style={{ marginRight: "10px" }} onClick={handleToggleEdit}>編集</span>
-                    <span onClick={() => window.close()}>📕</span>
+                    <span className="change_mode_text mr-2" onClick={handleToggleEdit}>編集</span>
+                    <span className="change_mode_text mr-2" onClick={() => window.close()}>閉じる</span>
+                    <a href={llikGoogleCalendar()}>GoogleCalendar登録</a>
                 </div>
             </>
         );

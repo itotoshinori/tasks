@@ -12,7 +12,7 @@ body, html {
 }
 
 .inner {
-  max-width: 700px;
+  max-width: 80%;
   margin: 30px auto 0 auto;
 }
 
@@ -43,7 +43,7 @@ body, html {
   align-items: center;
   position: relative;
 }
-.task-list li.done span {
+.task-list li.done .linethrough {
   text-decoration: line-through;
 }
 .task-list li label {
@@ -115,6 +115,10 @@ body, html {
   font-weight: bold;
   border-radius: 5px;
   padding: 2px 5px;
+}
+.input-form .modal-term-input {
+  width: 150px;
+  height: 30px;
 }
 
 .btn {
@@ -360,12 +364,16 @@ ul.tag-list > li > a:hover {
 }
 
 .mt-4 {
-  margin-top: 20px;
+  margin-top: 200px;
+}
+
+.mr-2 {
+  margin-right: 10px;
 }
 
 .list-title {
   display: inline-block;
-  width: 250px;
+  width: 70%;
 }
 
 .change_mode_text {
@@ -373,4 +381,18 @@ ul.tag-list > li > a:hover {
   justify-content: center;
   cursor: pointer;
   color: rgb(15, 15, 231);
+}
+
+.body_text {
+  white-space: pre-wrap;
+}
+
+.text-warning {
+  color: rgb(215, 10, 10);
+}
+
+.serchButton {
+  display: block;
+  margin: auto;
+  width: 100px;
 }

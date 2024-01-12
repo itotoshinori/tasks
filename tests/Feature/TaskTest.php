@@ -40,7 +40,7 @@ class TaskTest extends TestCase
         $data = ['title' => 'テストデータ', 'user_id' => $this->user->id, 'term' => "2024-01-02"];
         $response = $this->postJson('api/tasks', $data);
         $response
-            ->assertStatus(201)
+            ->assertOk()
             ->assertJsonFragment($data);
     }
     /**

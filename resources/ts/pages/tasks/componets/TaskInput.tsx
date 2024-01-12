@@ -17,12 +17,17 @@ const TaskInput: React.VFC = () => {
             setchangeText("簡易フォームに変更")
             setchangeTextTop(-130)
         } else {
-            setInputSimple(true)
-            setchangeText("詳細フォームに変更")
-            setchangeTextTop(-70)
+            simpleInputDis()
         }
         window.scroll({ top: 0, behavior: 'smooth' })
     }
+
+    const simpleInputDis = (): void => {
+        setInputSimple(true)
+        setchangeText("詳細フォームに変更")
+        setchangeTextTop(-70)
+    }
+
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
         if (!title || !term) {
@@ -34,9 +39,9 @@ const TaskInput: React.VFC = () => {
         setTerm('')
         setBody('')
         setLink('')
-        setInputSimple(true)
-        setchangeText("詳細フォームに変更")
+        simpleInputDis()
     }
+
     const itemInput = () => {
         return (
             <>

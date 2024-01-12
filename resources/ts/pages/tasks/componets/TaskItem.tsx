@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Task } from '../../../types/Task'
 import { useUpdateDoneTask, useUpdateTask, useDeleteTask } from "../../../queries/TaskQuery"
 import { toast } from "react-toastify"
-import { formatDate, getWeek, shortDate } from '../../../functions/dateSet'
+import { formatDate, getWeek, shortDate, getToday } from '../../../functions/dateSet'
 
 type Props = {
     task: Task
@@ -35,7 +35,6 @@ const TaskItem: React.VFC<Props> = ({ task }) => {
 
     const handleUpdate = (e: React.MouseEvent<HTMLButtonElement>) => {
         e.preventDefault()
-
         if (!editTitle) {
             toast.error('タイトルを入力してください')
             return
@@ -63,6 +62,12 @@ const TaskItem: React.VFC<Props> = ({ task }) => {
     const copyToClipboard = async () => {
         await global.navigator.clipboard.writeText(task.title);
         toast.info("タイトルをクリップボードにコピーしました")
+    }
+
+    const todayColor = (): string => {
+        let textColor: string = ''
+        String(task.term) == getToday() ? textColor = 'blue' : textColor = 'black'
+        return textColor
     }
 
     const itemInput = () => {
@@ -93,18 +98,17 @@ const TaskItem: React.VFC<Props> = ({ task }) => {
         return (
             <>
                 <div>
-                    <span style={{ cursor: "pointer" }} onClick={() => window.scroll({ top: 0, behavior: 'smooth' })}>☝</span>
-                    <span style={{ cursor: "pointer" }} onClick={() => copyToClipboard()}>📋</span>
-                    <a href={`/detail?id=${task.id}`} target="_blank">📖</a>
-                    <span onClick={handleToggleEdit} className="list-title">{task.title}</span>
+                    <span onClick={handleToggleEdit} className="list-title linethrough" style={{ color: todayColor() }}>{task.title}</span>
                     {task.term && (
-                        <span onClick={handleToggleEdit} style={{ whiteSpace: "nowrap" }}>
+                        <span onClick={handleToggleEdit} style={{ color: todayColor(), whiteSpace: 'nowrap' }}>
                             {shortDate(task.term)}({getWeek(task.term)})
                         </span>
                     )}
+                    <span style={{ cursor: "pointer", marginRight: "5px" }} onClick={() => window.scroll({ top: 0, behavior: 'smooth' })}>☝</span>
+                    <span style={{ cursor: "pointer", marginRight: "5px" }} onClick={() => copyToClipboard()}>📋</span>
+                    <a href={`/detail?id=${task.id}`} target="_blank">📖</a>
                 </div>
                 <button
-                    className="btn is-delete"
                     onClick={
                         () => {
                             if (window.confirm("本当に削除しますか？")) {
@@ -113,7 +117,7 @@ const TaskItem: React.VFC<Props> = ({ task }) => {
                         }
                     }
                 >
-                    削除
+                    🗑️
                 </button>
             </>
         )

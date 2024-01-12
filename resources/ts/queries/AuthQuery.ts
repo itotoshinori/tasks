@@ -16,7 +16,7 @@ const useLogin = () => {
             if (user) {
                 setIsAuth(true)
             }
-            history.push("/tasks");
+            history.push("/");
             toast.success('ログインに成功しました')
         },
         onError: () => {

@@ -64,7 +64,7 @@ const TaskDetail: React.VFC<Props> = ({ task }) => {
                         </input>
                     </div>
                     <div><button className="btn mt-4" onClick={() => { setEditMode(undefined) }}>テキストモード解除</button></div>
-                </form >
+                </form>
             </>
         )
     }

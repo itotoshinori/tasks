@@ -12,7 +12,7 @@ body,html {
 }
 
 .inner {
-    max-width: 700px;
+    max-width: 80%;
     margin: 30px auto 0 auto;
 }
 
@@ -46,7 +46,7 @@ body,html {
         align-items: center;
         position: relative;
 
-        &.done span {
+        &.done .linethrough {
             text-decoration: line-through;
         }
 
@@ -93,6 +93,8 @@ body,html {
     }
 }
 
+
+
 .input-form {
     margin-bottom: 40px;
     background: #f9f3ee;
@@ -111,7 +113,6 @@ body,html {
         border: solid 3px #d7d2cd;
         margin-right: 10px;
     }
-
     .btn {
         width: 20%;
     }
@@ -120,6 +121,7 @@ body,html {
         background-color: #ffd4dd;
         border-color: #d01137;
     }
+
 
     .error-message {
         position: absolute;
@@ -130,6 +132,10 @@ body,html {
         font-weight: bold;
         border-radius: 5px;
         padding: 2px 5px;
+    }
+    .modal-term-input{
+        width:150px;
+        height:30px
     }
 }
 
@@ -397,12 +403,16 @@ ul.tag-list {
 }
 
 .mt-4{
-    margin-top:20px;
+    margin-top:200px;
+}
+
+.mr-2{
+    margin-right:10px;
 }
 
 .list-title{
     display: inline-block;
-	width: 250px;
+	width: 70%;
 }
 
 .change_mode_text{
@@ -411,3 +421,18 @@ ul.tag-list {
     cursor: pointer;
     color:rgb(15, 15, 231);
 }
+
+.body_text {
+    white-space: pre-wrap;
+}
+
+.text-warning{
+    color:rgb(215, 10, 10);
+}
+
+.serchButton{
+    display: block;
+	margin: auto;
+    width:100px;
+}
+

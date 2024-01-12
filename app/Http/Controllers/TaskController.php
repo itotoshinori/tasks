@@ -17,7 +17,7 @@ class TaskController extends Controller
      */
     public function index()
     {
-        $tasks = Task::orderBy('term')->where('user_id', '=',  Auth::user()->id)->get();
+        $tasks = Task::orderBy('term')->orderByDESC('created_at')->where('user_id', '=',  Auth::user()->id)->get();
         // created_atとupdated_atを配列として取得
         $formattedTasks = $tasks->map(function ($task) {
             return [
@@ -51,7 +51,7 @@ class TaskController extends Controller
             'term' => 'required',
         ]);
         $task = Task::create($request->all());
-        return $task;
+        return $task ? response()->json($task) : response()->json([], 500);
     }
 
     /**

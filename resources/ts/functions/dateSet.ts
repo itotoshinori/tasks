@@ -21,7 +21,7 @@ export const formatDate = (date: Date) => {
 export const shortDate = (date: Date | null) => {
     if (date) {
         date = new Date(date);
-        return date.toISOString().split('T')[0].slice(5, 10);
+        return date.toISOString().split('T')[0].slice(5, 10).replace('-', '/');
     }
     return '';
 };
@@ -31,5 +31,37 @@ export const dateDigi = (num: number): string => {
     num < 10 ? result = "0" + String(num) : result = String(num)
     return result;
 };
+
+export const getToday = (): string => {
+    // 今日の日付を取得できるnew Dateを格納
+    const today: Date = new Date();
+    const year: string = String(today.getFullYear());
+    const month: string = dateDigi(today.getMonth() + 1);
+    const date: string = dateDigi(today.getDate());
+    return year + "-" + month + "-" + date
+}
+
+export const getLastYear = (): string => {
+    const today: string = getToday();
+    const year: string = today.slice(0, 4)
+    const lastYear: string = String(Number(year) - 1)
+    return today.replace(year, lastYear)
+}
+
+export const getNextYear = (): string => {
+    const today: string = getToday();
+    const year: string = today.slice(0, 4)
+    const nextYear: string = String(Number(year) + 1)
+    return today.replace(year, nextYear)
+}
+
+export const getYearDate = (getDate: Date): string => {
+    // 今日の日付を取得できるnew Dateを格納
+    const setDay: Date = new Date(getDate);
+    const year: string = String(setDay.getFullYear());
+    const month: string = dateDigi(setDay.getMonth() + 1);
+    const date: string = dateDigi(setDay.getDate());
+    return year + month + date
+}
 
 

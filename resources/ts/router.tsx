@@ -6,7 +6,7 @@ import { TestPage } from './pages/testpage/'
 import { DetailPage } from './pages/tasks/detail'
 import { HomePage } from './pages/home/'
 import { useLogout, useUser } from './queries/AuthQuery'
-import { AuthProvider, useAuth } from './hooks/AuthContext';
+import { useAuth } from './hooks/AuthContext';
 
 import {
   BrowserRouter,
@@ -50,13 +50,22 @@ const Router = () => {
   const loginnavigation = (
     <header className="global-head">
       <ul>
-        <li><Link to="/tasks">タスク</Link></li>
+        <li><a href="/">タスク</a></li>
         <li onClick={() => logout.mutate()} style={{ cursor: 'pointer' }}>ログアウト</li>
         <li><Link to="/help">Help</Link></li>
         <li><Link to="/testpage">テストページ</Link></li>
       </ul>
     </header>
   )
+  const NotFoundPage = () => {
+    return (
+      <div className="align-center">
+        <div className="login-page">
+          <div>該当のURLは存在しません</div>
+        </div>
+      </div>
+    );
+  };
   return (
     <BrowserRouter>
       {isAuth ? loginnavigation : navigation}
@@ -70,24 +79,20 @@ const Router = () => {
             <HomePage />
           }
         </Route>
-        <Route path="/tasks">
-          {isAuth ?
-            <TaskPage />
-            :
-            <HomePage />
-          }
-        </Route>
-        <Route path="/login">
+        <Route exact path="/login">
           <LoginPage />
         </Route>
-        <Route path="/help">
+        <Route exact path="/help">
           <HelpPage />
         </Route>
-        <Route path="/testpage">
+        <Route exact path="/testpage">
           <TestPage />
         </Route>
         <Route path="/detail">
           <DetailPage />
+        </Route>
+        <Route path="*">
+          <NotFoundPage />
         </Route>
       </Switch>
     </BrowserRouter >

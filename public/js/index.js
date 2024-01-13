@@ -4128,6 +4128,7 @@ var useCreateTask = function useCreateTask() {
   var queryClient = (0, react_query_1.useQueryClient)();
   return (0, react_query_1.useMutation)(api.postTasks, {
     onSuccess: function onSuccess(data) {
+      alert(data.title);
       queryClient.invalidateQueries('tasks');
       react_toastify_1.toast.success("".concat(data.title, " (\u671F\u9650:").concat(data.term, ") \u306E\u767B\u9332\u306B\u6210\u529F\u3057\u307E\u3057\u305F"), {
         autoClose: 15000,

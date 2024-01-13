@@ -16,14 +16,8 @@ const useTask = (id: number) => {
 const useCreateTask = () => {
     const queryClient = useQueryClient()
     return useMutation(api.postTasks, {
-        onSuccess: (data) => {
-            alert("Queryタイトル" + data.title)
+        onSuccess: () => {
             queryClient.invalidateQueries('tasks')
-            toast.success(`${data.title} (期限:${data.term}) の登録に成功しました`,
-                {
-                    autoClose: 15000, // 表示時間を15秒に設定
-                    position: 'top-center'
-                });
         },
         onError: (error: AxiosError) => {
             if (error.response?.data.errors) {
@@ -43,7 +37,6 @@ const useCreateTask = () => {
 
 const useUpdateTask = () => {
     const queryClient = useQueryClient()
-
     return useMutation(api.updateTask, {
         onSuccess: () => {
             queryClient.invalidateQueries('tasks')

@@ -20,16 +20,17 @@ const postTasks = async ({ title, body, link, term }: { title: string, body: str
     }
 }
 
-const getTask = async (id: number) => {
-    const { data } = await axios.get<Task[]>(`api/tasks/${id}`)
-    return data[0]
-}
-
 const updateTask = async ({ id, task }: { id: number, task: Task }) => {
     const { data } = await axios.patch<Task>
         (`api/tasks/${id}`, task)
     return data
 }
+
+const getTask = async (id: number) => {
+    const { data } = await axios.get<Task[]>(`api/tasks/${id}`)
+    return data[0]
+}
+
 
 const deleteTask = async (id: number) => {
     const { data } = await axios.delete<Task>

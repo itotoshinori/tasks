@@ -2319,18 +2319,20 @@ var postTasks = function postTasks(_ref) {
   }));
 };
 exports.postTasks = postTasks;
-var getTask = function getTask(id) {
+var updateTask = function updateTask(_ref2) {
+  var id = _ref2.id,
+    task = _ref2.task;
   return __awaiter(void 0, void 0, void 0, /*#__PURE__*/_regeneratorRuntime().mark(function _callee3() {
     var _yield$axios_1$defaul3, data;
     return _regeneratorRuntime().wrap(function _callee3$(_context3) {
       while (1) switch (_context3.prev = _context3.next) {
         case 0:
           _context3.next = 2;
-          return axios_1["default"].get("api/tasks/".concat(id));
+          return axios_1["default"].patch("api/tasks/".concat(id), task);
         case 2:
           _yield$axios_1$defaul3 = _context3.sent;
           data = _yield$axios_1$defaul3.data;
-          return _context3.abrupt("return", data[0]);
+          return _context3.abrupt("return", data);
         case 5:
         case "end":
           return _context3.stop();
@@ -2338,21 +2340,19 @@ var getTask = function getTask(id) {
     }, _callee3);
   }));
 };
-exports.getTask = getTask;
-var updateTask = function updateTask(_ref2) {
-  var id = _ref2.id,
-    task = _ref2.task;
+exports.updateTask = updateTask;
+var getTask = function getTask(id) {
   return __awaiter(void 0, void 0, void 0, /*#__PURE__*/_regeneratorRuntime().mark(function _callee4() {
     var _yield$axios_1$defaul4, data;
     return _regeneratorRuntime().wrap(function _callee4$(_context4) {
       while (1) switch (_context4.prev = _context4.next) {
         case 0:
           _context4.next = 2;
-          return axios_1["default"].patch("api/tasks/".concat(id), task);
+          return axios_1["default"].get("api/tasks/".concat(id));
         case 2:
           _yield$axios_1$defaul4 = _context4.sent;
           data = _yield$axios_1$defaul4.data;
-          return _context4.abrupt("return", data);
+          return _context4.abrupt("return", data[0]);
         case 5:
         case "end":
           return _context4.stop();
@@ -2360,7 +2360,7 @@ var updateTask = function updateTask(_ref2) {
     }, _callee4);
   }));
 };
-exports.updateTask = updateTask;
+exports.getTask = getTask;
 var deleteTask = function deleteTask(id) {
   return __awaiter(void 0, void 0, void 0, /*#__PURE__*/_regeneratorRuntime().mark(function _callee5() {
     var _yield$axios_1$defaul5, data;
@@ -3009,7 +3009,7 @@ var TaskInput = function TaskInput() {
     setchangeTextTop(-70);
   };
   var handleSubmit = function handleSubmit(e) {
-    //e.preventDefault()
+    e.preventDefault();
     if (!title || !term) {
       react_toastify_1.toast.error('タイトル及び期限を入力してください');
       return;
@@ -4133,14 +4133,8 @@ exports.useTask = useTask;
 var useCreateTask = function useCreateTask() {
   var queryClient = (0, react_query_1.useQueryClient)();
   return (0, react_query_1.useMutation)(api.postTasks, {
-    onSuccess: function onSuccess(data) {
-      alert("Queryタイトル" + data.title);
+    onSuccess: function onSuccess() {
       queryClient.invalidateQueries('tasks');
-      react_toastify_1.toast.success("".concat(data.title, " (\u671F\u9650:").concat(data.term, ") \u306E\u767B\u9332\u306B\u6210\u529F\u3057\u307E\u3057\u305F"), {
-        autoClose: 15000,
-        // 表示時間を15秒に設定
-        position: 'top-center'
-      });
     },
     onError: function onError(error) {
       var _a, _b;

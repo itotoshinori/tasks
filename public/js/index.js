@@ -2296,10 +2296,8 @@ var postTasks = function postTasks(_ref) {
           _context2.prev = 0;
           _context2.next = 3;
           return axios_1["default"].post("api/tasks/", {
-            title: title,
-            body: body,
-            link: link,
-            term: term
+            title: "テスト",
+            term: "2014-09-01"
           });
         case 3:
           _yield$axios_1$defaul2 = _context2.sent;

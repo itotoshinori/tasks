@@ -18,7 +18,7 @@ const useCreateTask = () => {
 
     return useMutation(api.postTasks, {
         onSuccess: (data) => {
-            alert(data.title)
+            alert("Queryタイトル" + data.title)
             queryClient.invalidateQueries('tasks')
             toast.success(`${data.title} (期限:${data.term}) の登録に成功しました`,
                 {

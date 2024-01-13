@@ -2303,8 +2303,9 @@ var postTasks = function postTasks(_ref) {
         case 2:
           _yield$axios_1$defaul2 = _context2.sent;
           data = _yield$axios_1$defaul2.data;
+          alert("APIタイトル:" + title);
           return _context2.abrupt("return", data);
-        case 5:
+        case 6:
         case "end":
           return _context2.stop();
       }
@@ -4127,7 +4128,7 @@ var useCreateTask = function useCreateTask() {
   var queryClient = (0, react_query_1.useQueryClient)();
   return (0, react_query_1.useMutation)(api.postTasks, {
     onSuccess: function onSuccess(data) {
-      alert(data.title);
+      alert("Queryタイトル" + data.title);
       queryClient.invalidateQueries('tasks');
       react_toastify_1.toast.success("".concat(data.title, " (\u671F\u9650:").concat(data.term, ") \u306E\u767B\u9332\u306B\u6210\u529F\u3057\u307E\u3057\u305F"), {
         autoClose: 15000,

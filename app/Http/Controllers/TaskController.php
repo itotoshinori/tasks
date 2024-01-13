@@ -45,6 +45,7 @@ class TaskController extends Controller
     public function store(Request $request)
     {
         $request->merge(['user_id' => Auth::user()->id]);
+        Log::info($request->all());
         $request->validate([
             'title' => 'required|max:30',
             'user_id' => 'required',

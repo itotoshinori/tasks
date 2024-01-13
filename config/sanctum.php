@@ -15,7 +15,7 @@ return [
 
     'stateful' => explode(',', env('SANCTUM_STATEFUL_DOMAINS', sprintf(
         '%s%s',
-        'localhost,todo.info-proffer.com,localhost:8050,127.0.0.1,127.0.0.1:8050,::1',
+        'localhost,tasks.info-proffer.com,localhost:8050,127.0.0.1,127.0.0.1:8050,::1',
         env('APP_URL') ? ',' . parse_url(env('APP_URL'), PHP_URL_HOST) : ''
     ))),
 

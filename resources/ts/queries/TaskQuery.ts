@@ -15,7 +15,6 @@ const useTask = (id: number) => {
 
 const useCreateTask = () => {
     const queryClient = useQueryClient()
-
     return useMutation(api.postTasks, {
         onSuccess: (data) => {
             alert("Queryタイトル" + data.title)

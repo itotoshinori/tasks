@@ -3009,7 +3009,7 @@ var TaskInput = function TaskInput() {
     setchangeTextTop(-70);
   };
   var handleSubmit = function handleSubmit(e) {
-    e.preventDefault();
+    //e.preventDefault()
     if (!title || !term) {
       react_toastify_1.toast.error('タイトル及び期限を入力してください');
       return;

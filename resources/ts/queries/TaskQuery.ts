@@ -19,12 +19,12 @@ const useCreateTask = () => {
     return useMutation(api.postTasks, {
         onSuccess: (data) => {
             queryClient.invalidateQueries('tasks')
-            toast.success(`${data.title} (期限:${data.term}) の登録に成功しました`, 
-            {
-                autoClose: 15000, // 表示時間を15秒に設定
-                position:'top-center'
-            });
-        },  
+            toast.success(`${data.title} (期限:${data.term}) の登録に成功しました`,
+                {
+                    autoClose: 15000, // 表示時間を15秒に設定
+                    position: 'top-center'
+                });
+        },
         onError: (error: AxiosError) => {
             if (error.response?.data.errors) {
                 Object.values(error.response?.data.errors).map(
@@ -92,4 +92,4 @@ const useUpdateDoneTask = () => {
         }
     })
 }
-export { useTasks,useTask, useUpdateDoneTask, useCreateTask, useUpdateTask,useDeleteTask }
+export { useTasks, useTask, useUpdateDoneTask, useCreateTask, useUpdateTask, useDeleteTask }

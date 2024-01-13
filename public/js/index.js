@@ -2303,7 +2303,7 @@ var postTasks = function postTasks(_ref) {
         case 2:
           _yield$axios_1$defaul2 = _context2.sent;
           data = _yield$axios_1$defaul2.data;
-          console.log(data);
+          alert(term);
           return _context2.abrupt("return", data);
         case 6:
         case "end":
@@ -3008,8 +3008,6 @@ var TaskInput = function TaskInput() {
       react_toastify_1.toast.error('タイトル及び期限を入力してください');
       return;
     }
-    alert(title);
-    console.log(term);
     createTask.mutate({
       title: title,
       body: body,

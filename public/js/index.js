@@ -2293,23 +2293,29 @@ var postTasks = function postTasks(_ref) {
     return _regeneratorRuntime().wrap(function _callee2$(_context2) {
       while (1) switch (_context2.prev = _context2.next) {
         case 0:
-          _context2.next = 2;
+          _context2.prev = 0;
+          _context2.next = 3;
           return axios_1["default"].post("api/tasks/", {
             title: title,
             body: body,
             link: link,
             term: term
           });
-        case 2:
+        case 3:
           _yield$axios_1$defaul2 = _context2.sent;
           data = _yield$axios_1$defaul2.data;
           alert("APIタイトル:" + title);
           return _context2.abrupt("return", data);
-        case 6:
+        case 9:
+          _context2.prev = 9;
+          _context2.t0 = _context2["catch"](0);
+          console.error("APIエラー:", _context2.t0);
+          throw _context2.t0;
+        case 13:
         case "end":
           return _context2.stop();
       }
-    }, _callee2);
+    }, _callee2, null, [[0, 9]]);
   }));
 };
 exports.postTasks = postTasks;

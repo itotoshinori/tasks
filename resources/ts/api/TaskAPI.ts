@@ -7,10 +7,17 @@ const getTasks = async () => {
 }
 
 const postTasks = async ({ title, body, link, term }: { title: string, body: string, link: string, term: string }) => {
-    const { data } = await axios.post<Task>
-        (`api/tasks/`, { title: title, body: body, link: link, term: term })
-    alert("APIタイトル:" + title)
-    return data
+    try {
+        const { data } = await axios.post<Task>(
+            `api/tasks/`,
+            { title: title, body: body, link: link, term: term }
+        );
+        alert("APIタイトル:" + title);
+        return data;
+    } catch (error) {
+        console.error("APIエラー:", error);
+        throw error; // エラーを再スローして呼び出し元で処理できるようにする
+    }
 }
 
 const getTask = async (id: number) => {

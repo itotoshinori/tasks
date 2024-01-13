@@ -3026,23 +3026,6 @@ var TaskInput = function TaskInput() {
     setLink('');
     simpleInputDis();
   };
-  var handleInputTitleChange = function handleInputTitleChange(e) {
-    setTitle(e.target.value);
-  };
-  var handleUpdate2 = function handleUpdate2(e) {
-    e.preventDefault();
-    createTask.mutate({
-      title: title,
-      body: body,
-      link: link,
-      term: term
-    });
-    setTitle('');
-    setTerm('');
-    setBody('');
-    setLink('');
-    simpleInputDis();
-  };
   var itemInput = function itemInput() {
     return react_1["default"].createElement(react_1["default"].Fragment, null, react_1["default"].createElement("form", {
       className: "input-form",
@@ -3055,7 +3038,9 @@ var TaskInput = function TaskInput() {
       autoFocus: true,
       placeholder: "\u3053\u3053\u306B\u306F\u30BF\u30A4\u30C8\u30EB\u3092\u53F3\u306B\u306F\u671F\u9650\u3092\u5165\u529B\u3057\u3066\u304F\u3060\u3055\u3044\u3002",
       value: title,
-      onChange: handleInputTitleChange
+      onChange: function onChange(e) {
+        return setTitle(e.target.value);
+      }
     }), react_1["default"].createElement("div", null, react_1["default"].createElement("input", {
       type: "date",
       className: "input",
@@ -3067,31 +3052,6 @@ var TaskInput = function TaskInput() {
       type: "submit",
       className: "btn is-primary"
     }, "\u8FFD\u52A0"))));
-  };
-  var itemInput2 = function itemInput2() {
-    return react_1["default"].createElement(react_1["default"].Fragment, null, react_1["default"].createElement("form", {
-      style: {
-        display: 'flex',
-        alignItems: 'center'
-      }
-    }, react_1["default"].createElement("input", {
-      type: "text",
-      className: "input",
-      value: title,
-      onChange: function onChange(e) {
-        return setTerm(e.target.value);
-      }
-    }), react_1["default"].createElement("input", {
-      type: "date",
-      className: "input",
-      value: term,
-      onChange: function onChange(e) {
-        return setTerm(e.target.value);
-      }
-    }), react_1["default"].createElement("button", {
-      className: "btn",
-      onClick: handleUpdate2
-    }, "\u66F4\u65B0")));
   };
   var itemInputSimple = function itemInputSimple() {
     return react_1["default"].createElement("div", {
@@ -3136,7 +3096,7 @@ var TaskInput = function TaskInput() {
   };
   var searchParams = new URLSearchParams(window.location.search);
   var urlId = parseInt(searchParams.get("id") || '', 10);
-  return react_1["default"].createElement(react_1["default"].Fragment, null, react_1["default"].createElement("div", null, inputSimple ? itemInput() : itemInputSimple()), react_1["default"].createElement("div", null, itemInput2()), react_1["default"].createElement("div", {
+  return react_1["default"].createElement(react_1["default"].Fragment, null, react_1["default"].createElement("div", null, inputSimple ? itemInput() : itemInputSimple()), react_1["default"].createElement("div", {
     className: 'change_mode_text',
     style: {
       marginTop: changeTextTop
@@ -4200,9 +4160,13 @@ exports.useCreateTask = useCreateTask;
 var useUpdateTask = function useUpdateTask() {
   var queryClient = (0, react_query_1.useQueryClient)();
   return (0, react_query_1.useMutation)(api.updateTask, {
-    onSuccess: function onSuccess() {
+    onSuccess: function onSuccess(data) {
       queryClient.invalidateQueries('tasks');
-      react_toastify_1.toast.success('更新に成功しました');
+      react_toastify_1.toast.success("".concat(data.title, " (\u671F\u9650:").concat(data.term, ") \u306E\u66F4\u65B0\u306B\u6210\u529F\u3057\u307E\u3057\u305F"), {
+        autoClose: 15000,
+        // 表示時間を15秒に設定
+        position: 'top-center'
+      });
     },
     onError: function onError(error) {
       var _a, _b;

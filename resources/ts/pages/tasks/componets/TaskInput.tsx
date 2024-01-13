@@ -41,18 +41,6 @@ const TaskInput: React.VFC = () => {
         setLink('')
         simpleInputDis()
     }
-    const handleInputTitleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setTitle(e.target.value)
-    }
-    const handleUpdate2 = (e: React.MouseEvent<HTMLButtonElement>) => {
-        e.preventDefault()
-        createTask.mutate({ title, body, link, term })
-        setTitle('')
-        setTerm('')
-        setBody('')
-        setLink('')
-        simpleInputDis()
-    }
 
     const itemInput = () => {
         return (
@@ -66,7 +54,7 @@ const TaskInput: React.VFC = () => {
                                 autoFocus
                                 placeholder="ここにはタイトルを右には期限を入力してください。"
                                 value={title}
-                                onChange={handleInputTitleChange}
+                                onChange={(e) => setTitle(e.target.value)}
                             />
                             <div>
                                 <input
@@ -83,28 +71,6 @@ const TaskInput: React.VFC = () => {
             </>
         );
     }
-    const itemInput2 = () => {
-        return (
-            <>
-                <form style={{ display: 'flex', alignItems: 'center' }}>
-                    <input
-                        type="text"
-                        className="input"
-                        value={title}
-                        onChange={(e) => setTerm(e.target.value)}
-                    />
-                    <input
-                        type="date"
-                        className="input"
-                        value={term}
-                        onChange={(e) => setTerm(e.target.value)}
-                    />
-                    <button className="btn" onClick={handleUpdate2}>更新</button>
-                </form>
-            </>
-        )
-    }
-
     const itemInputSimple = () => {
         return (
             <div className="login-page">
@@ -155,7 +121,6 @@ const TaskInput: React.VFC = () => {
     return (
         <>
             <div>{inputSimple ? itemInput() : itemInputSimple()}</div >
-            <div>{itemInput2()}</div>
             <div
                 className='change_mode_text'
                 style={{ marginTop: changeTextTop }}

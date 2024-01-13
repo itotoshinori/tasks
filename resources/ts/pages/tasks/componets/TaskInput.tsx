@@ -34,6 +34,8 @@ const TaskInput: React.VFC = () => {
             toast.error('タイトル及び期限を入力してください')
             return
         }
+        alert(title)
+        console.log(term)
         createTask.mutate({ title, body, link, term })
         setTitle('')
         setTerm('')

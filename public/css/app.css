@@ -284,7 +284,7 @@ ul.tag-list > li > a:hover {
 .login-page {
   background: #f9f3ee;
   width: 100vw;
-  height: 100vh;
+  height: 60vh;
   display: flex;
   flex-direction: column;
   padding-top: 100px;
@@ -363,8 +363,12 @@ ul.tag-list > li > a:hover {
   margin-top: 5px;
 }
 
+.mt-2 {
+  margin-top: 20px;
+}
+
 .mt-4 {
-  margin-top: 200px;
+  margin-top: 30px;
 }
 
 .mr-2 {
@@ -391,7 +395,7 @@ ul.tag-list > li > a:hover {
   color: rgb(215, 10, 10);
 }
 
-.serchButton {
+.searchButton {
   display: block;
   margin: auto;
   width: 100px;

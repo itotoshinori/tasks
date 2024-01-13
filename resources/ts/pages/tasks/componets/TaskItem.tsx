@@ -77,6 +77,7 @@ const TaskItem: React.VFC<Props> = ({ task }) => {
                     <input
                         type="text"
                         className="input"
+                        autoFocus
                         defaultValue={task.title}
                         onChange={handleInputTitleChange}
                         onKeyDown={handleOnKey}

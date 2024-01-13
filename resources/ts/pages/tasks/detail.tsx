@@ -87,7 +87,7 @@ export const DetailPage: React.VFC = () => {
                         <div><a href={task.link}>{task.link}</a></div>
                     </>
                 )}
-                <div className="mt-4">
+                <div className="mt-2">
                     <span className="change_mode_text mr-2" onClick={handleToggleEdit}>編集</span>
                     <span className="change_mode_text mr-2" onClick={() => window.close()}>閉じる</span>
                     <a href={llikGoogleCalendar()}>GoogleCalendar登録</a>

@@ -45,8 +45,18 @@ const TaskList = () => {
         return <div className="align-center" style={{ marginTop: '50px' }}>データが存在しません</div>
     }
     let tasks_array: Task[];
+    const tasks_sort = () => {
+        const tasksSort = [...tasks].sort((a, b) => {
+            const dateA = new Date(a.term).getTime();
+            const dateB = new Date(b.term).getTime();
+            return dateB - dateA;
+        });
+        return tasksSort
+    }
     if (searchTitle) {
-        tasks_array = tasks.filter((task) => {
+        //検索と完了用に期限降順の配列を用意する
+        const tasksSort = tasks_sort()
+        tasks_array = tasksSort.filter((task) => {
             return task.title.includes(searchTitle);
         });
     }
@@ -55,13 +65,8 @@ const TaskList = () => {
             return String(task.finishday) == getToday() || task.finishday === null;
         });
     } else {
-        // termでタスクをソート
-        const tasks_sort = [...tasks].sort((a, b) => {
-            const dateA = new Date(a.term).getTime();
-            const dateB = new Date(b.term).getTime();
-            return dateB - dateA;
-        });
-        tasks_array = tasks_sort.filter((task) => {
+        const tasksSort = tasks_sort()
+        tasks_array = tasksSort.filter((task) => {
             return String(task.finishday) != getToday() && task.is_done === true;
         });
     }

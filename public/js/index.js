@@ -2806,7 +2806,7 @@ var react_1 = __importStar(__webpack_require__(/*! react */ "./node_modules/reac
 var react_modal_1 = __importDefault(__webpack_require__(/*! react-modal */ "./node_modules/react-modal/lib/index.js"));
 var customStyles = {
   content: {
-    width: '30%',
+    width: '50%',
     height: '80%',
     top: '50%',
     left: '50%',
@@ -2853,17 +2853,17 @@ var ModalForm = function ModalForm(props) {
     if (subtitle) subtitle.style.color = '#f00';
   }
   function closeModal() {
+    setTileWarning('');
     setIsOpen(false);
   }
   return react_1["default"].createElement("div", null, react_1["default"].createElement("button", {
     onClick: openModal,
-    className: "serchButton mt-4",
+    className: "searchButton",
     style: {
       marginTop: '10px'
     }
   }, "\u30BF\u30A4\u30C8\u30EB\u691C\u7D22"), resetLink && react_1["default"].createElement("button", {
-    onClick: openModal,
-    className: "serchButton",
+    className: "searchButton",
     style: {
       marginTop: '10px'
     }
@@ -2883,13 +2883,14 @@ var ModalForm = function ModalForm(props) {
   }, titleWarning), react_1["default"].createElement("input", {
     type: "text",
     className: "input",
+    autoFocus: true,
     placeholder: "\u691C\u7D22\u3057\u305F\u3044\u30BF\u30A4\u30C8\u30EB\u3092\u5165\u529B\u3057\u3066\u304F\u3060\u3055\u3044\u3002",
     value: title,
     onChange: function onChange(e) {
       return setTitle(e.target.value);
     }
   }), react_1["default"].createElement("br", null), react_1["default"].createElement("div", {
-    className: "mt-4"
+    className: "mt-2"
   }, react_1["default"].createElement("button", {
     className: "mr-2"
   }, "\u691C\u7D22"), react_1["default"].createElement("button", {
@@ -2986,7 +2987,7 @@ var TaskInput = function TaskInput() {
     if (inputSimple) {
       setInputSimple(false);
       setchangeText("簡易フォームに変更");
-      setchangeTextTop(-130);
+      setchangeTextTop(120);
     } else {
       simpleInputDis();
     }
@@ -3027,6 +3028,7 @@ var TaskInput = function TaskInput() {
     }, react_1["default"].createElement("input", {
       type: "text",
       className: "input",
+      autoFocus: true,
       placeholder: "\u3053\u3053\u306B\u306F\u30BF\u30A4\u30C8\u30EB\u3092\u53F3\u306B\u306F\u671F\u9650\u3092\u5165\u529B\u3057\u3066\u304F\u3060\u3055\u3044\u3002",
       value: title,
       onChange: function onChange(e) {
@@ -3259,6 +3261,7 @@ var TaskItem = function TaskItem(_ref) {
     }, react_1["default"].createElement("input", {
       type: "text",
       className: "input",
+      autoFocus: true,
       defaultValue: task.title,
       onChange: handleInputTitleChange,
       onKeyDown: handleOnKey
@@ -3455,8 +3458,18 @@ var TaskList = function TaskList() {
     }, "\u30C7\u30FC\u30BF\u304C\u5B58\u5728\u3057\u307E\u305B\u3093");
   }
   var tasks_array;
+  var tasks_sort = function tasks_sort() {
+    var tasksSort = _toConsumableArray(tasks).sort(function (a, b) {
+      var dateA = new Date(a.term).getTime();
+      var dateB = new Date(b.term).getTime();
+      return dateB - dateA;
+    });
+    return tasksSort;
+  };
   if (searchTitle) {
-    tasks_array = tasks.filter(function (task) {
+    //検索と完了用に期限降順の配列を用意する
+    var tasksSort = tasks_sort();
+    tasks_array = tasksSort.filter(function (task) {
       return task.title.includes(searchTitle);
     });
   } else if (condition) {
@@ -3464,13 +3477,8 @@ var TaskList = function TaskList() {
       return String(task.finishday) == (0, dateSet_1.getToday)() || task.finishday === null;
     });
   } else {
-    // termでタスクをソート
-    var tasks_sort = _toConsumableArray(tasks).sort(function (a, b) {
-      var dateA = new Date(a.term).getTime();
-      var dateB = new Date(b.term).getTime();
-      return dateB - dateA;
-    });
-    tasks_array = tasks_sort.filter(function (task) {
+    var _tasksSort = tasks_sort();
+    tasks_array = _tasksSort.filter(function (task) {
       return String(task.finishday) != (0, dateSet_1.getToday)() && task.is_done === true;
     });
   }
@@ -3638,7 +3646,7 @@ var DetailPage = function DetailPage() {
     }, "\u25A0\u30EA\u30F3\u30AF"), react_1["default"].createElement("div", null, react_1["default"].createElement("a", {
       href: task.link
     }, task.link))), react_1["default"].createElement("div", {
-      className: "mt-4"
+      className: "mt-2"
     }, react_1["default"].createElement("span", {
       className: "change_mode_text mr-2",
       onClick: handleToggleEdit

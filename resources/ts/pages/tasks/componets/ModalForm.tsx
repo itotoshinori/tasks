@@ -3,7 +3,7 @@ import Modal from 'react-modal'
 
 const customStyles = {
     content: {
-        width: '30%',
+        width: '50%',
         height: '80%',
         top: '50%',
         left: '50%',
@@ -43,13 +43,14 @@ const ModalForm = (props: any) => {
     }
 
     function closeModal() {
+        setTileWarning('')
         setIsOpen(false)
     }
     return (
         <div>
-            <button onClick={openModal} className="serchButton mt-4" style={{ marginTop: '10px' }}>タイトル検索</button>
+            <button onClick={openModal} className="searchButton" style={{ marginTop: '10px' }}>タイトル検索</button>
             {resetLink && (
-                <button onClick={openModal} className="serchButton" style={{ marginTop: '10px' }}><a href="/">リセット</a></button>
+                <button className="searchButton" style={{ marginTop: '10px' }}><a href="/">リセット</a></button>
             )}
             <Modal
                 contentLabel="検索条件"
@@ -67,11 +68,12 @@ const ModalForm = (props: any) => {
                     <input
                         type="text"
                         className="input"
+                        autoFocus
                         placeholder="検索したいタイトルを入力してください。"
                         value={title}
                         onChange={(e) => setTitle(e.target.value)}
                     /><br />
-                    <div className="mt-4">
+                    <div className="mt-2">
                         <button className="mr-2">検索</button>
                         <button onClick={closeModal}>閉じる</button>
                     </div>

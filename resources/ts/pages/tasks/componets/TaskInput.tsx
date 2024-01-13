@@ -15,7 +15,7 @@ const TaskInput: React.VFC = () => {
         if (inputSimple) {
             setInputSimple(false)
             setchangeText("簡易フォームに変更")
-            setchangeTextTop(-130)
+            setchangeTextTop(120)
         } else {
             simpleInputDis()
         }
@@ -51,6 +51,7 @@ const TaskInput: React.VFC = () => {
                             <input
                                 type="text"
                                 className="input"
+                                autoFocus
                                 placeholder="ここにはタイトルを右には期限を入力してください。"
                                 value={title}
                                 onChange={(e) => setTitle(e.target.value)}

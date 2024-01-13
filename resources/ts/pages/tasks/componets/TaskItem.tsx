@@ -59,6 +59,12 @@ const TaskItem: React.VFC<Props> = ({ task }) => {
         }
     }
 
+    const toBottom = () => {
+        const element = document.documentElement;
+        const bottom = element.scrollHeight - element.clientHeight;
+        window.scroll(0, bottom);
+    }
+
     const copyToClipboard = async () => {
         await global.navigator.clipboard.writeText(task.title);
         toast.info("タイトルをクリップボードにコピーしました")
@@ -106,6 +112,7 @@ const TaskItem: React.VFC<Props> = ({ task }) => {
                         </span>
                     )}
                     <span style={{ cursor: "pointer", marginRight: "5px" }} onClick={() => window.scroll({ top: 0, behavior: 'smooth' })}>☝</span>
+                    <span style={{ cursor: "pointer", marginRight: "5px" }} onClick={() => toBottom()}>☟</span>
                     <span style={{ cursor: "pointer", marginRight: "5px" }} onClick={() => copyToClipboard()}>📋</span>
                     <a href={`/detail?id=${task.id}`} target="_blank">📖</a>
                 </div>

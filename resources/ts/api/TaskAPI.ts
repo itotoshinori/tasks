@@ -10,7 +10,7 @@ const postTasks = async ({ title, body, link, term }: { title: string, body: str
     try {
         const { data } = await axios.post<Task>(
             `api/tasks/`,
-            { title: "テスト", term: "2014-09-01" }
+            { title: title, body: body, link: link, term: term }
         );
         alert("APIタイトル:" + title);
         return data;

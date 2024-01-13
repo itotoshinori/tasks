@@ -9,7 +9,6 @@ const getTasks = async () => {
 const postTasks = async ({ title, body, link, term }: { title: string, body: string, link: string, term: string }) => {
     const { data } = await axios.post<Task>
         (`api/tasks/`, { title: title, body: body, link: link, term: term })
-    alert(term)
     return data
 }
 

@@ -2303,9 +2303,8 @@ var postTasks = function postTasks(_ref) {
         case 2:
           _yield$axios_1$defaul2 = _context2.sent;
           data = _yield$axios_1$defaul2.data;
-          alert(term);
           return _context2.abrupt("return", data);
-        case 6:
+        case 5:
         case "end":
           return _context2.stop();
       }

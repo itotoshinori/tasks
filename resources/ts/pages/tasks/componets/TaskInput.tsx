@@ -29,7 +29,7 @@ const TaskInput: React.VFC = () => {
     }
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-        //e.preventDefault()
+        e.preventDefault()
         if (!title || !term) {
             toast.error('タイトル及び期限を入力してください')
             return

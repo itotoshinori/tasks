@@ -6,6 +6,7 @@ import { getToday } from '../../../functions/dateSet'
 import { toast } from 'react-toastify'
 import TaskInput from './TaskInput'
 import ModalForm from './ModalForm'
+import ModalNewForm from './ModalNewForm'
 
 const TaskList = () => {
     const searchParams: any = new URLSearchParams(window.location.search);
@@ -78,6 +79,7 @@ const TaskList = () => {
                 <div className='change_mode_text' style={{ marginTop: '28px' }} onClick={changeMode}>{conditionLink}</div>
             )}
             <ModalForm handleClickChildSearch={search} />
+            <ModalNewForm handleClickChildSearch={search} />
             <div className="inner">
                 {tasks_array.length == 0 && (
                     <div>対象はありません</div>

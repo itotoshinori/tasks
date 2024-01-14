@@ -42,6 +42,7 @@ export const DetailPage: React.VFC = () => {
 
     const handleUpdate = (e: React.MouseEvent<HTMLButtonElement>) => {
         e.preventDefault()
+        toast.error(title)
         if (!title) {
             toast.error('タイトルを入力してください')
             return

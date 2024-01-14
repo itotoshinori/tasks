@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Task;
+use Carbon\Carbon;
 use Exception;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
@@ -81,6 +82,11 @@ class TaskController extends Controller
             'title' => 'required|max:30',
         ]);
         Log::info($request);
+        #新規登録ができないため入力用の箱を作っておいて新規登録時はそのデータを変更する
+        $task_before = Task::find($request->id);
+        if ($task_before->title == "入力用") {
+            Task::create(['title' => "入力用", 'term' => Carbon::now()->addMonths(3), 'user_id' => Auth::user()->id]);
+        }
         return $task->update($request->all())
             ? response()->json($task)
             : response()->json([], 500);

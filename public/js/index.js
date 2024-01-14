@@ -2992,32 +2992,20 @@ var ModalNewForm = function ModalNewForm(props) {
     setTitle = _ref4[1];
   var _ref5 = (0, react_1.useState)(''),
     _ref6 = _slicedToArray(_ref5, 2),
-    titleWarning = _ref6[0],
-    setTileWarning = _ref6[1];
-  var _ref7 = (0, react_1.useState)(false),
+    body = _ref6[0],
+    setBody = _ref6[1];
+  var _ref7 = (0, react_1.useState)(''),
     _ref8 = _slicedToArray(_ref7, 2),
-    resetLink = _ref8[0],
-    setResetLink = _ref8[1];
-  var _ref9 = (0, react_1.useState)(false),
+    link = _ref8[0],
+    setLink = _ref8[1];
+  var _ref9 = (0, react_1.useState)(''),
     _ref10 = _slicedToArray(_ref9, 2),
-    editMode = _ref10[0],
-    setEditMode = _ref10[1];
-  var _ref11 = (0, react_1.useState)(''),
-    _ref12 = _slicedToArray(_ref11, 2),
-    body = _ref12[0],
-    setBody = _ref12[1];
-  var _ref13 = (0, react_1.useState)(''),
-    _ref14 = _slicedToArray(_ref13, 2),
-    link = _ref14[0],
-    setLink = _ref14[1];
-  var _ref15 = (0, react_1.useState)(''),
-    _ref16 = _slicedToArray(_ref15, 2),
-    term = _ref16[0],
-    setTerm = _ref16[1];
+    term = _ref10[0],
+    setTerm = _ref10[1];
   var updateTask = (0, TaskQuery_1.useUpdateTask)();
-  var _ref17 = (0, TaskQuery_1.useTasks)(),
-    tasks = _ref17.data,
-    status = _ref17.status;
+  var _ref11 = (0, TaskQuery_1.useTasks)(),
+    tasks = _ref11.data,
+    status = _ref11.status;
   function openModal() {
     setIsOpen(true);
     setTitle(task.title);
@@ -3029,7 +3017,6 @@ var ModalNewForm = function ModalNewForm(props) {
     if (subtitle) subtitle.style.color = '#f00';
   }
   function closeModal() {
-    setTileWarning('');
     setIsOpen(false);
   }
   if (!tasks || tasks.length <= 0) {
@@ -3109,14 +3096,7 @@ var ModalNewForm = function ModalNewForm(props) {
     style: {
       marginTop: '10px'
     }
-  }, "\u65B0\u898F\u767B\u9332"), resetLink && react_1["default"].createElement("button", {
-    className: "searchButton",
-    style: {
-      marginTop: '10px'
-    }
-  }, react_1["default"].createElement("a", {
-    href: "/"
-  }, "\u30EA\u30BB\u30C3\u30C8")), react_1["default"].createElement(react_modal_1["default"], {
+  }, "\u65B0\u898F\u767B\u9332"), react_1["default"].createElement(react_modal_1["default"], {
     contentLabel: "\u65B0\u898F\u30D5\u30A9\u30FC\u30E0",
     isOpen: modalIsOpen,
     style: customStyles,

@@ -23,9 +23,6 @@ const ModalNewForm = (props: any) => {
     let subtitle: HTMLHeadingElement | null
     const [modalIsOpen, setIsOpen] = useState<boolean>(false)
     const [title, setTitle] = useState<string>('')
-    const [titleWarning, setTileWarning] = useState<string>('')
-    const [resetLink, setResetLink] = useState<boolean>(false)
-    const [editMode, setEditMode] = useState<boolean>(false)
     const [body, setBody] = useState('')
     const [link, setLink] = useState('')
     const [term, setTerm] = useState<any>('')
@@ -44,7 +41,6 @@ const ModalNewForm = (props: any) => {
     }
 
     function closeModal() {
-        setTileWarning('')
         setIsOpen(false)
     }
 
@@ -125,9 +121,6 @@ const ModalNewForm = (props: any) => {
     return (
         <div>
             <button onClick={openModal} className="searchButton" style={{ marginTop: '10px' }}>新規登録</button>
-            {resetLink && (
-                <button className="searchButton" style={{ marginTop: '10px' }}><a href="/">リセット</a></button>
-            )}
             <Modal
                 contentLabel="新規フォーム"
                 isOpen={modalIsOpen}

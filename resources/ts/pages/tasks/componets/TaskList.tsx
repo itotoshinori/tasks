@@ -18,8 +18,8 @@ const TaskList = () => {
     const [compliteCssDis, setCompliteCssDis] = useState<string>("linethrough");
 
     const search = (title: string, body: string, minTerm: string, maxTerm: string): void => {
-        setCompliteCssDis("")
         setSearchTitle(title)
+        setCompliteCssDis("")
     }
 
     const changeMode = () => {
@@ -29,8 +29,9 @@ const TaskList = () => {
             setConditionLink("仕掛に変更")
             toast.info("昨日までの完了済タスクが表示されました")
         } else {
-            setConditionLink("完了済に変更")
+            setCondition(true)
             setCompliteCssDis("linethrough")
+            setConditionLink("完了済に変更")
             toast.info("仕掛及び本日完了済タスクが表示されました")
         }
         window.scroll({ top: 0, behavior: 'smooth' })
@@ -74,6 +75,7 @@ const TaskList = () => {
             return String(task.finishday) != getToday() && task.is_done === true;
         });
     }
+
     return (
         <>
             <TaskInput />

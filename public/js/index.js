@@ -3647,8 +3647,8 @@ var TaskList = function TaskList() {
     compliteCssDis = _ref9[0],
     setCompliteCssDis = _ref9[1];
   var search = function search(title, body, minTerm, maxTerm) {
-    setCompliteCssDis("");
     setSearchTitle(title);
+    setCompliteCssDis("");
   };
   var changeMode = function changeMode() {
     if (condition) {
@@ -3657,8 +3657,9 @@ var TaskList = function TaskList() {
       setConditionLink("仕掛に変更");
       react_toastify_1.toast.info("昨日までの完了済タスクが表示されました");
     } else {
-      setConditionLink("完了済に変更");
+      setCondition(true);
       setCompliteCssDis("linethrough");
+      setConditionLink("完了済に変更");
       react_toastify_1.toast.info("仕掛及び本日完了済タスクが表示されました");
     }
     window.scroll({

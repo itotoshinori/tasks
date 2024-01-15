@@ -3393,7 +3393,8 @@ var TaskQuery_1 = __webpack_require__(/*! ../../../queries/TaskQuery */ "./resou
 var react_toastify_1 = __webpack_require__(/*! react-toastify */ "./node_modules/react-toastify/dist/react-toastify.js");
 var dateSet_1 = __webpack_require__(/*! ../../../functions/dateSet */ "./resources/ts/functions/dateSet.ts");
 var TaskItem = function TaskItem(_ref) {
-  var task = _ref.task;
+  var task = _ref.task,
+    compliteCss = _ref.compliteCss;
   var updateDoneTask = (0, TaskQuery_1.useUpdateDoneTask)();
   var updateTask = (0, TaskQuery_1.useUpdateTask)();
   var deleteTask = (0, TaskQuery_1.useDeleteTask)();
@@ -3493,7 +3494,7 @@ var TaskItem = function TaskItem(_ref) {
   var itemText = function itemText() {
     return react_1["default"].createElement(react_1["default"].Fragment, null, react_1["default"].createElement("div", null, react_1["default"].createElement("span", {
       onClick: handleToggleEdit,
-      className: "list-title linethrough",
+      className: "list-title ".concat(compliteCss),
       style: {
         color: todayColor()
       }
@@ -3641,17 +3642,23 @@ var TaskList = function TaskList() {
     _ref7 = _slicedToArray(_ref6, 2),
     searchTitle = _ref7[0],
     setSearchTitle = _ref7[1];
+  var _ref8 = (0, react_1.useState)("linethrough"),
+    _ref9 = _slicedToArray(_ref8, 2),
+    compliteCssDis = _ref9[0],
+    setCompliteCssDis = _ref9[1];
   var search = function search(title, body, minTerm, maxTerm) {
+    setCompliteCssDis("");
     setSearchTitle(title);
   };
   var changeMode = function changeMode() {
     if (condition) {
       setCondition(false);
+      setCompliteCssDis("");
       setConditionLink("仕掛に変更");
       react_toastify_1.toast.info("昨日までの完了済タスクが表示されました");
     } else {
-      setCondition(true);
       setConditionLink("完了済に変更");
+      setCompliteCssDis("linethrough");
       react_toastify_1.toast.info("仕掛及び本日完了済タスクが表示されました");
     }
     window.scroll({
@@ -3722,7 +3729,8 @@ var TaskList = function TaskList() {
   }, tasks_array.map(function (task) {
     return react_1["default"].createElement(TaskItem_1["default"], {
       key: task.id,
-      task: task
+      task: task,
+      compliteCss: compliteCssDis
     });
   }))));
 };

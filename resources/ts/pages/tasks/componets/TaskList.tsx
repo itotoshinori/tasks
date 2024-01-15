@@ -15,19 +15,22 @@ const TaskList = () => {
     const [condition, setCondition] = useState<boolean>(true)
     const [conditionLink, setConditionLink] = useState<string>("完了済に変更")
     const [searchTitle, setSearchTitle] = useState<string>("")
+    const [compliteCssDis, setCompliteCssDis] = useState<string>("linethrough");
 
     const search = (title: string, body: string, minTerm: string, maxTerm: string): void => {
+        setCompliteCssDis("")
         setSearchTitle(title)
     }
 
     const changeMode = () => {
         if (condition) {
             setCondition(false)
+            setCompliteCssDis("")
             setConditionLink("仕掛に変更")
             toast.info("昨日までの完了済タスクが表示されました")
         } else {
-            setCondition(true)
             setConditionLink("完了済に変更")
+            setCompliteCssDis("linethrough")
             toast.info("仕掛及び本日完了済タスクが表示されました")
         }
         window.scroll({ top: 0, behavior: 'smooth' })
@@ -71,7 +74,6 @@ const TaskList = () => {
             return String(task.finishday) != getToday() && task.is_done === true;
         });
     }
-
     return (
         <>
             <TaskInput />
@@ -86,7 +88,7 @@ const TaskList = () => {
                 )}
                 <ul className="task-list">
                     {tasks_array.map(task => (
-                        <TaskItem key={task.id} task={task} />
+                        <TaskItem key={task.id} task={task} compliteCss={compliteCssDis} />
                     ))}
                 </ul>
             </div>

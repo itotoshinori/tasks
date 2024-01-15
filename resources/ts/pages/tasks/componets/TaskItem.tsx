@@ -6,9 +6,10 @@ import { formatDate, getWeek, shortDate, getToday } from '../../../functions/dat
 
 type Props = {
     task: Task
+    compliteCss: string
 }
 
-const TaskItem: React.VFC<Props> = ({ task }) => {
+const TaskItem: React.VFC<Props> = ({ task, compliteCss }) => {
     const updateDoneTask = useUpdateDoneTask()
 
     const updateTask = useUpdateTask();
@@ -105,7 +106,7 @@ const TaskItem: React.VFC<Props> = ({ task }) => {
         return (
             <>
                 <div>
-                    <span onClick={handleToggleEdit} className="list-title linethrough" style={{ color: todayColor() }}>{task.title}</span>
+                    <span onClick={handleToggleEdit} className={`list-title ${compliteCss}`} style={{ color: todayColor() }}>{task.title}</span>
                     {task.term && (
                         <span onClick={handleToggleEdit} style={{ color: todayColor(), whiteSpace: 'nowrap' }}>
                             {shortDate(task.term)}({getWeek(task.term)})

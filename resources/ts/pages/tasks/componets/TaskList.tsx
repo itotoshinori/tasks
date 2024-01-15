@@ -83,7 +83,7 @@ const TaskList = () => {
                 <div className='change_mode_text' style={{ marginTop: '28px' }} onClick={changeMode}>{conditionLink}</div>
             )}
             <ModalForm handleClickChildSearch={search} />
-            <ModalNewForm handleClickChildSearch={search} />
+            <ModalNewForm />
             <div className="inner">
                 {tasks_array.length == 0 && (
                     <div>対象はありません</div>

@@ -19,15 +19,15 @@ const customStyles = {
     },
 }
 
-const ModalNewForm = (props: any) => {
+const ModalNewForm = () => {
     let subtitle: HTMLHeadingElement | null
     const [modalIsOpen, setIsOpen] = useState<boolean>(false)
     const [title, setTitle] = useState<string>('')
-    const [body, setBody] = useState('')
-    const [link, setLink] = useState('')
+    const [body, setBody] = useState<string>('')
+    const [link, setLink] = useState<string>('')
     const [term, setTerm] = useState<any>('')
     const updateTask = useUpdateTask();
-    const { data: tasks, status } = useTasks()
+    const { data: tasks } = useTasks()
     function openModal() {
         setIsOpen(true)
         setTitle(task.title)
@@ -79,6 +79,7 @@ const ModalNewForm = (props: any) => {
                         <input
                             type="text"
                             className="input"
+                            autoFocus
                             defaultValue=''
                             onChange={(e) => setTitle(e.target.value)}
                         />

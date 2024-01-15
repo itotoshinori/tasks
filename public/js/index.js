@@ -2980,7 +2980,7 @@ var customStyles = {
     backgroundColor: '#FFDBDB'
   }
 };
-var ModalNewForm = function ModalNewForm(props) {
+var ModalNewForm = function ModalNewForm() {
   var subtitle;
   var _ref = (0, react_1.useState)(false),
     _ref2 = _slicedToArray(_ref, 2),
@@ -3004,8 +3004,7 @@ var ModalNewForm = function ModalNewForm(props) {
     setTerm = _ref10[1];
   var updateTask = (0, TaskQuery_1.useUpdateTask)();
   var _ref11 = (0, TaskQuery_1.useTasks)(),
-    tasks = _ref11.data,
-    status = _ref11.status;
+    tasks = _ref11.data;
   function openModal() {
     setIsOpen(true);
     setTitle(task.title);
@@ -3057,6 +3056,7 @@ var ModalNewForm = function ModalNewForm(props) {
     }, react_1["default"].createElement("div", null, react_1["default"].createElement("label", null, "\u30BF\u30A4\u30C8\u30EB"), react_1["default"].createElement("input", {
       type: "text",
       className: "input",
+      autoFocus: true,
       defaultValue: '',
       onChange: function onChange(e) {
         return setTitle(e.target.value);
@@ -3721,9 +3721,7 @@ var TaskList = function TaskList() {
     onClick: changeMode
   }, conditionLink), react_1["default"].createElement(ModalForm_1["default"], {
     handleClickChildSearch: search
-  }), react_1["default"].createElement(ModalNewForm_1["default"], {
-    handleClickChildSearch: search
-  }), react_1["default"].createElement("div", {
+  }), react_1["default"].createElement(ModalNewForm_1["default"], null), react_1["default"].createElement("div", {
     className: "inner"
   }, tasks_array.length == 0 && react_1["default"].createElement("div", null, "\u5BFE\u8C61\u306F\u3042\u308A\u307E\u305B\u3093"), react_1["default"].createElement("ul", {
     className: "task-list"

@@ -82,6 +82,12 @@ export const DetailPage: React.VFC = () => {
                         <div>{task.term}({getWeek(task.term)})</div>
                     </>
                 )}
+                {task.finishday && (
+                    <>
+                        <div className="mt-1">■完了日</div>
+                        <div>{task.finishday}({getWeek(task.finishday)})</div>
+                    </>
+                )}
                 {task.link && (
                     <>
                         <div className="mt-1">■リンク</div>

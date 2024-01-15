@@ -32,7 +32,6 @@ const getTask = async (id: number) => {
 }
 
 
-
 const deleteTask = async (id: number) => {
     const { data } = await axios.delete<Task>
         (`api/tasks/${id}`)

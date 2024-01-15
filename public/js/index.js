@@ -3867,7 +3867,9 @@ var DetailPage = function DetailPage() {
       className: "mt-1"
     }, "\u25A0\u72B6\u6CC1"), react_1["default"].createElement("div", null, (task === null || task === void 0 ? void 0 : task.is_done) ? "完了" : "未完了"), task.term && react_1["default"].createElement(react_1["default"].Fragment, null, react_1["default"].createElement("div", {
       className: "mt-1"
-    }, "\u25A0\u671F\u9650"), react_1["default"].createElement("div", null, task.term, "(", (0, dateSet_1.getWeek)(task.term), ")")), task.link && react_1["default"].createElement(react_1["default"].Fragment, null, react_1["default"].createElement("div", {
+    }, "\u25A0\u671F\u9650"), react_1["default"].createElement("div", null, task.term, "(", (0, dateSet_1.getWeek)(task.term), ")")), task.finishday && react_1["default"].createElement(react_1["default"].Fragment, null, react_1["default"].createElement("div", {
+      className: "mt-1"
+    }, "\u25A0\u5B8C\u4E86\u65E5"), react_1["default"].createElement("div", null, task.finishday, "(", (0, dateSet_1.getWeek)(task.finishday), ")")), task.link && react_1["default"].createElement(react_1["default"].Fragment, null, react_1["default"].createElement("div", {
       className: "mt-1"
     }, "\u25A0\u30EA\u30F3\u30AF"), react_1["default"].createElement("div", null, react_1["default"].createElement("a", {
       href: task.link

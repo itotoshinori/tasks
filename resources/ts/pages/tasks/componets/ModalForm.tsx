@@ -48,7 +48,7 @@ const ModalForm = (props: any) => {
     }
     return (
         <div>
-            <button onClick={openModal} className="searchButton" style={{ marginTop: '10px' }}>タイトル検索</button>
+            <button onClick={openModal} className="searchButton" style={{ marginTop: '10px' }}>検索</button>
             {resetLink && (
                 <button className="searchButton" style={{ marginTop: '10px' }}><a href="/">リセット</a></button>
             )}
@@ -61,7 +61,7 @@ const ModalForm = (props: any) => {
             >
                 <h3>検索条件</h3>
                 <form className="input-form" onSubmit={toSearch}>
-                    <label>タイトル</label><br />
+                    <label>タイトル及び本文</label><br />
                     {titleWarning && (
                         <div className="text-warning">{titleWarning}</div>
                     )}

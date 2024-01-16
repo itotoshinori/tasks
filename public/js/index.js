@@ -2869,7 +2869,7 @@ var ModalForm = function ModalForm(props) {
     style: {
       marginTop: '10px'
     }
-  }, "\u30BF\u30A4\u30C8\u30EB\u691C\u7D22"), resetLink && react_1["default"].createElement("button", {
+  }, "\u691C\u7D22"), resetLink && react_1["default"].createElement("button", {
     className: "searchButton",
     style: {
       marginTop: '10px'
@@ -2885,7 +2885,7 @@ var ModalForm = function ModalForm(props) {
   }, react_1["default"].createElement("h3", null, "\u691C\u7D22\u6761\u4EF6"), react_1["default"].createElement("form", {
     className: "input-form",
     onSubmit: toSearch
-  }, react_1["default"].createElement("label", null, "\u30BF\u30A4\u30C8\u30EB"), react_1["default"].createElement("br", null), titleWarning && react_1["default"].createElement("div", {
+  }, react_1["default"].createElement("label", null, "\u30BF\u30A4\u30C8\u30EB\u53CA\u3073\u672C\u6587"), react_1["default"].createElement("br", null), titleWarning && react_1["default"].createElement("div", {
     className: "text-warning"
   }, titleWarning), react_1["default"].createElement("input", {
     type: "text",
@@ -3701,7 +3701,8 @@ var TaskList = function TaskList() {
     //検索と完了用に期限降順の配列を用意する
     var tasksSort = tasks_sort();
     tasks_array = tasksSort.filter(function (task) {
-      return task.title.includes(searchTitle);
+      !task.body && (task.body = "曖昧検索するために空欄データに仮置きする");
+      return task.title.includes(searchTitle) || task.body.includes(searchTitle);
     });
   } else if (condition) {
     tasks_array = tasks.filter(function (task) {

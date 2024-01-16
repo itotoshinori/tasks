@@ -62,7 +62,7 @@ const TaskList = () => {
         //検索と完了用に期限降順の配列を用意する
         const tasksSort = tasks_sort()
         tasks_array = tasksSort.filter((task) => {
-            !task.body && (task.body = "曖昧検索するために空欄データに仮置きする")
+            !task.body && (task.body = "　")
             return task.title.includes(searchTitle) || task.body.includes(searchTitle);
         });
     }

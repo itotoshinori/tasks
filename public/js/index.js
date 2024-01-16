@@ -2848,7 +2848,11 @@ var ModalForm = function ModalForm(props) {
   var toSearch = function toSearch(e) {
     e.preventDefault();
     if (!title) {
-      !title ? setTileWarning("タイトルは必須です") : setTileWarning("");
+      !title ? setTileWarning("タイトル及び本文は必須です") : setTileWarning("");
+      return;
+    }
+    if (title.indexOf("　") != -1) {
+      alert("全角空欄を含んでます。除去して下さい。");
       return;
     }
     setTileWarning("");
@@ -2892,6 +2896,7 @@ var ModalForm = function ModalForm(props) {
     className: "text-warning"
   }, titleWarning), react_1["default"].createElement("input", {
     type: "text",
+    id: "title",
     className: "input",
     autoFocus: true,
     placeholder: "\u691C\u7D22\u3057\u305F\u3044\u30EF\u30FC\u30C9\u3092\u5165\u529B\u3057\u3066\u304F\u3060\u3055\u3044\u3002",
@@ -2906,7 +2911,7 @@ var ModalForm = function ModalForm(props) {
   }, react_1["default"].createElement("button", {
     className: "mr-2",
     onClick: closeModal
-  }, "\u9589\u3058\u308B"), react_1["default"].createElement("button", {
+  }, "\u9589\u3058\u308B"), title && react_1["default"].createElement("button", {
     onClick: function onClick() {
       setTitle("");
     }
@@ -3713,7 +3718,7 @@ var TaskList = function TaskList() {
     //検索と完了用に期限降順の配列を用意する
     var tasksSort = tasks_sort();
     tasks_array = tasksSort.filter(function (task) {
-      !task.body && (task.body = "曖昧検索するために空欄データに仮置きする");
+      !task.body && (task.body = "　");
       return task.title.includes(searchTitle) || task.body.includes(searchTitle);
     });
   } else if (condition) {

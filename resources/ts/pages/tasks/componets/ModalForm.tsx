@@ -29,7 +29,11 @@ const ModalForm = (props: any) => {
     const toSearch = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
         if (!title) {
-            !title ? setTileWarning("タイトルは必須です") : setTileWarning("")
+            !title ? setTileWarning("タイトル及び本文は必須です") : setTileWarning("")
+            return
+        }
+        if (title.indexOf("　") != -1) {
+            alert("全角空欄を含んでます。除去して下さい。")
             return
         }
         setTileWarning("")
@@ -68,6 +72,7 @@ const ModalForm = (props: any) => {
                         )}
                         <input
                             type="text"
+                            id="title"
                             className="input"
                             autoFocus
                             placeholder="検索したいワードを入力してください。"
@@ -80,7 +85,9 @@ const ModalForm = (props: any) => {
                     </form>
                     <div className="mt-2 ml-2">
                         <button className="mr-2" onClick={closeModal}>閉じる</button>
-                        <button onClick={() => { setTitle("") }}>リセット</button>
+                        {title && (
+                            <button onClick={() => { setTitle("") }}>リセット</button>
+                        )}
                     </div>
                 </div>
             </Modal>

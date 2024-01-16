@@ -85,7 +85,7 @@ class TaskController extends Controller
         #新規登録ができないため入力用の箱を作っておいて新規登録時はそのデータを変更する
         $task_before = Task::find($request->id);
         if ($task_before->title == "入力用") {
-            Task::create(['title' => "入力用", 'term' => Carbon::now()->addMonths(3), 'user_id' => Auth::user()->id]);
+            Task::create(['title' => "入力用", 'term' => Carbon::now()->addMonths(6), 'user_id' => Auth::user()->id]);
         }
         return $task->update($request->all())
             ? response()->json($task)

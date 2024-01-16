@@ -60,24 +60,29 @@ const ModalForm = (props: any) => {
                 onRequestClose={closeModal}
             >
                 <h3>検索条件</h3>
-                <form className="input-form" onSubmit={toSearch}>
-                    <label>タイトル及び本文</label><br />
-                    {titleWarning && (
-                        <div className="text-warning">{titleWarning}</div>
-                    )}
-                    <input
-                        type="text"
-                        className="input"
-                        autoFocus
-                        placeholder="検索したいタイトルを入力してください。"
-                        value={title}
-                        onChange={(e) => setTitle(e.target.value)}
-                    /><br />
-                    <div className="mt-2">
-                        <button className="mr-2">検索</button>
-                        <button onClick={closeModal}>閉じる</button>
+                <div className="input-form">
+                    <form onSubmit={toSearch}>
+                        <label className="ml-2">タイトル及び本文</label><br />
+                        {titleWarning && (
+                            <div className="text-warning">{titleWarning}</div>
+                        )}
+                        <input
+                            type="text"
+                            className="input"
+                            autoFocus
+                            placeholder="検索したいワードを入力してください。"
+                            value={title}
+                            onChange={(e) => setTitle(e.target.value)}
+                        />
+                        <div className="mt-2 ml-2">
+                            <button>検索</button>
+                        </div>
+                    </form>
+                    <div className="mt-2 ml-2">
+                        <button className="mr-2" onClick={closeModal}>閉じる</button>
+                        <button onClick={() => { setTitle("") }}>リセット</button>
                     </div>
-                </form>
+                </div>
             </Modal>
         </div>
     );

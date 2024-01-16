@@ -375,6 +375,10 @@ ul.tag-list > li > a:hover {
   margin-right: 10px;
 }
 
+.ml-2 {
+  margin-left: 10px;
+}
+
 .list-title {
   display: inline-block;
   width: 70%;

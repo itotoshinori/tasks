@@ -2882,27 +2882,35 @@ var ModalForm = function ModalForm(props) {
     style: customStyles,
     onAfterOpen: afterOpenModal,
     onRequestClose: closeModal
-  }, react_1["default"].createElement("h3", null, "\u691C\u7D22\u6761\u4EF6"), react_1["default"].createElement("form", {
-    className: "input-form",
+  }, react_1["default"].createElement("h3", null, "\u691C\u7D22\u6761\u4EF6"), react_1["default"].createElement("div", {
+    className: "input-form"
+  }, react_1["default"].createElement("form", {
     onSubmit: toSearch
-  }, react_1["default"].createElement("label", null, "\u30BF\u30A4\u30C8\u30EB\u53CA\u3073\u672C\u6587"), react_1["default"].createElement("br", null), titleWarning && react_1["default"].createElement("div", {
+  }, react_1["default"].createElement("label", {
+    className: "ml-2"
+  }, "\u30BF\u30A4\u30C8\u30EB\u53CA\u3073\u672C\u6587"), react_1["default"].createElement("br", null), titleWarning && react_1["default"].createElement("div", {
     className: "text-warning"
   }, titleWarning), react_1["default"].createElement("input", {
     type: "text",
     className: "input",
     autoFocus: true,
-    placeholder: "\u691C\u7D22\u3057\u305F\u3044\u30BF\u30A4\u30C8\u30EB\u3092\u5165\u529B\u3057\u3066\u304F\u3060\u3055\u3044\u3002",
+    placeholder: "\u691C\u7D22\u3057\u305F\u3044\u30EF\u30FC\u30C9\u3092\u5165\u529B\u3057\u3066\u304F\u3060\u3055\u3044\u3002",
     value: title,
     onChange: function onChange(e) {
       return setTitle(e.target.value);
     }
-  }), react_1["default"].createElement("br", null), react_1["default"].createElement("div", {
-    className: "mt-2"
+  }), react_1["default"].createElement("div", {
+    className: "mt-2 ml-2"
+  }, react_1["default"].createElement("button", null, "\u691C\u7D22"))), react_1["default"].createElement("div", {
+    className: "mt-2 ml-2"
   }, react_1["default"].createElement("button", {
-    className: "mr-2"
-  }, "\u691C\u7D22"), react_1["default"].createElement("button", {
+    className: "mr-2",
     onClick: closeModal
-  }, "\u9589\u3058\u308B")))));
+  }, "\u9589\u3058\u308B"), react_1["default"].createElement("button", {
+    onClick: function onClick() {
+      setTitle("");
+    }
+  }, "\u30EA\u30BB\u30C3\u30C8")))));
 };
 exports["default"] = ModalForm;
 

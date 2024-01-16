@@ -120,6 +120,10 @@ const TaskItem: React.VFC<Props> = ({ task, compliteCss }) => {
                 <button
                     onClick={
                         () => {
+                            if (task.title == "入力用") {
+                                toast.error("入力用 は削除できません")
+                                return
+                            }
                             if (window.confirm("本当に削除しますか？")) {
                                 deleteTask.mutate(task.id)
                             }

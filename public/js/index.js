@@ -3544,6 +3544,10 @@ var TaskItem = function TaskItem(_ref) {
       target: "_blank"
     }, "\uD83D\uDCD6")), react_1["default"].createElement("button", {
       onClick: function onClick() {
+        if (task.title == "入力用") {
+          react_toastify_1.toast.error("入力用 は削除できません");
+          return;
+        }
         if (window.confirm("本当に削除しますか？")) {
           deleteTask.mutate(task.id);
         }

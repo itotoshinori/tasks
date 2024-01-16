@@ -2852,7 +2852,7 @@ var ModalForm = function ModalForm(props) {
       return;
     }
     if (title.indexOf("　") != -1) {
-      alert("全角空欄を含んでます。除去して下さい。");
+      setTileWarning("全角空欄が含まれてます。除去して下さい。");
       return;
     }
     setTileWarning("");

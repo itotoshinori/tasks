@@ -8,8 +8,6 @@ const getTasks = async () => {
 
 const postTasks = async ({ title, body, link, term }: { title: string, body: string, link: string, term: string }) => {
     try {
-        // 5秒待機
-        await new Promise(resolve => setTimeout(resolve, 5000));
         const { data } = await axios.post<Task>(
             `api/tasks/`,
             { title: title, body: body, link: link, term: term }

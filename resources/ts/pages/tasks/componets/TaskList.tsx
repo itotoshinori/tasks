@@ -38,7 +38,11 @@ const TaskList = () => {
         window.scroll({ top: 0, behavior: 'smooth' })
     }
     if (status === 'loading') {
-        return <div className="loader" />
+        return (
+            <div className="login-page">
+                <div className="loader" />
+            </div>
+        )
     } else if (status === 'error') {
         return (
             <div className="login-page">

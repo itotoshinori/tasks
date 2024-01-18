@@ -22,7 +22,8 @@ const useCreateTask = () => {
     const queryClient = useQueryClient()
     return useMutation(api.postTasks, {
         onSuccess: async (data) => {
-            await queryClient.invalidateQueries('tasks')
+            await new Promise(resolve => setTimeout(resolve, 3000));
+            queryClient.invalidateQueries('tasks')
             toast.success(`${data.title} (期限:${data.term}) の登録に成功しました`,
                 {
                     autoClose: 15000, // 表示時間を15秒に設定

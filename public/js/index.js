@@ -2295,27 +2295,32 @@ var postTasks = function postTasks(_ref) {
         case 0:
           _context2.prev = 0;
           _context2.next = 3;
+          return new Promise(function (resolve) {
+            return setTimeout(resolve, 5000);
+          });
+        case 3:
+          _context2.next = 5;
           return axios_1["default"].post("api/tasks/", {
             title: title,
             body: body,
             link: link,
             term: term
           });
-        case 3:
+        case 5:
           _yield$axios_1$defaul2 = _context2.sent;
           data = _yield$axios_1$defaul2.data;
           alert("APIタイトル:" + title);
           return _context2.abrupt("return", data);
-        case 9:
-          _context2.prev = 9;
+        case 11:
+          _context2.prev = 11;
           _context2.t0 = _context2["catch"](0);
           console.error("APIエラー:", _context2.t0);
           throw _context2.t0;
-        case 13:
+        case 15:
         case "end":
           return _context2.stop();
       }
-    }, _callee2, null, [[0, 9]]);
+    }, _callee2, null, [[0, 11]]);
   }));
 };
 exports.postTasks = postTasks;
@@ -4621,27 +4626,12 @@ var useCreateTask = function useCreateTask() {
   var queryClient = (0, react_query_1.useQueryClient)();
   return (0, react_query_1.useMutation)(api.postTasks, {
     onSuccess: function onSuccess(data) {
-      return __awaiter(void 0, void 0, void 0, /*#__PURE__*/_regeneratorRuntime().mark(function _callee3() {
-        return _regeneratorRuntime().wrap(function _callee3$(_context3) {
-          while (1) switch (_context3.prev = _context3.next) {
-            case 0:
-              _context3.next = 2;
-              return new Promise(function (resolve) {
-                return setTimeout(resolve, 10000);
-              });
-            case 2:
-              queryClient.invalidateQueries('tasks');
-              react_toastify_1.toast.success("".concat(data.title, " (\u671F\u9650:").concat(data.term, ") \u306E\u767B\u9332\u306B\u6210\u529F\u3057\u307E\u3057\u305F"), {
-                autoClose: 15000,
-                // 表示時間を15秒に設定
-                position: 'top-center'
-              });
-            case 4:
-            case "end":
-              return _context3.stop();
-          }
-        }, _callee3);
-      }));
+      queryClient.invalidateQueries('tasks');
+      react_toastify_1.toast.success("".concat(data.title, " (\u671F\u9650:").concat(data.term, ") \u306E\u767B\u9332\u306B\u6210\u529F\u3057\u307E\u3057\u305F"), {
+        autoClose: 15000,
+        // 表示時間を15秒に設定
+        position: 'top-center'
+      });
     },
     onError: function onError(error) {
       var _a, _b;

@@ -4621,13 +4621,24 @@ var useCreateTask = function useCreateTask() {
   var queryClient = (0, react_query_1.useQueryClient)();
   return (0, react_query_1.useMutation)(api.postTasks, {
     onSuccess: function onSuccess(data) {
-      alert("Queryタイトル" + data.title);
-      queryClient.invalidateQueries('tasks');
-      react_toastify_1.toast.success("".concat(data.title, " (\u671F\u9650:").concat(data.term, ") \u306E\u767B\u9332\u306B\u6210\u529F\u3057\u307E\u3057\u305F"), {
-        autoClose: 15000,
-        // 表示時間を15秒に設定
-        position: 'top-center'
-      });
+      return __awaiter(void 0, void 0, void 0, /*#__PURE__*/_regeneratorRuntime().mark(function _callee3() {
+        return _regeneratorRuntime().wrap(function _callee3$(_context3) {
+          while (1) switch (_context3.prev = _context3.next) {
+            case 0:
+              _context3.next = 2;
+              return queryClient.invalidateQueries('tasks');
+            case 2:
+              react_toastify_1.toast.success("".concat(data.title, " (\u671F\u9650:").concat(data.term, ") \u306E\u767B\u9332\u306B\u6210\u529F\u3057\u307E\u3057\u305F"), {
+                autoClose: 15000,
+                // 表示時間を15秒に設定
+                position: 'top-center'
+              });
+            case 3:
+            case "end":
+              return _context3.stop();
+          }
+        }, _callee3);
+      }));
     },
     onError: function onError(error) {
       var _a, _b;

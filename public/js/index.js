@@ -3421,6 +3421,11 @@ var TaskItem = function TaskItem(_ref) {
     _ref5 = _slicedToArray(_ref4, 2),
     editTerm = _ref5[0],
     setEditTerm = _ref5[1];
+  var handleToggleEdit = function handleToggleEdit() {
+    setEditTitle(task.title);
+    setEditTerm(task.term);
+    react_toastify_1.toast.info("タイトル編集モードになりました。escで解除。");
+  };
   var handleInputTitleChange = function handleInputTitleChange(e) {
     setEditTitle(e.target.value);
   };
@@ -3485,16 +3490,6 @@ var TaskItem = function TaskItem(_ref) {
       react_toastify_1.toast.info("タイトルに定期が含まれますのでコピー登録用フォームが表示されます。登録不要なら閉じて下さい。");
     }
   };
-  // Sleep関数
-  function sleep(ms) {
-    return new Promise(function (resolve) {
-      return setTimeout(resolve, ms);
-    });
-  }
-  ;
-  var deletetask = function deletetask(id) {
-    deleteTask.mutate(id);
-  };
   var itemInput = function itemInput() {
     return react_1["default"].createElement(react_1["default"].Fragment, null, react_1["default"].createElement("form", {
       style: {
@@ -3521,11 +3516,13 @@ var TaskItem = function TaskItem(_ref) {
   };
   var itemText = function itemText() {
     return react_1["default"].createElement(react_1["default"].Fragment, null, react_1["default"].createElement("div", null, react_1["default"].createElement("span", {
+      onClick: handleToggleEdit,
       className: "list-title ".concat(compliteCss),
       style: {
         color: todayColor()
       }
     }, task.title), task.term && react_1["default"].createElement("span", {
+      onClick: handleToggleEdit,
       style: {
         color: todayColor(),
         whiteSpace: 'nowrap'
@@ -3575,7 +3572,7 @@ var TaskItem = function TaskItem(_ref) {
           return;
         }
         if (window.confirm("本当に削除しますか？")) {
-          deletetask(task.id);
+          deleteTask.mutate(task.id);
         }
       }
     }, "\uD83D\uDDD1\uFE0F"));

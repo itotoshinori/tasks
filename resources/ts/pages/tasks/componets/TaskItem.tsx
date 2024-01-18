@@ -22,6 +22,12 @@ const TaskItem: React.VFC<Props> = ({ task, compliteCss }) => {
 
     const [editTerm, setEditTerm] = useState<any>(undefined)
 
+    const handleToggleEdit = () => {
+        setEditTitle(task.title)
+        setEditTerm(task.term)
+        toast.info("タイトル編集モードになりました。escで解除。")
+    }
+
     const handleInputTitleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setEditTitle(e.target.value)
     }
@@ -81,15 +87,6 @@ const TaskItem: React.VFC<Props> = ({ task, compliteCss }) => {
         }
     }
 
-    // Sleep関数
-    function sleep(ms: any) {
-        return new Promise(resolve => setTimeout(resolve, ms));
-    };
-
-    const deletetask = (id: number) => {
-        deleteTask.mutate(id)
-    }
-
     const itemInput = () => {
         return (
             <>
@@ -119,9 +116,9 @@ const TaskItem: React.VFC<Props> = ({ task, compliteCss }) => {
         return (
             <>
                 <div>
-                    <span className={`list-title ${compliteCss}`} style={{ color: todayColor() }}>{task.title}</span>
+                    <span onClick={handleToggleEdit} className={`list-title ${compliteCss}`} style={{ color: todayColor() }}>{task.title}</span>
                     {task.term && (
-                        <span style={{ color: todayColor(), whiteSpace: 'nowrap' }}>
+                        <span onClick={handleToggleEdit} style={{ color: todayColor(), whiteSpace: 'nowrap' }}>
                             {shortDate(task.term)}({getWeek(task.term)})
                         </span>
                     )}
@@ -140,7 +137,7 @@ const TaskItem: React.VFC<Props> = ({ task, compliteCss }) => {
                                 return
                             }
                             if (window.confirm("本当に削除しますか？")) {
-                                deletetask(task.id)
+                                deleteTask.mutate(task.id)
                             }
                         }
                     }

@@ -3,6 +3,7 @@ import { TaskPage } from './pages/tasks/index'
 import { LoginPage } from './pages/login/'
 import { HelpPage } from './pages/help/'
 import { TestPage } from './pages/testpage/'
+import { TestPage2 } from './pages/testpage2/'
 import { DetailPage } from './pages/tasks/detail'
 import { HomePage } from './pages/home/'
 import { useLogout, useUser } from './queries/AuthQuery'
@@ -54,6 +55,7 @@ const Router = () => {
         <li onClick={() => logout.mutate()} style={{ cursor: 'pointer' }}>ログアウト</li>
         <li><Link to="/help">Help</Link></li>
         <li><Link to="/testpage">テストページ</Link></li>
+        <li><Link to="/testpage2">テストページ2</Link></li>
       </ul>
     </header>
   )
@@ -87,6 +89,9 @@ const Router = () => {
         </Route>
         <Route exact path="/testpage">
           <TestPage />
+        </Route>
+        <Route exact path="/testpage2">
+          <TestPage2 />
         </Route>
         <Route path="/detail">
           <DetailPage />

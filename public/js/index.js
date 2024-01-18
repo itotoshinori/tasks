@@ -2921,10 +2921,10 @@ exports["default"] = ModalForm;
 
 /***/ }),
 
-/***/ "./resources/ts/pages/tasks/componets/ModalNewForm.tsx":
-/*!*************************************************************!*\
-  !*** ./resources/ts/pages/tasks/componets/ModalNewForm.tsx ***!
-  \*************************************************************/
+/***/ "./resources/ts/pages/tasks/componets/ModalNew.tsx":
+/*!*********************************************************!*\
+  !*** ./resources/ts/pages/tasks/componets/ModalNew.tsx ***!
+  \*********************************************************/
 /***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
 "use strict";
@@ -2975,11 +2975,12 @@ var __importDefault = this && this.__importDefault || function (mod) {
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
+exports.ModalNew = void 0;
 var react_1 = __importStar(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
 var react_modal_1 = __importDefault(__webpack_require__(/*! react-modal */ "./node_modules/react-modal/lib/index.js"));
-var react_toastify_1 = __webpack_require__(/*! react-toastify */ "./node_modules/react-toastify/dist/react-toastify.js");
-var TaskQuery_1 = __webpack_require__(/*! ../../../queries/TaskQuery */ "./resources/ts/queries/TaskQuery.ts");
 var dateSet_1 = __webpack_require__(/*! ../../../functions/dateSet */ "./resources/ts/functions/dateSet.ts");
+var TaskQuery_1 = __webpack_require__(/*! ../../../queries/TaskQuery */ "./resources/ts/queries/TaskQuery.ts");
+var react_toastify_1 = __webpack_require__(/*! react-toastify */ "./node_modules/react-toastify/dist/react-toastify.js");
 var customStyles = {
   content: {
     width: '50%',
@@ -2993,8 +2994,7 @@ var customStyles = {
     backgroundColor: '#FFDBDB'
   }
 };
-var ModalNewForm = function ModalNewForm() {
-  var subtitle;
+var ChildComponent = function ChildComponent(props, ref) {
   var _ref = (0, react_1.useState)(false),
     _ref2 = _slicedToArray(_ref, 2),
     modalIsOpen = _ref2[0],
@@ -3018,19 +3018,6 @@ var ModalNewForm = function ModalNewForm() {
   var updateTask = (0, TaskQuery_1.useUpdateTask)();
   var _ref11 = (0, TaskQuery_1.useTasks)(),
     tasks = _ref11.data;
-  function openModal() {
-    setIsOpen(true);
-    setTitle(task.title);
-    setBody(task.body);
-    setLink(task.link);
-    setTerm((0, dateSet_1.formatDate)(new Date()));
-  }
-  function afterOpenModal() {
-    if (subtitle) subtitle.style.color = '#f00';
-  }
-  function closeModal() {
-    setIsOpen(false);
-  }
   if (!tasks || tasks.length <= 0) {
     return react_1["default"].createElement("div", {
       className: "align-center",
@@ -3061,6 +3048,25 @@ var ModalNewForm = function ModalNewForm() {
     setIsOpen(false);
     return;
   };
+  function openModal() {
+    setIsOpen(true);
+    setTitle(props.title);
+    setBody(props.link);
+    setLink(props.link);
+    setTerm((0, dateSet_1.formatDate)(new Date()));
+  }
+  function closeModal() {
+    setIsOpen(false);
+  }
+  // コンポーネントのインスタンスが拡張されます
+  // 第2引数として渡されたコールバックから返されたもので拡張されます
+  (0, react_1.useImperativeHandle)(ref, function () {
+    return {
+      openModalFunc: function openModalFunc() {
+        openModal();
+      }
+    };
+  });
   var itemInput = function itemInput() {
     return react_1["default"].createElement(react_1["default"].Fragment, null, react_1["default"].createElement("form", {
       style: {
@@ -3070,20 +3076,20 @@ var ModalNewForm = function ModalNewForm() {
       type: "text",
       className: "input",
       autoFocus: true,
-      defaultValue: '',
+      defaultValue: props.title,
       onChange: function onChange(e) {
         return setTitle(e.target.value);
       }
     })), react_1["default"].createElement("div", null, react_1["default"].createElement("label", null, "\u672C\u6587"), react_1["default"].createElement("textarea", {
       className: "input",
-      defaultValue: '',
+      defaultValue: props.body,
       onChange: function onChange(e) {
         return setBody(e.target.value);
       }
     })), react_1["default"].createElement("div", null, react_1["default"].createElement("label", null, "\u30EA\u30F3\u30AF"), react_1["default"].createElement("input", {
       type: "text",
       className: "input",
-      defaultValue: '',
+      defaultValue: props.body,
       onChange: function onChange(e) {
         return setLink(e.target.value);
       }
@@ -3103,23 +3109,17 @@ var ModalNewForm = function ModalNewForm() {
       onClick: closeModal
     }, "\u9589\u3058\u308B"))));
   };
-  return react_1["default"].createElement("div", null, react_1["default"].createElement("button", {
-    onClick: openModal,
-    className: "searchButton",
-    style: {
-      marginTop: '10px'
-    }
-  }, "\u65B0\u898F\u767B\u9332"), react_1["default"].createElement(react_modal_1["default"], {
+  return react_1["default"].createElement(react_1["default"].Fragment, null, react_1["default"].createElement(react_modal_1["default"], {
     contentLabel: "\u65B0\u898F\u30D5\u30A9\u30FC\u30E0",
     isOpen: modalIsOpen,
     style: customStyles,
-    onAfterOpen: afterOpenModal,
     onRequestClose: closeModal
   }, react_1["default"].createElement("div", {
     className: "login-panel"
   }, react_1["default"].createElement("h3", null, "\u65B0\u898F\u767B\u9332"), itemInput())));
 };
-exports["default"] = ModalNewForm;
+// コンポーネントを `forwardRef` でラップする必要があります。
+exports.ModalNew = (0, react_1.forwardRef)(ChildComponent);
 
 /***/ }),
 
@@ -3405,9 +3405,11 @@ var react_1 = __importStar(__webpack_require__(/*! react */ "./node_modules/reac
 var TaskQuery_1 = __webpack_require__(/*! ../../../queries/TaskQuery */ "./resources/ts/queries/TaskQuery.ts");
 var react_toastify_1 = __webpack_require__(/*! react-toastify */ "./node_modules/react-toastify/dist/react-toastify.js");
 var dateSet_1 = __webpack_require__(/*! ../../../functions/dateSet */ "./resources/ts/functions/dateSet.ts");
+var ModalNew_1 = __webpack_require__(/*! ./ModalNew */ "./resources/ts/pages/tasks/componets/ModalNew.tsx");
 var TaskItem = function TaskItem(_ref) {
   var task = _ref.task,
     compliteCss = _ref.compliteCss;
+  var childRef = (0, react_1.useRef)(null);
   var updateDoneTask = (0, TaskQuery_1.useUpdateDoneTask)();
   var updateTask = (0, TaskQuery_1.useUpdateTask)();
   var deleteTask = (0, TaskQuery_1.useDeleteTask)();
@@ -3480,6 +3482,14 @@ var TaskItem = function TaskItem(_ref) {
     String(task.term) == (0, dateSet_1.getToday)() ? textColor = 'blue' : textColor = 'black';
     return textColor;
   };
+  var updateDone = function updateDone() {
+    var _a;
+    updateDoneTask.mutate(task);
+    if (task.title.includes('定期')) {
+      (_a = childRef.current) === null || _a === void 0 ? void 0 : _a.openModalFunc();
+      react_toastify_1.toast.info("タイトルに定期が含まれますのでコピー登録用フォームが表示されます。登録不要なら閉じて下さい。");
+    }
+  };
   var itemInput = function itemInput() {
     return react_1["default"].createElement(react_1["default"].Fragment, null, react_1["default"].createElement("form", {
       style: {
@@ -3547,7 +3557,15 @@ var TaskItem = function TaskItem(_ref) {
     }, "\uD83D\uDCCB"), react_1["default"].createElement("a", {
       href: "/detail?id=".concat(task.id),
       target: "_blank"
-    }, "\uD83D\uDCD6")), react_1["default"].createElement("button", {
+    }, "\uD83D\uDCD6")), react_1["default"].createElement(ModalNew_1.ModalNew, {
+      title: task.title,
+      body: task.body,
+      link: task.link,
+      ref: childRef
+    }), react_1["default"].createElement("button", {
+      className: "mr-2",
+      onClick: openModal
+    }, "Copy"), react_1["default"].createElement("button", {
       onClick: function onClick() {
         if (task.title == "入力用") {
           react_toastify_1.toast.error("入力用 は削除できません");
@@ -3559,6 +3577,10 @@ var TaskItem = function TaskItem(_ref) {
       }
     }, "\uD83D\uDDD1\uFE0F"));
   };
+  var openModal = function openModal() {
+    var _a;
+    (_a = childRef.current) === null || _a === void 0 ? void 0 : _a.openModalFunc();
+  };
   return react_1["default"].createElement("li", {
     className: task.is_done ? 'done' : ''
   }, react_1["default"].createElement("div", null, react_1["default"].createElement("li", null, react_1["default"].createElement("label", {
@@ -3566,9 +3588,7 @@ var TaskItem = function TaskItem(_ref) {
   }, react_1["default"].createElement("input", {
     type: "checkbox",
     className: "checkbox-input",
-    onClick: function onClick() {
-      return updateDoneTask.mutate(task);
-    }
+    onClick: updateDone
   })), editTitle === undefined ? itemText() : itemInput())));
 };
 exports["default"] = TaskItem;
@@ -3640,7 +3660,7 @@ var dateSet_1 = __webpack_require__(/*! ../../../functions/dateSet */ "./resourc
 var react_toastify_1 = __webpack_require__(/*! react-toastify */ "./node_modules/react-toastify/dist/react-toastify.js");
 var TaskInput_1 = __importDefault(__webpack_require__(/*! ./TaskInput */ "./resources/ts/pages/tasks/componets/TaskInput.tsx"));
 var ModalForm_1 = __importDefault(__webpack_require__(/*! ./ModalForm */ "./resources/ts/pages/tasks/componets/ModalForm.tsx"));
-var ModalNewForm_1 = __importDefault(__webpack_require__(/*! ./ModalNewForm */ "./resources/ts/pages/tasks/componets/ModalNewForm.tsx"));
+var ModalNew_1 = __webpack_require__(/*! ./ModalNew */ "./resources/ts/pages/tasks/componets/ModalNew.tsx");
 var TaskList = function TaskList() {
   var searchParams = new URLSearchParams(window.location.search);
   var urlId = parseInt(searchParams.get("id"));
@@ -3663,6 +3683,7 @@ var TaskList = function TaskList() {
     _ref9 = _slicedToArray(_ref8, 2),
     compliteCssDis = _ref9[0],
     setCompliteCssDis = _ref9[1];
+  var childRef = (0, react_1.useRef)(null);
   var search = function search(title, body, minTerm, maxTerm) {
     setSearchTitle(title);
     setCompliteCssDis("");
@@ -3731,6 +3752,10 @@ var TaskList = function TaskList() {
       return String(task.finishday) != (0, dateSet_1.getToday)() && task.is_done === true;
     });
   }
+  var openModal = function openModal() {
+    var _a;
+    (_a = childRef.current) === null || _a === void 0 ? void 0 : _a.openModalFunc();
+  };
   return react_1["default"].createElement(react_1["default"].Fragment, null, react_1["default"].createElement(TaskInput_1["default"], null), !searchTitle && react_1["default"].createElement("div", {
     className: 'change_mode_text',
     style: {
@@ -3739,7 +3764,18 @@ var TaskList = function TaskList() {
     onClick: changeMode
   }, conditionLink), react_1["default"].createElement(ModalForm_1["default"], {
     handleClickChildSearch: search
-  }), react_1["default"].createElement(ModalNewForm_1["default"], null), react_1["default"].createElement("div", {
+  }), react_1["default"].createElement(ModalNew_1.ModalNew, {
+    title: "",
+    body: "",
+    link: "",
+    ref: childRef
+  }), react_1["default"].createElement("button", {
+    className: "searchButton",
+    style: {
+      marginTop: '10px'
+    },
+    onClick: openModal
+  }, "\u65B0\u898F"), react_1["default"].createElement("div", {
     className: "inner"
   }, tasks_array.length == 0 && react_1["default"].createElement("div", null, "\u5BFE\u8C61\u306F\u3042\u308A\u307E\u305B\u3093"), react_1["default"].createElement("ul", {
     className: "task-list"
@@ -4177,6 +4213,201 @@ exports.TestPage = TestPage;
 
 /***/ }),
 
+/***/ "./resources/ts/pages/testpage2/ModalDis.tsx":
+/*!***************************************************!*\
+  !*** ./resources/ts/pages/testpage2/ModalDis.tsx ***!
+  \***************************************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+"use strict";
+
+
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
+function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+var __createBinding = this && this.__createBinding || (Object.create ? function (o, m, k, k2) {
+  if (k2 === undefined) k2 = k;
+  var desc = Object.getOwnPropertyDescriptor(m, k);
+  if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+    desc = {
+      enumerable: true,
+      get: function get() {
+        return m[k];
+      }
+    };
+  }
+  Object.defineProperty(o, k2, desc);
+} : function (o, m, k, k2) {
+  if (k2 === undefined) k2 = k;
+  o[k2] = m[k];
+});
+var __setModuleDefault = this && this.__setModuleDefault || (Object.create ? function (o, v) {
+  Object.defineProperty(o, "default", {
+    enumerable: true,
+    value: v
+  });
+} : function (o, v) {
+  o["default"] = v;
+});
+var __importStar = this && this.__importStar || function (mod) {
+  if (mod && mod.__esModule) return mod;
+  var result = {};
+  if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+  __setModuleDefault(result, mod);
+  return result;
+};
+var __importDefault = this && this.__importDefault || function (mod) {
+  return mod && mod.__esModule ? mod : {
+    "default": mod
+  };
+};
+Object.defineProperty(exports, "__esModule", ({
+  value: true
+}));
+exports.ModalDis = void 0;
+var react_1 = __importStar(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
+var react_modal_1 = __importDefault(__webpack_require__(/*! react-modal */ "./node_modules/react-modal/lib/index.js"));
+var dateSet_1 = __webpack_require__(/*! ../../functions/dateSet */ "./resources/ts/functions/dateSet.ts");
+var customStyles = {
+  content: {
+    width: '50%',
+    height: '80%',
+    top: '50%',
+    left: '50%',
+    right: 'auto',
+    bottom: 'auto',
+    marginRight: '-50%',
+    transform: 'translate(-50%, -50%)',
+    backgroundColor: '#FFDBDB'
+  }
+};
+var ChildComponent = function ChildComponent(props, ref) {
+  var _ref = (0, react_1.useState)(false),
+    _ref2 = _slicedToArray(_ref, 2),
+    modalIsOpen = _ref2[0],
+    setIsOpen = _ref2[1];
+  function openModal() {
+    setIsOpen(true);
+  }
+  function jikkou() {
+    alert("実装はここで");
+  }
+  function closeModal() {
+    setIsOpen(false);
+  }
+  // コンポーネントのインスタンスが拡張されます
+  // 第2引数として渡されたコールバックから返されたもので拡張されます
+  (0, react_1.useImperativeHandle)(ref, function () {
+    return {
+      openModalFunc: function openModalFunc() {
+        openModal();
+      }
+    };
+  });
+  return react_1["default"].createElement(react_1["default"].Fragment, null, react_1["default"].createElement(react_modal_1["default"], {
+    contentLabel: "\u691C\u7D22\u6761\u4EF6",
+    isOpen: modalIsOpen,
+    style: customStyles,
+    onRequestClose: closeModal
+  }, react_1["default"].createElement("h3", null, "\u691C\u7D22\u6761\u4EF6"), react_1["default"].createElement("h4", null, props.firstName, props.lastName, "\u3055\u3093\u3088\u3046\u3053\u305D\uFF01"), react_1["default"].createElement("div", {
+    className: "input-form"
+  }, react_1["default"].createElement("form", null, react_1["default"].createElement("label", {
+    className: "ml-2"
+  }, "\u30BF\u30A4\u30C8\u30EB"), react_1["default"].createElement("br", null), react_1["default"].createElement("input", {
+    type: "text",
+    id: "title",
+    className: "input",
+    autoFocus: true,
+    value: props.title
+  }), react_1["default"].createElement("div", null, react_1["default"].createElement("label", null, "\u671F\u9650"), react_1["default"].createElement("br", null), react_1["default"].createElement("input", {
+    type: "date",
+    className: "input",
+    defaultValue: (0, dateSet_1.formatDate)(new Date())
+  }))), react_1["default"].createElement("div", {
+    className: "mt-2 ml-2"
+  }, react_1["default"].createElement("button", {
+    className: "mr-2",
+    onClick: jikkou
+  }, "\u767B\u9332"), react_1["default"].createElement("button", {
+    className: "mr-2",
+    onClick: closeModal
+  }, "\u9589\u3058\u308B")))));
+};
+// コンポーネントを `forwardRef` でラップする必要があります。
+exports.ModalDis = (0, react_1.forwardRef)(ChildComponent);
+
+/***/ }),
+
+/***/ "./resources/ts/pages/testpage2/index.tsx":
+/*!************************************************!*\
+  !*** ./resources/ts/pages/testpage2/index.tsx ***!
+  \************************************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var __createBinding = this && this.__createBinding || (Object.create ? function (o, m, k, k2) {
+  if (k2 === undefined) k2 = k;
+  var desc = Object.getOwnPropertyDescriptor(m, k);
+  if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+    desc = {
+      enumerable: true,
+      get: function get() {
+        return m[k];
+      }
+    };
+  }
+  Object.defineProperty(o, k2, desc);
+} : function (o, m, k, k2) {
+  if (k2 === undefined) k2 = k;
+  o[k2] = m[k];
+});
+var __setModuleDefault = this && this.__setModuleDefault || (Object.create ? function (o, v) {
+  Object.defineProperty(o, "default", {
+    enumerable: true,
+    value: v
+  });
+} : function (o, v) {
+  o["default"] = v;
+});
+var __importStar = this && this.__importStar || function (mod) {
+  if (mod && mod.__esModule) return mod;
+  var result = {};
+  if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+  __setModuleDefault(result, mod);
+  return result;
+};
+Object.defineProperty(exports, "__esModule", ({
+  value: true
+}));
+exports.TestPage2 = void 0;
+var react_1 = __importStar(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
+var ModalDis_1 = __webpack_require__(/*! ./ModalDis */ "./resources/ts/pages/testpage2/ModalDis.tsx");
+var TestPage2 = function TestPage2() {
+  var childRef = (0, react_1.useRef)(null);
+  var openModal = function openModal() {
+    var _a;
+    (_a = childRef.current) === null || _a === void 0 ? void 0 : _a.openModalFunc();
+  };
+  return react_1["default"].createElement(react_1["default"].Fragment, null, react_1["default"].createElement("div", {
+    className: "login-page"
+  }, react_1["default"].createElement(ModalDis_1.ModalDis, {
+    firstName: "\u4F0A\u85E4",
+    lastName: "\u5229\u5178",
+    title: "\u30C6\u30B9\u30C8\u9001\u4FE1\u7528",
+    ref: childRef
+  }), react_1["default"].createElement("button", {
+    onClick: openModal
+  }, "Modal")));
+};
+exports.TestPage2 = TestPage2;
+
+/***/ }),
+
 /***/ "./resources/ts/queries/AuthQuery.ts":
 /*!*******************************************!*\
   !*** ./resources/ts/queries/AuthQuery.ts ***!
@@ -4506,6 +4737,7 @@ var index_1 = __webpack_require__(/*! ./pages/tasks/index */ "./resources/ts/pag
 var login_1 = __webpack_require__(/*! ./pages/login/ */ "./resources/ts/pages/login/index.tsx");
 var help_1 = __webpack_require__(/*! ./pages/help/ */ "./resources/ts/pages/help/index.tsx");
 var testpage_1 = __webpack_require__(/*! ./pages/testpage/ */ "./resources/ts/pages/testpage/index.tsx");
+var testpage2_1 = __webpack_require__(/*! ./pages/testpage2/ */ "./resources/ts/pages/testpage2/index.tsx");
 var detail_1 = __webpack_require__(/*! ./pages/tasks/detail */ "./resources/ts/pages/tasks/detail.tsx");
 var home_1 = __webpack_require__(/*! ./pages/home/ */ "./resources/ts/pages/home/index.tsx");
 var AuthQuery_1 = __webpack_require__(/*! ./queries/AuthQuery */ "./resources/ts/queries/AuthQuery.ts");
@@ -4558,7 +4790,9 @@ var Router = function Router() {
     to: "/help"
   }, "Help")), react_1["default"].createElement("li", null, react_1["default"].createElement(react_router_dom_1.Link, {
     to: "/testpage"
-  }, "\u30C6\u30B9\u30C8\u30DA\u30FC\u30B8"))));
+  }, "\u30C6\u30B9\u30C8\u30DA\u30FC\u30B8")), react_1["default"].createElement("li", null, react_1["default"].createElement(react_router_dom_1.Link, {
+    to: "/testpage2"
+  }, "\u30C6\u30B9\u30C8\u30DA\u30FC\u30B82"))));
   var NotFoundPage = function NotFoundPage() {
     return react_1["default"].createElement("div", {
       className: "align-center"
@@ -4579,6 +4813,9 @@ var Router = function Router() {
     exact: true,
     path: "/testpage"
   }, react_1["default"].createElement(testpage_1.TestPage, null)), react_1["default"].createElement(react_router_dom_1.Route, {
+    exact: true,
+    path: "/testpage2"
+  }, react_1["default"].createElement(testpage2_1.TestPage2, null)), react_1["default"].createElement(react_router_dom_1.Route, {
     path: "/detail"
   }, react_1["default"].createElement(detail_1.DetailPage, null)), react_1["default"].createElement(react_router_dom_1.Route, {
     path: "*"

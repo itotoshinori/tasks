@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useRef } from 'react'
 import { useTasks } from '../../../queries/TaskQuery'
 import TaskItem from './TaskItem'
 import { Task } from '../../../types/Task'
@@ -6,7 +6,7 @@ import { getToday } from '../../../functions/dateSet'
 import { toast } from 'react-toastify'
 import TaskInput from './TaskInput'
 import ModalForm from './ModalForm'
-import ModalNewForm from './ModalNewForm'
+import { ModalNew, ChildHandles } from "./ModalNew";
 
 const TaskList = () => {
     const searchParams: any = new URLSearchParams(window.location.search);
@@ -16,6 +16,7 @@ const TaskList = () => {
     const [conditionLink, setConditionLink] = useState<string>("完了済に変更")
     const [searchTitle, setSearchTitle] = useState<string>("")
     const [compliteCssDis, setCompliteCssDis] = useState<string>("linethrough");
+    const childRef = useRef<ChildHandles>(null);
 
     const search = (title: string, body: string, minTerm: string, maxTerm: string): void => {
         setSearchTitle(title)
@@ -77,6 +78,10 @@ const TaskList = () => {
         });
     }
 
+    const openModal = () => {
+        childRef.current?.openModalFunc();
+    };
+
     return (
         <>
             <TaskInput />
@@ -84,7 +89,8 @@ const TaskList = () => {
                 <div className='change_mode_text' style={{ marginTop: '28px' }} onClick={changeMode}>{conditionLink}</div>
             )}
             <ModalForm handleClickChildSearch={search} />
-            <ModalNewForm />
+            <ModalNew title="" body="" link=""  {...{}} ref={childRef} />
+            <button className="searchButton" style={{ marginTop: '10px' }} onClick={openModal}>新規</button>
             <div className="inner">
                 {tasks_array.length == 0 && (
                     <div>対象はありません</div>

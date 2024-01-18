@@ -1,15 +1,17 @@
-import React, { useState } from 'react'
+import React, { useRef, useState } from 'react'
 import { Task } from '../../../types/Task'
 import { useUpdateDoneTask, useUpdateTask, useDeleteTask } from "../../../queries/TaskQuery"
 import { toast } from "react-toastify"
 import { formatDate, getWeek, shortDate, getToday } from '../../../functions/dateSet'
+import { ModalNew, ChildHandles } from "./ModalNew";
 
 type Props = {
     task: Task
     compliteCss: string
 }
-
 const TaskItem: React.VFC<Props> = ({ task, compliteCss }) => {
+    const childRef = useRef<ChildHandles>(null);
+
     const updateDoneTask = useUpdateDoneTask()
 
     const updateTask = useUpdateTask();
@@ -77,6 +79,14 @@ const TaskItem: React.VFC<Props> = ({ task, compliteCss }) => {
         return textColor
     }
 
+    const updateDone = () => {
+        updateDoneTask.mutate(task)
+        if (task.title.includes('定期')) {
+            childRef.current?.openModalFunc();
+            toast.info("タイトルに定期が含まれますのでコピー登録用フォームが表示されます。登録不要なら閉じて下さい。")
+        }
+    }
+
     const itemInput = () => {
         return (
             <>
@@ -117,6 +127,8 @@ const TaskItem: React.VFC<Props> = ({ task, compliteCss }) => {
                     <span style={{ cursor: "pointer", marginRight: "5px" }} onClick={() => copyToClipboard()}>📋</span>
                     <a href={`/detail?id=${task.id}`} target="_blank">📖</a>
                 </div>
+                <ModalNew title={task.title} body={task.body} link={task.link}  {...{}} ref={childRef} />
+                <button className="mr-2" onClick={openModal}>Copy</button>
                 <button
                     onClick={
                         () => {
@@ -135,13 +147,15 @@ const TaskItem: React.VFC<Props> = ({ task, compliteCss }) => {
             </>
         )
     }
-
+    const openModal = () => {
+        childRef.current?.openModalFunc();
+    };
     return (
         <li className={task.is_done ? 'done' : ''}>
             <div>
                 <li>
                     <label className="checkbox-label">
-                        <input type="checkbox" className="checkbox-input" onClick={() => updateDoneTask.mutate(task)} />
+                        <input type="checkbox" className="checkbox-input" onClick={updateDone} />
                     </label>
                     {editTitle === undefined ? itemText() : itemInput()}
                 </li>

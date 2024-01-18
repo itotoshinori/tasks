@@ -22,7 +22,7 @@ const useCreateTask = () => {
     const queryClient = useQueryClient()
     return useMutation(api.postTasks, {
         onSuccess: async (data) => {
-            await new Promise(resolve => setTimeout(resolve, 3000));
+            await new Promise(resolve => setTimeout(resolve, 10000));
             queryClient.invalidateQueries('tasks')
             toast.success(`${data.title} (期限:${data.term}) の登録に成功しました`,
                 {

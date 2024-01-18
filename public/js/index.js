@@ -4626,14 +4626,17 @@ var useCreateTask = function useCreateTask() {
           while (1) switch (_context3.prev = _context3.next) {
             case 0:
               _context3.next = 2;
-              return queryClient.invalidateQueries('tasks');
+              return new Promise(function (resolve) {
+                return setTimeout(resolve, 10000);
+              });
             case 2:
+              queryClient.invalidateQueries('tasks');
               react_toastify_1.toast.success("".concat(data.title, " (\u671F\u9650:").concat(data.term, ") \u306E\u767B\u9332\u306B\u6210\u529F\u3057\u307E\u3057\u305F"), {
                 autoClose: 15000,
                 // 表示時間を15秒に設定
                 position: 'top-center'
               });
-            case 3:
+            case 4:
             case "end":
               return _context3.stop();
           }

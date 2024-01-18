@@ -81,6 +81,15 @@ const TaskItem: React.VFC<Props> = ({ task, compliteCss }) => {
         }
     }
 
+    // Sleep関数
+    function sleep(ms: any) {
+        return new Promise(resolve => setTimeout(resolve, ms));
+    };
+
+    const deletetask = (id: number) => {
+        deleteTask.mutate(id)
+    }
+
     const itemInput = () => {
         return (
             <>
@@ -131,7 +140,7 @@ const TaskItem: React.VFC<Props> = ({ task, compliteCss }) => {
                                 return
                             }
                             if (window.confirm("本当に削除しますか？")) {
-                                deleteTask.mutate(task.id)
+                                deletetask(task.id)
                             }
                         }
                     }

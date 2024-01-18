@@ -4,7 +4,12 @@ import { toast } from "react-toastify"
 import { AxiosError } from "axios"
 
 const useTasks = () => {
-    return useQuery('tasks', async () => api.getTasks())
+    return useQuery('tasks', async () => {
+        // データの取得前に1秒遅らせる
+        await new Promise(resolve => setTimeout(resolve, 1000));
+        const data = await api.getTasks();
+        return data;
+    });
 }
 
 const useTask = (id: number) => {

@@ -3485,6 +3485,16 @@ var TaskItem = function TaskItem(_ref) {
       react_toastify_1.toast.info("タイトルに定期が含まれますのでコピー登録用フォームが表示されます。登録不要なら閉じて下さい。");
     }
   };
+  // Sleep関数
+  function sleep(ms) {
+    return new Promise(function (resolve) {
+      return setTimeout(resolve, ms);
+    });
+  }
+  ;
+  var deletetask = function deletetask(id) {
+    deleteTask.mutate(id);
+  };
   var itemInput = function itemInput() {
     return react_1["default"].createElement(react_1["default"].Fragment, null, react_1["default"].createElement("form", {
       style: {
@@ -3565,7 +3575,7 @@ var TaskItem = function TaskItem(_ref) {
           return;
         }
         if (window.confirm("本当に削除しますか？")) {
-          deleteTask.mutate(task.id);
+          deletetask(task.id);
         }
       }
     }, "\uD83D\uDDD1\uFE0F"));
@@ -4571,11 +4581,21 @@ var react_toastify_1 = __webpack_require__(/*! react-toastify */ "./node_modules
 var useTasks = function useTasks() {
   return (0, react_query_1.useQuery)('tasks', function () {
     return __awaiter(void 0, void 0, void 0, /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
+      var data;
       return _regeneratorRuntime().wrap(function _callee$(_context) {
         while (1) switch (_context.prev = _context.next) {
           case 0:
-            return _context.abrupt("return", api.getTasks());
-          case 1:
+            _context.next = 2;
+            return new Promise(function (resolve) {
+              return setTimeout(resolve, 1000);
+            });
+          case 2:
+            _context.next = 4;
+            return api.getTasks();
+          case 4:
+            data = _context.sent;
+            return _context.abrupt("return", data);
+          case 6:
           case "end":
             return _context.stop();
         }

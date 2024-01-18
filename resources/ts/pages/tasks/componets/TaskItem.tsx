@@ -22,12 +22,6 @@ const TaskItem: React.VFC<Props> = ({ task, compliteCss }) => {
 
     const [editTerm, setEditTerm] = useState<any>(undefined)
 
-    const handleToggleEdit = () => {
-        setEditTitle(task.title)
-        setEditTerm(task.term)
-        toast.info("タイトル編集モードになりました。escで解除。")
-    }
-
     const handleInputTitleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setEditTitle(e.target.value)
     }
@@ -116,9 +110,9 @@ const TaskItem: React.VFC<Props> = ({ task, compliteCss }) => {
         return (
             <>
                 <div>
-                    <span onClick={handleToggleEdit} className={`list-title ${compliteCss}`} style={{ color: todayColor() }}>{task.title}</span>
+                    <span className={`list-title ${compliteCss}`} style={{ color: todayColor() }}>{task.title}</span>
                     {task.term && (
-                        <span onClick={handleToggleEdit} style={{ color: todayColor(), whiteSpace: 'nowrap' }}>
+                        <span style={{ color: todayColor(), whiteSpace: 'nowrap' }}>
                             {shortDate(task.term)}({getWeek(task.term)})
                         </span>
                     )}

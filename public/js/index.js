@@ -2295,32 +2295,27 @@ var postTasks = function postTasks(_ref) {
         case 0:
           _context2.prev = 0;
           _context2.next = 3;
-          return new Promise(function (resolve) {
-            return setTimeout(resolve, 5000);
-          });
-        case 3:
-          _context2.next = 5;
           return axios_1["default"].post("api/tasks/", {
             title: title,
             body: body,
             link: link,
             term: term
           });
-        case 5:
+        case 3:
           _yield$axios_1$defaul2 = _context2.sent;
           data = _yield$axios_1$defaul2.data;
           alert("APIタイトル:" + title);
           return _context2.abrupt("return", data);
-        case 11:
-          _context2.prev = 11;
+        case 9:
+          _context2.prev = 9;
           _context2.t0 = _context2["catch"](0);
           console.error("APIエラー:", _context2.t0);
           throw _context2.t0;
-        case 15:
+        case 13:
         case "end":
           return _context2.stop();
       }
-    }, _callee2, null, [[0, 11]]);
+    }, _callee2, null, [[0, 9]]);
   }));
 };
 exports.postTasks = postTasks;
@@ -3712,8 +3707,10 @@ var TaskList = function TaskList() {
   };
   if (status === 'loading') {
     return react_1["default"].createElement("div", {
+      className: "login-page"
+    }, react_1["default"].createElement("div", {
       className: "loader"
-    });
+    }));
   } else if (status === 'error') {
     return react_1["default"].createElement("div", {
       className: "login-page"

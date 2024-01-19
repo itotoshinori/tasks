@@ -132,8 +132,8 @@ const ChildComponent: ForwardRefRenderFunction<ChildHandles, ChildProps> = (
                         </input>
                     </div>
                     <div className="mt-2">
-                        <button className="mr-2" onClick={handleUpdate}>登録</button>
-                        <button onClick={closeModal}>閉じる</button>
+                        <button className="mr-2 btn-square-little-rich" onClick={handleUpdate}>登録</button>
+                        <button className="mr-2 btn-square-little-rich" onClick={closeModal}>閉じる</button>
                     </div>
                 </form>
             </>

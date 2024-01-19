@@ -112,8 +112,8 @@ const ModalNewForm = () => {
                         </input>
                     </div>
                     <div className="mt-2">
-                        <button className="mr-2" onClick={handleUpdate}>登録</button>
-                        <button onClick={closeModal}>閉じる</button>
+                        <button className="mr-2 border_btn01" onClick={handleUpdate}>登録</button>
+                        <button onClick={closeModal} className="border_btn01">閉じる</button>
                     </div>
                 </form>
             </>

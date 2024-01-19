@@ -1,3 +1,4 @@
+@charset "UTF-8";
 *,
 *:active,
 *:hover,
@@ -379,6 +380,14 @@ ul.tag-list > li > a:hover {
   margin-left: 10px;
 }
 
+.ml-3 {
+  margin-left: 15px;
+}
+
+.ml-4 {
+  margin-left: 20px;
+}
+
 .list-title {
   display: inline-block;
   width: 70%;
@@ -403,4 +412,42 @@ ul.tag-list > li > a:hover {
   display: block;
   margin: auto;
   width: 100px;
+}
+
+.btn-square-little-rich {
+  position: relative;
+  display: inline-block;
+  padding: 0.25em 0.5em;
+  text-decoration: none;
+  color: #FFF;
+  background: #03A9F4; /*色*/
+  border: solid 1px #0f9ada; /*線色*/
+  border-radius: 4px;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.2);
+  width: 80px;
+}
+
+.btn-square-little-rich:active {
+  /*押したとき*/
+  border: solid 1px #03A9F4;
+  box-shadow: none;
+  text-shadow: none;
+}
+
+.btn-flat-simple {
+  position: relative;
+  display: inline-block;
+  font-weight: bold;
+  padding: 0.25em 0.5em;
+  text-decoration: none;
+  color: white;
+  background: rgb(24, 4, 114);
+  transition: 0.4s;
+  width: 100px;
+}
+
+.btn-flat-simple:hover {
+  background: #323f02;
+  color: white;
 }

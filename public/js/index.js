@@ -2891,13 +2891,13 @@ var ModalForm = function ModalForm(props) {
   }, react_1["default"].createElement("form", {
     onSubmit: toSearch
   }, react_1["default"].createElement("label", {
-    className: "ml-2"
+    className: "ml-4"
   }, "\u30BF\u30A4\u30C8\u30EB\u53CA\u3073\u672C\u6587"), react_1["default"].createElement("br", null), titleWarning && react_1["default"].createElement("div", {
     className: "text-warning"
   }, titleWarning), react_1["default"].createElement("input", {
     type: "text",
     id: "title",
-    className: "input",
+    className: "input ml-2",
     autoFocus: true,
     placeholder: "\u691C\u7D22\u3057\u305F\u3044\u30EF\u30FC\u30C9\u3092\u5165\u529B\u3057\u3066\u304F\u3060\u3055\u3044\u3002",
     value: title,
@@ -2906,12 +2906,15 @@ var ModalForm = function ModalForm(props) {
     }
   }), react_1["default"].createElement("div", {
     className: "mt-2 ml-2"
-  }, react_1["default"].createElement("button", null, "\u691C\u7D22"))), react_1["default"].createElement("div", {
+  }, react_1["default"].createElement("button", {
+    className: "btn-flat-simple"
+  }, "\u691C\u7D22"))), react_1["default"].createElement("div", {
     className: "mt-2 ml-2"
   }, react_1["default"].createElement("button", {
-    className: "mr-2",
+    className: "mr-2 btn-flat-simple",
     onClick: closeModal
   }, "\u9589\u3058\u308B"), title && react_1["default"].createElement("button", {
+    className: "mr-2 btn-flat-simple",
     onClick: function onClick() {
       setTitle("");
     }
@@ -3103,9 +3106,10 @@ var ChildComponent = function ChildComponent(props, ref) {
     })), react_1["default"].createElement("div", {
       className: "mt-2"
     }, react_1["default"].createElement("button", {
-      className: "mr-2",
+      className: "mr-2 btn-square-little-rich",
       onClick: handleUpdate
     }, "\u767B\u9332"), react_1["default"].createElement("button", {
+      className: "mr-2 btn-square-little-rich",
       onClick: closeModal
     }, "\u9589\u3058\u308B"))));
   };

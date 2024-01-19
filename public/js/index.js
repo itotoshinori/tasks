@@ -3485,7 +3485,7 @@ var TaskItem = function TaskItem(_ref) {
   var updateDone = function updateDone() {
     var _a;
     updateDoneTask.mutate(task);
-    if (task.title.includes('定期')) {
+    if (task.title.includes('定期') && !task.is_done) {
       (_a = childRef.current) === null || _a === void 0 ? void 0 : _a.openModalFunc();
       react_toastify_1.toast.info("タイトルに定期が含まれますのでコピー登録用フォームが表示されます。登録不要なら閉じて下さい。");
     }

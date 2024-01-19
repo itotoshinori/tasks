@@ -2893,7 +2893,7 @@ var ModalForm = function ModalForm(props) {
   }, react_1["default"].createElement("label", {
     className: "ml-4"
   }, "\u30BF\u30A4\u30C8\u30EB\u53CA\u3073\u672C\u6587"), react_1["default"].createElement("br", null), titleWarning && react_1["default"].createElement("div", {
-    className: "text-warning"
+    className: "text-warning ml-4"
   }, titleWarning), react_1["default"].createElement("input", {
     type: "text",
     id: "title",

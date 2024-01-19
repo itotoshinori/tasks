@@ -68,7 +68,7 @@ const ModalForm = (props: any) => {
                     <form onSubmit={toSearch}>
                         <label className="ml-4">タイトル及び本文</label><br />
                         {titleWarning && (
-                            <div className="text-warning">{titleWarning}</div>
+                            <div className="text-warning ml-4">{titleWarning}</div>
                         )}
                         <input
                             type="text"

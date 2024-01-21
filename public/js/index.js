@@ -3092,7 +3092,7 @@ var ChildComponent = function ChildComponent(props, ref) {
     })), react_1["default"].createElement("div", null, react_1["default"].createElement("label", null, "\u30EA\u30F3\u30AF"), react_1["default"].createElement("input", {
       type: "text",
       className: "input",
-      defaultValue: props.body,
+      defaultValue: props.link,
       onChange: function onChange(e) {
         return setLink(e.target.value);
       }

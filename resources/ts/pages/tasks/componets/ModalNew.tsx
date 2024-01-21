@@ -117,7 +117,7 @@ const ChildComponent: ForwardRefRenderFunction<ChildHandles, ChildProps> = (
                         <input
                             type="text"
                             className="input"
-                            defaultValue={props.body}
+                            defaultValue={props.link}
                             onChange={(e) => setLink(e.target.value)}
                         />
                     </div>

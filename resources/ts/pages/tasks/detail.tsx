@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useTask, useUpdateTask } from '../../queries/TaskQuery'
 import { formatDate, getWeek, getYearDate } from '../../functions/dateSet'
 import { toast } from 'react-toastify';
+import { toShortText } from '../../functions/textSet'
 
 export const DetailPage: React.VFC = () => {
     const searchParams: any = new URLSearchParams(window.location.search);
@@ -91,7 +92,7 @@ export const DetailPage: React.VFC = () => {
                 {task.link && (
                     <>
                         <div className="mt-1">■リンク</div>
-                        <div><a href={task.link}>{task.link}</a></div>
+                        <div><a href={task.link}>{toShortText(task.link, 50)}</a></div>
                     </>
                 )}
                 <div className="mt-2">

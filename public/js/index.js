@@ -2487,6 +2487,30 @@ exports.getYearDate = getYearDate;
 
 /***/ }),
 
+/***/ "./resources/ts/functions/textSet.ts":
+/*!*******************************************!*\
+  !*** ./resources/ts/functions/textSet.ts ***!
+  \*******************************************/
+/***/ ((__unused_webpack_module, exports) => {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", ({
+  value: true
+}));
+exports.toShortText = void 0;
+var toShortText = function toShortText(text, textLong) {
+  if (text.length > textLong) {
+    return text.substring(0, textLong) + "..";
+  } else {
+    return text;
+  }
+};
+exports.toShortText = toShortText;
+
+/***/ }),
+
 /***/ "./resources/ts/hooks/AuthContext.tsx":
 /*!********************************************!*\
   !*** ./resources/ts/hooks/AuthContext.tsx ***!
@@ -3851,6 +3875,7 @@ var react_1 = __importStar(__webpack_require__(/*! react */ "./node_modules/reac
 var TaskQuery_1 = __webpack_require__(/*! ../../queries/TaskQuery */ "./resources/ts/queries/TaskQuery.ts");
 var dateSet_1 = __webpack_require__(/*! ../../functions/dateSet */ "./resources/ts/functions/dateSet.ts");
 var react_toastify_1 = __webpack_require__(/*! react-toastify */ "./node_modules/react-toastify/dist/react-toastify.js");
+var textSet_1 = __webpack_require__(/*! ../../functions/textSet */ "./resources/ts/functions/textSet.ts");
 var DetailPage = function DetailPage() {
   var searchParams = new URLSearchParams(window.location.search);
   var urlId = parseInt(searchParams.get("id"));
@@ -3940,7 +3965,7 @@ var DetailPage = function DetailPage() {
       className: "mt-1"
     }, "\u25A0\u30EA\u30F3\u30AF"), react_1["default"].createElement("div", null, react_1["default"].createElement("a", {
       href: task.link
-    }, task.link))), react_1["default"].createElement("div", {
+    }, (0, textSet_1.toShortText)(task.link, 50)))), react_1["default"].createElement("div", {
       className: "mt-2"
     }, react_1["default"].createElement("span", {
       className: "change_mode_text mr-2",

@@ -82,7 +82,7 @@ const TaskItem: React.VFC<Props> = ({ task, compliteCss }) => {
     const updateDone = () => {
         updateDoneTask.mutate(task)
         if (task.title.includes('定期') && !task.is_done) {
-            childRef.current?.openModalFunc();
+            childRef.current?.openModalFunc()
             toast.info("タイトルに定期が含まれますのでコピー登録用フォームが表示されます。登録不要なら閉じて下さい。")
         }
     }

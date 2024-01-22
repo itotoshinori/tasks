@@ -75,7 +75,7 @@ const ChildComponent: ForwardRefRenderFunction<ChildHandles, ChildProps> = (
     function openModal() {
         setIsOpen(true)
         setTitle(props.title)
-        setBody(props.link)
+        setBody(props.body)
         setLink(props.link)
         setTerm(formatDate(new Date()))
     }

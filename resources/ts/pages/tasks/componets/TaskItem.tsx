@@ -127,7 +127,7 @@ const TaskItem: React.VFC<Props> = ({ task, compliteCss }) => {
                     <span style={{ cursor: "pointer", marginRight: "5px" }} onClick={() => copyToClipboard()}>📋</span>
                     <a href={`/detail?id=${task.id}`} target="_blank">📖</a>
                 </div>
-                <ModalNew title={task.title} body={task.body} link={task.link}  {...{}} ref={childRef} />
+                <ModalNew title={task.title} body={task.body} link={task.link} term={task.term}  {...{}} ref={childRef} />
                 <button className="mr-2" onClick={openModal}>Copy</button>
                 <button
                     onClick={

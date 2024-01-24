@@ -33,6 +33,7 @@ export interface ChildProps {
     title: string;
     body: string;
     link: string;
+    term: any;
 }
 
 const ChildComponent: ForwardRefRenderFunction<ChildHandles, ChildProps> = (
@@ -44,7 +45,7 @@ const ChildComponent: ForwardRefRenderFunction<ChildHandles, ChildProps> = (
     const [body, setBody] = useState<string>('')
     const [link, setLink] = useState<string>('')
     const [term, setTerm] = useState<any>('')
-    const updateTask = useUpdateTask();
+    const updateTask = useUpdateTask()
     const { data: tasks } = useTasks()
     if (!tasks || tasks.length <= 0) {
         return <div className="align-center" style={{ marginTop: '50px' }}>データが存在しません</div>
@@ -77,7 +78,7 @@ const ChildComponent: ForwardRefRenderFunction<ChildHandles, ChildProps> = (
         setTitle(props.title)
         setBody(props.body)
         setLink(props.link)
-        setTerm(formatDate(new Date()))
+        setTerm(props.term)
     }
 
     function closeModal() {
@@ -126,7 +127,7 @@ const ChildComponent: ForwardRefRenderFunction<ChildHandles, ChildProps> = (
                         <input
                             type="date"
                             className="input"
-                            defaultValue={formatDate(new Date())}
+                            defaultValue={term}
                             onChange={(e) => setTerm(e.target.value)}
                         >
                         </input>
@@ -148,7 +149,7 @@ const ChildComponent: ForwardRefRenderFunction<ChildHandles, ChildProps> = (
                 onRequestClose={closeModal}
             >
                 <div className="login-panel">
-                    <h3>新規登録</h3>
+                    <h3>新規</h3>
                     {itemInput()}
                 </div>
             </Modal>

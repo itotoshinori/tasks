@@ -93,7 +93,7 @@ const TaskList = () => {
                 <div className='change_mode_text' style={{ marginTop: '28px' }} onClick={changeMode}>{conditionLink}</div>
             )}
             <ModalForm handleClickChildSearch={search} />
-            <ModalNew title="" body="" link=""  {...{}} ref={childRef} />
+            <ModalNew title="" body="" link="" term=""  {...{}} ref={childRef} />
             <button className="searchButton" style={{ marginTop: '10px' }} onClick={openModal}>新規</button>
             <div className="inner">
                 {tasks_array.length == 0 && (

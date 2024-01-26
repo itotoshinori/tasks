@@ -92,7 +92,7 @@ export const DetailPage: React.VFC = () => {
                 {task.link && (
                     <>
                         <div className="mt-1">■リンク</div>
-                        <div><a href={task.link}>{toShortText(task.link, 50)}</a></div>
+                        <div><a href={task.link}>{toShortText(task.link, 30)}</a></div>
                     </>
                 )}
                 <div className="mt-2">

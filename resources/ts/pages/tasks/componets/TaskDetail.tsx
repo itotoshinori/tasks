@@ -38,7 +38,7 @@ const TaskDetail: React.VFC<Props> = ({ task }) => {
                 <div>{task.created_at}</div>
                 <div className="mt-1">【更新日】</div>
                 <div>{task.updated_at}</div>
-                <button className="btn mt-4" onClick={handleToggleEdit}>ssss編集</button>
+                <button className="btn mt-4" onClick={handleToggleEdit}>編集</button>
                 <div onClick={() => window.close()}>閉じる</div>
             </>
         );

@@ -4,9 +4,9 @@ import TaskItem from './TaskItem'
 import { Task } from '../../../types/Task'
 import { getToday } from '../../../functions/dateSet'
 import { toast } from 'react-toastify'
-import TaskInput from './TaskInput'
 import ModalForm from './ModalForm'
 import { ModalNew, ChildHandles } from "./ModalNew";
+import SearchForm from './SearchForm'
 
 const TaskList = () => {
     const searchParams: any = new URLSearchParams(window.location.search);
@@ -17,8 +17,9 @@ const TaskList = () => {
     const [searchTitle, setSearchTitle] = useState<string>("")
     const [compliteCssDis, setCompliteCssDis] = useState<string>("linethrough");
     const childRef = useRef<ChildHandles>(null);
+    const [text, setText] = useState("");
 
-    const search = (title: string, body: string, minTerm: string, maxTerm: string): void => {
+    const search = (title: string): void => {
         setSearchTitle(title)
         setCompliteCssDis("")
     }
@@ -86,17 +87,20 @@ const TaskList = () => {
         childRef.current?.openModalFunc();
     };
 
+    const handleSearchWord = (newValue: string) => {
+        setSearchTitle(newValue)
+    };
+
     return (
         <>
-            <TaskInput />
+            <SearchForm handleSearchWord={handleSearchWord} />
             {!searchTitle && (
-                <div className='change_mode_text' style={{ marginTop: '28px' }} onClick={changeMode}>{conditionLink}</div>
+                <div className='change_mode_text' style={{ marginTop: '10px' }} onClick={changeMode}>{conditionLink}</div>
             )}
-            <ModalForm handleClickChildSearch={search} />
             <ModalNew title="" body="" link="" term=""  {...{}} ref={childRef} />
             <button className="searchButton" style={{ marginTop: '10px' }} onClick={openModal}>新規</button>
             <div className="inner">
-                {tasks_array.length == 0 && (
+                {(tasks_array.length == 0 && status === 'success') && (
                     <div>対象はありません</div>
                 )}
                 <ul className="task-list">

@@ -124,9 +124,9 @@ const TaskItem: React.VFC<Props> = ({ task, compliteCss }) => {
                     )}
                     <span style={{ cursor: "pointer", marginRight: "5px" }} onClick={() => window.scroll({ top: 0, behavior: 'smooth' })}>☝</span>
                     <span style={{ cursor: "pointer", marginRight: "5px" }} onClick={() => copyToClipboard()}>📋</span>
-                    <a href={`/detail?id=${task.id}`} target="_blank">📖</a>
+                    <a style={{ marginRight: "5px", textDecoration: "none" }} href={`/detail?id=${task.id}`} target="_blank">📖</a>
                     {task.link && (
-                        <span><a href={task.link} style={{ textDecoration: "none" }} target="_blank">📎</a></span>
+                        <a href={task.link} style={{ textDecoration: "none" }} target="_blank">📎</a>
                     )}
                 </div>
                 <ModalNew title={task.title} body={task.body} link={task.link} term={task.term}  {...{}} ref={childRef} />

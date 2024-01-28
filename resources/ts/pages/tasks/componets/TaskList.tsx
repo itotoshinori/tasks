@@ -17,7 +17,6 @@ const TaskList = () => {
     const [searchTitle, setSearchTitle] = useState<string>("")
     const [compliteCssDis, setCompliteCssDis] = useState<string>("linethrough");
     const childRef = useRef<ChildHandles>(null);
-    const [text, setText] = useState("");
 
     const search = (title: string): void => {
         setSearchTitle(title)

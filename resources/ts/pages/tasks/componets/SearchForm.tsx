@@ -4,11 +4,15 @@ const SearchForm = (props: any) => {
     // 親コンポーネントから受け取った関数を使って、inputの値を渡す
     const handleInputChange = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
-        props.handleSearchWord(value);
+        props.handleSearchWord(value)
     };
     const reset = () => {
         setValue("")
-        props.handleSearchWord("");
+        props.handleSearchWord("")
+    }
+    const disImport = () => {
+        setValue("🔥")
+        props.handleSearchWord(value)
     }
 
     return (
@@ -26,9 +30,13 @@ const SearchForm = (props: any) => {
                     />
                     <button className="btn-flat-simple mr-2">検索</button>
                     <button
-                        className="btn-flat-simple"
+                        className="btn-flat-simple mr-2"
                         onClick={() => reset()}
                     >リセット</button>
+                    <button
+                        className="btn-flat-simple mr-2"
+                        onClick={() => disImport()}
+                    >重要</button>
                 </div>
             </form>
         </>

@@ -52,7 +52,6 @@ class TaskController extends Controller
             'user_id' => 'required',
             'term' => 'required',
         ]);
-        Log::info($request);
         $task = Task::create($request->all());
         return $task ? response()->json($task) : response()->json([], 500);
     }

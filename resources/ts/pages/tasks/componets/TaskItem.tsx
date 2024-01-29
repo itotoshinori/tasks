@@ -140,7 +140,6 @@ const TaskItem: React.VFC<Props> = ({ task, compliteCss }) => {
                 </div>
                 <ModalNew title={task.title} body={task.body} link={task.link} term={task.term}  {...{}} ref={childRef} />
                 <button className="mr-2" onClick={openModal}>Copy</button>
-                <button className="mr-2" onClick={openModal}></button>
                 <button
                     onClick={
                         () => {

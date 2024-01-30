@@ -86,9 +86,9 @@ const TaskList = () => {
         childRef.current?.openModalFunc();
     };
 
-    const handleSearchWord = (newValue: string) => {
+    const handleSearchWord = async (newValue: string) => {
         setSearchTitle(newValue)
-        setCompliteCssDis("")
+        newValue ? setCompliteCssDis("") : setCompliteCssDis("linethrough")
     };
 
     return (

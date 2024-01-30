@@ -91,6 +91,9 @@ const ChildComponent: ForwardRefRenderFunction<ChildHandles, ChildProps> = (
             openModal()
         }
     }));
+    const importantSet = () => {
+        title.includes("🔥") ? setTitle(title.replace("🔥", "")) : setTitle("🔥" + title)
+    }
     const itemInput = () => {
         return (
             <>
@@ -101,10 +104,18 @@ const ChildComponent: ForwardRefRenderFunction<ChildHandles, ChildProps> = (
                             type="text"
                             className="input"
                             autoFocus
-                            defaultValue={props.title}
+                            value={title}
                             onChange={(e) => setTitle(e.target.value)}
                         />
                     </div>
+                    {title && (
+                        <div>
+                            <input
+                                type="checkbox"
+                                onChange={() => importantSet()}
+                            />重要
+                        </div>
+                    )}
                     <div>
                         <label>本文</label>
                         <textarea

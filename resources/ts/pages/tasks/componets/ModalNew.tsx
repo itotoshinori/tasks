@@ -93,6 +93,14 @@ const ChildComponent: ForwardRefRenderFunction<ChildHandles, ChildProps> = (
             openModal()
         }
     }));
+    const titleSet = (value: string) => {
+        setTitle(value)
+        if (value.includes("🔥")) {
+            setImportant(true)
+        } else {
+            setImportant(false)
+        }
+    }
     const importantSet = () => {
         if (title.includes("🔥")) {
             setTitle(title.replace("🔥", ""))
@@ -113,9 +121,9 @@ const ChildComponent: ForwardRefRenderFunction<ChildHandles, ChildProps> = (
                             className="input"
                             autoFocus
                             value={title}
-                            onChange={(e) =>
-                                setTitle(e.target.value)
-                            }
+                            onChange={(e) => {
+                                titleSet(e.target.value)
+                            }}
                         />
                     </div>
                     {title && (

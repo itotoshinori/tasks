@@ -87,7 +87,7 @@ const TaskItem: React.VFC<Props> = ({ task, compliteCss }) => {
         }
     }
 
-    const updateImport = () => {
+    const updateImportant = () => {
         task.title.includes("🔥") ? task.title = task.title.replace("🔥", "") : task.title = "🔥" + task.title
         updateTask.mutate({
             id: task.id,
@@ -140,7 +140,7 @@ const TaskItem: React.VFC<Props> = ({ task, compliteCss }) => {
                     <span
                         className="balloonoya"
                         style={{ cursor: "pointer", marginRight: "5px" }}
-                        onClick={() => updateImport()}>🔥
+                        onClick={() => updateImportant()}>🔥
                         <span className="balloon">
                             {task.title.includes("🔥") ? "重要マークを除去" : "重要マークを付ける"}
                         </span>

@@ -47,6 +47,7 @@ const ChildComponent: ForwardRefRenderFunction<ChildHandles, ChildProps> = (
     const [term, setTerm] = useState<any>('')
     const updateTask = useUpdateTask()
     const { data: tasks } = useTasks()
+    const [important, setImportant] = useState<boolean>(false)
     if (!tasks || tasks.length <= 0) {
         return <div className="align-center" style={{ marginTop: '50px' }}>データが存在しません</div>
     }
@@ -79,6 +80,7 @@ const ChildComponent: ForwardRefRenderFunction<ChildHandles, ChildProps> = (
         setBody(props.body)
         setLink(props.link)
         setTerm(props.term)
+        props.title.includes("🔥") ? setImportant(true) : setImportant(false)
     }
 
     function closeModal() {
@@ -92,7 +94,13 @@ const ChildComponent: ForwardRefRenderFunction<ChildHandles, ChildProps> = (
         }
     }));
     const importantSet = () => {
-        title.includes("🔥") ? setTitle(title.replace("🔥", "")) : setTitle("🔥" + title)
+        if (title.includes("🔥")) {
+            setTitle(title.replace("🔥", ""))
+            setImportant(false)
+        } else {
+            setTitle("🔥" + title)
+            setImportant(true)
+        }
     }
     const itemInput = () => {
         return (
@@ -105,13 +113,16 @@ const ChildComponent: ForwardRefRenderFunction<ChildHandles, ChildProps> = (
                             className="input"
                             autoFocus
                             value={title}
-                            onChange={(e) => setTitle(e.target.value)}
+                            onChange={(e) =>
+                                setTitle(e.target.value)
+                            }
                         />
                     </div>
                     {title && (
                         <div>
                             <input
                                 type="checkbox"
+                                checked={important}
                                 onChange={() => importantSet()}
                             />重要
                         </div>
@@ -120,7 +131,7 @@ const ChildComponent: ForwardRefRenderFunction<ChildHandles, ChildProps> = (
                         <label>本文</label>
                         <textarea
                             className="input"
-                            defaultValue={props.body}
+                            defaultValue={body}
                             onChange={(e) => setBody(e.target.value)}
                         />
                     </div>
@@ -129,7 +140,7 @@ const ChildComponent: ForwardRefRenderFunction<ChildHandles, ChildProps> = (
                         <input
                             type="text"
                             className="input"
-                            defaultValue={props.link}
+                            defaultValue={link}
                             onChange={(e) => setLink(e.target.value)}
                         />
                     </div>

@@ -130,12 +130,41 @@ const TaskItem: React.VFC<Props> = ({ task, compliteCss }) => {
                             {shortDate(task.term)}({getWeek(task.term)})
                         </span>
                     )}
-                    <span style={{ cursor: "pointer", marginRight: "5px" }} onClick={() => window.scroll({ top: 0, behavior: 'smooth' })}>☝</span>
-                    <span style={{ cursor: "pointer", marginRight: "5px" }} onClick={() => updateImport()}>🔥</span>
-                    <span style={{ cursor: "pointer", marginRight: "5px" }} onClick={() => copyToClipboard()}>📋</span>
-                    <a style={{ marginRight: "5px", textDecoration: "none" }} href={`/detail?id=${task.id}`} target="_blank">📖</a>
+                    <span
+                        className="balloonoya"
+                        style={{ cursor: "pointer", marginRight: "5px" }}
+                        onClick={() => window.scroll({ top: 0, behavior: 'smooth' })}
+                    >☝
+                        <span className="balloon">ページのトップへ</span>
+                    </span>
+                    <span
+                        className="balloonoya"
+                        style={{ cursor: "pointer", marginRight: "5px" }}
+                        onClick={() => updateImport()}>🔥
+                        <span className="balloon">
+                            {task.title.includes("🔥") ? "重要マークを除去" : "重要マークを付ける"}
+                        </span>
+                    </span>
+                    <span
+                        className="balloonoya"
+                        style={{ cursor: "pointer", marginRight: "5px" }}
+                        onClick={() => copyToClipboard()}>📋
+                        <span className="balloon">タイトルをコピー</span>
+                    </span>
+                    <a
+                        className="balloonoya"
+                        style={{ marginRight: "5px", textDecoration: "none" }}
+                        href={`/detail?id=${task.id}`} target="_blank">📖
+                        <span className="balloon">詳細へ</span>
+                    </a>
                     {task.link && (
-                        <a href={task.link} style={{ textDecoration: "none" }} target="_blank">📎</a>
+                        <a
+                            className="balloonoya"
+                            href={task.link}
+                            style={{ textDecoration: "none" }}
+                            target="_blank">📎
+                            <span className="balloon">リンク</span>
+                        </a>
                     )}
                 </div>
                 <ModalNew title={task.title} body={task.body} link={task.link} term={task.term}  {...{}} ref={childRef} />

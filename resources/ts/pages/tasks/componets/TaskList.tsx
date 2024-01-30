@@ -88,6 +88,7 @@ const TaskList = () => {
 
     const handleSearchWord = (newValue: string) => {
         setSearchTitle(newValue)
+        setCompliteCssDis("")
     };
 
     return (

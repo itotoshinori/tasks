@@ -88,6 +88,7 @@ const TaskList = () => {
 
     const handleSearchWord = async (newValue: string) => {
         setSearchTitle(newValue)
+        window.scroll({ top: 0, behavior: 'smooth' })
         newValue ? setCompliteCssDis("") : setCompliteCssDis("linethrough")
     };
 

@@ -62,6 +62,10 @@ const ChildComponent: ForwardRefRenderFunction<ChildHandles, ChildProps> = (
             toast.error('タイトル及び期限を入力してください')
             return
         }
+        if (title.length >= 30) {
+            toast.error('タイトルは30文字未満でお願いします')
+            return
+        }
         task.title = title
         task.body = body
         task.link = link

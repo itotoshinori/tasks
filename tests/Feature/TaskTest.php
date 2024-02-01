@@ -61,13 +61,19 @@ class TaskTest extends TestCase
      */
     public function 削除を確認できる()
     {
+        // タスクを10個作成
         $tasks = Task::factory()->count(10)->create();
-        $response = $this->deleteJson("api/tasks/10");
+
+        // 削除対象のタスクを選択
+        $taskToDelete = $tasks->first();
+
+        // 対象のタスクを削除
+        $response = $this->deleteJson("api/tasks/{$taskToDelete->id}");
         $response->assertOk();
-        // 削除後のタスクの数を確認
-        $response = $this->getJson('api/tasks');
-        $response->assertJsonCount($tasks->count() - 1);
+        // 削除されたタスクが含まれていないことを確認
+        $this->assertDatabaseMissing('tasks', ['id' => $taskToDelete->id]);
     }
+
     /**
      *  @test
      */

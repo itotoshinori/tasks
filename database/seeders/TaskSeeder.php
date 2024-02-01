@@ -18,10 +18,10 @@ class TaskSeeder extends Seeder
     {
         $params = [];
 
-        for ($i = 1; $i <= 20; $i++) {
+        for ($i = 1; $i <= 3; $i++) {
             $params[] = [
-                'title' => "入力用",
-                'term' => Carbon::now()->addMonths(3),
+                'title' => "テストデータ",
+                'term' => Carbon::now(),
                 'user_id' => 1,
                 'created_at' => now(),
                 'updated_at' => now(),

@@ -47,11 +47,15 @@ export const DetailPage: React.VFC = () => {
         if (!title) {
             toast.error('タイトルを入力してください')
             return
-        } else if (!term) {
+        }
+        if (!term) {
             toast.error('期限を入力してください')
             return
         }
-        //const newTask = { ...task }
+        if (title.length >= 30) {
+            toast.error('タイトルは30文字未満でお願いします')
+            return
+        }
         task.title = title
         task.body = body
         task.link = link

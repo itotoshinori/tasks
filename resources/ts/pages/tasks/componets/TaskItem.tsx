@@ -42,7 +42,12 @@ const TaskItem: React.VFC<Props> = ({ task, compliteCss, handleSearchWord }) => 
         if (!editTitle) {
             toast.error('タイトルを入力してください')
             return
-        } else if (!editTerm) {
+        }
+        if (editTitle.length >= 30) {
+            toast.error('タイトルは30文字未満でお願いします')
+            return
+        }
+        if (!editTerm) {
             toast.error('期限を入力してください')
             return
         }
@@ -89,6 +94,10 @@ const TaskItem: React.VFC<Props> = ({ task, compliteCss, handleSearchWord }) => 
     }
 
     const updateImportant = () => {
+        if (task.title.length >= 30) {
+            toast.error('タイトルは30文字未満でお願いします')
+            return
+        }
         task.title.includes("🔥") ? task.title = task.title.replace("🔥", "") : task.title = "🔥" + task.title
         updateTask.mutate({
             id: task.id,

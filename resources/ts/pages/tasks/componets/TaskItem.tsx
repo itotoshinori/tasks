@@ -8,8 +8,9 @@ import { ModalNew, ChildHandles } from "./ModalNew";
 type Props = {
     task: Task
     compliteCss: string
+    handleSearchWord: any
 }
-const TaskItem: React.VFC<Props> = ({ task, compliteCss }) => {
+const TaskItem: React.VFC<Props> = ({ task, compliteCss, handleSearchWord }) => {
     const childRef = useRef<ChildHandles>(null);
 
     const updateDoneTask = useUpdateDoneTask()
@@ -94,6 +95,9 @@ const TaskItem: React.VFC<Props> = ({ task, compliteCss }) => {
             task: task
         });
     }
+    const searchTitle = (value: string) => {
+        handleSearchWord(value)
+    }
 
     const itemInput = () => {
         return (
@@ -150,6 +154,12 @@ const TaskItem: React.VFC<Props> = ({ task, compliteCss }) => {
                         style={{ cursor: "pointer", marginRight: "5px" }}
                         onClick={() => copyToClipboard()}>📋
                         <span className="balloon">タイトルをコピー</span>
+                    </span>
+                    <span
+                        className="balloonoya"
+                        style={{ cursor: "pointer", marginRight: "5px" }}
+                        onClick={() => searchTitle(task.title)}>🔎
+                        <span className="balloon">タイトルを検索</span>
                     </span>
                     <a
                         className="balloonoya"

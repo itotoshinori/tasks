@@ -105,7 +105,7 @@ const TaskList = () => {
                 )}
                 <ul className="task-list">
                     {tasks_array.map(task => (
-                        <TaskItem key={task.id} task={task} compliteCss={compliteCssDis} />
+                        <TaskItem key={task.id} task={task} compliteCss={compliteCssDis} handleSearchWord={handleSearchWord} />
                     ))}
                 </ul>
             </div>

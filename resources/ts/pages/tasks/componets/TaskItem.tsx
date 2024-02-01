@@ -159,7 +159,7 @@ const TaskItem: React.VFC<Props> = ({ task, compliteCss, handleSearchWord }) => 
                         className="balloonoya"
                         style={{ cursor: "pointer", marginRight: "5px" }}
                         onClick={() => searchTitle(task.title)}>🔎
-                        <span className="balloon">タイトルを検索</span>
+                        <span className="balloon">タイトルで検索</span>
                     </span>
                     <a
                         className="balloonoya"

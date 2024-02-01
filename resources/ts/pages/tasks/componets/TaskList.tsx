@@ -91,7 +91,7 @@ const TaskList = () => {
             setSearchTitle(newValue)
             if (newValue) {
                 setCompliteCssDis("")
-                toast.info(`${newValue}で検索しました`)
+                toast.info(`${newValue}で検索しました。リセットボタンで解除できます。`)
             } else {
                 setCompliteCssDis("linethrough")
             }

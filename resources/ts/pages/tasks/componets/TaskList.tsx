@@ -87,9 +87,21 @@ const TaskList = () => {
     };
 
     const handleSearchWord = async (newValue: string) => {
-        setSearchTitle(newValue)
+        try {
+            setSearchTitle(newValue)
+            if (newValue) {
+                setCompliteCssDis("")
+                toast.info(`${newValue}で検索しました`)
+            } else {
+                setCompliteCssDis("linethrough")
+            }
+        } catch (e) {
+            console.log(e)
+            toast.error("検索に失敗しました")
+        }
         window.scroll({ top: 0, behavior: 'smooth' })
-        newValue ? setCompliteCssDis("") : setCompliteCssDis("linethrough")
+
+
     };
 
     return (

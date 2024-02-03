@@ -3365,10 +3365,10 @@ var TaskItemBox = function TaskItemBox(_ref) {
     (_a = childRef.current) === null || _a === void 0 ? void 0 : _a.openModalFunc();
   };
   var backGroundColor = function backGroundColor(done) {
-    if (task.title.includes("🔥")) {
-      return "#FFDDAA";
-    } else if (done) {
+    if (done) {
       return "#faf5a6";
+    } else if (task.title.includes("🔥")) {
+      return "#FFDDAA";
     } else if (String(task.term) == (0, dateSet_1.getToday)()) {
       return "#c1fff3";
     }

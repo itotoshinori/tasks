@@ -159,7 +159,9 @@ const TaskItemBox: React.VFC<Props> = ({ task, compliteCss, handleSearchWord }) 
     };
 
     const backGroundColor = (done: boolean) => {
-        if (done) {
+        if (task.title.includes("🔥")) {
+            return "#FFDDAA"
+        } else if (done) {
             return "#faf5a6"
         } else if (String(task.term) == getToday()) {
             return "#c1fff3"

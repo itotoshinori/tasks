@@ -6,7 +6,8 @@
     box-sizing: border-box;
 }
 
-body,html {
+body,
+html {
     padding: 0;
     margin: 0;
 }
@@ -31,13 +32,11 @@ body,html {
     }
 }
 
-
 .task-list {
     list-style: none;
     margin: 0;
     padding: 0;
     border-top: 1px solid #d7d2cd;
-
 
     li {
         padding: 20px 10px;
@@ -65,7 +64,7 @@ body,html {
             position: absolute;
             right: 10px;
             width: 80px;
-            padding: .5em 1em .4em;
+            padding: 0.5em 1em 0.4em;
             font-size: 13px;
             z-index: 10;
         }
@@ -93,8 +92,6 @@ body,html {
     }
 }
 
-
-
 .input-form {
     margin-bottom: 40px;
     background: #f9f3ee;
@@ -120,22 +117,6 @@ body,html {
     .input.error {
         background-color: #ffd4dd;
         border-color: #d01137;
-    }
-
-
-    .error-message {
-        position: absolute;
-        top: 48px;
-        background-color: #d01137;
-        color: #fff;
-        font-size: 13px;
-        font-weight: bold;
-        border-radius: 5px;
-        padding: 2px 5px;
-    }
-    .modal-term-input{
-        width:150px;
-        height:30px
     }
 }
 
@@ -163,7 +144,6 @@ body,html {
         background-color: #d86681;
         border-bottom-color: #956270;
     }
-
 }
 
 .checkbox-input {
@@ -205,26 +185,6 @@ body,html {
     }
 }
 
-/* Task List Fade */
-.fade-enter-active {
-    background-color: #fff8b0;
-    transition: background-color 300ms;
-}
-.fade-enter-done {
-    transition: background-color 1s;
-}
-.fade-exit {
-    background-color: #ffacbf;
-}
-.fade-exit-active {
-    background-color: transparent;
-    transition: background-color 700ms;
-}
-.fade-exit-active label {
-    opacity: .3;
-    transition: opacity 700ms;
-}
-
 .global-head {
     color: #fff;
     background: #201402;
@@ -249,7 +209,6 @@ body,html {
         padding: 0;
 
         li {
-
             margin: 0 10px;
 
             span {
@@ -291,7 +250,6 @@ ul.tag-list {
         &.active {
             > a {
                 background: none;
-
             }
         }
 
@@ -319,7 +277,7 @@ ul.tag-list {
     height: 60vh;
     display: flex;
     flex-direction: column;
-    padding-top:100px;
+    padding-top: 100px;
     align-items: center;
 
     .links {
@@ -344,7 +302,7 @@ ul.tag-list {
     }
 
     label {
-        font-size: .8em;
+        font-size: 0.8em;
         width: 100%;
         display: block;
     }
@@ -369,12 +327,12 @@ ul.tag-list {
     margin: auto;
     font-size: 10px;
     position: relative;
-    border-top: .4em solid rgba(255,174,0, 0.2);
-    border-right: .4em solid rgba(255,174,0, 0.2);
-    border-bottom: .4em solid rgba(255,174,0, 0.2);
-    border-left: .4em solid #ffae00;
+    border-top: 0.4em solid rgba(255, 174, 0, 0.2);
+    border-right: 0.4em solid rgba(255, 174, 0, 0.2);
+    border-bottom: 0.4em solid rgba(255, 174, 0, 0.2);
+    border-left: 0.4em solid #ffae00;
     transform: translateZ(0);
-    animation: load-animate .5s infinite linear;
+    animation: load-animate 0.5s infinite linear;
 }
 
 @keyframes load-animate {
@@ -394,62 +352,62 @@ ul.tag-list {
 }
 
 .main_box p {
-    margin: 0; 
+    margin: 0;
     padding: 0;
 }
 
-.mt-1{
-    margin-top:5px;
+.mt-1 {
+    margin-top: 5px;
 }
 
-.mt-2{
-    margin-top:15px;
+.mt-2 {
+    margin-top: 15px;
 }
 
-.mt-4{
-    margin-top:30px;
+.mt-4 {
+    margin-top: 30px;
 }
 
-.mr-2{
-    margin-right:10px;
+.mr-2 {
+    margin-right: 10px;
 }
 
-.ml-2{
-    margin-left:10px;
+.ml-2 {
+    margin-left: 10px;
 }
 
-.ml-3{
-    margin-left:15px;
+.ml-3 {
+    margin-left: 15px;
 }
 
-.ml-4{
-    margin-left:20px;
+.ml-4 {
+    margin-left: 20px;
 }
 
-.list-title{
+.list-title {
     display: inline-block;
-	width: 70%;
+    width: 70%;
 }
 
-.change_mode_text{
-    text-align: center; 
+.change_mode_text {
+    text-align: center;
     justify-content: center;
     cursor: pointer;
-    color:rgb(15, 15, 231);
+    color: rgb(15, 15, 231);
 }
 
 .body_text {
     white-space: pre-wrap;
 }
 
-.text-warning{
-    color:rgb(215, 10, 10);
+.text-warning {
+    color: rgb(215, 10, 10);
 }
 
-.searchButton{
+.searchButton {
     display: block;
-	margin: auto;
-    width:100px;
+    margin: auto;
+    width: 100px;
 }
 
 .btn-square-little-rich {
@@ -457,23 +415,23 @@ ul.tag-list {
     display: inline-block;
     padding: 0.25em 0.5em;
     text-decoration: none;
-    color: #FFF;
-    background: #03A9F4;/*色*/
-    border: solid 1px #0f9ada;/*線色*/
+    color: #fff;
+    background: #03a9f4; /*色*/
+    border: solid 1px #0f9ada; /*線色*/
     border-radius: 4px;
-    box-shadow: inset 0 1px 0 rgba(255,255,255,0.2);
-    text-shadow: 0 1px 0 rgba(0,0,0,0.2);
-    width:80px;
-  }
-  
-  .btn-square-little-rich:active {
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    text-shadow: 0 1px 0 rgba(0, 0, 0, 0.2);
+    width: 80px;
+}
+
+.btn-square-little-rich:active {
     /*押したとき*/
-    border: solid 1px #03A9F4;
+    border: solid 1px #03a9f4;
     box-shadow: none;
     text-shadow: none;
-  }
+}
 
-  .btn-flat-simple {
+.btn-flat-simple {
     position: relative;
     display: inline-block;
     font-weight: bold;
@@ -481,41 +439,159 @@ ul.tag-list {
     text-decoration: none;
     color: white;
     background: rgb(24, 4, 114);
-    transition: .4s;
-    width:80px;
-  }
-  
-  .btn-flat-simple:hover {
+    transition: 0.4s;
+    width: 80px;
+}
+
+.btn-flat-simple:hover {
     background: #323f02;
     color: white;
-  }
+}
 
-  .balloonoya {
-    position   : relative;                /* 指定した分だけ相対的に移動 */
-  }
+.balloonoya {
+    position: relative; /* 指定した分だけ相対的に移動 */
+}
 
-  .balloonoya:hover .balloon {
-    display: inline;                /* インライン要素として表示 */
-  }
+.balloonoya:hover .balloon {
+    display: inline; /* インライン要素として表示 */
+}
 
-  .balloon {
-    position   : absolute;                /* 親要素を基準 */
-    display: none;                        /* 要素を非表示 */
-    padding: 2px;                         /* テキストの前後の余白 */
-    background-color: rgba(229, 229, 248, 0.5);       /* 背景色（透明度） */
-    width:100px;                          /* 吹き出し全体の幅 */
-    left : -10%;                           /* 表示位置 */
-    top : 100%;                           /* 表示位置 */
-    margin-top : 12px;                    /* 表示位置 */
-    font-size: 40%;                       /* 文字サイズ */
-  }
+.balloon {
+    position: absolute; /* 親要素を基準 */
+    display: none; /* 要素を非表示 */
+    padding: 2px; /* テキストの前後の余白 */
+    background-color: rgba(229, 229, 248, 0.5); /* 背景色（透明度） */
+    width: 100px; /* 吹き出し全体の幅 */
+    left: -10%; /* 表示位置 */
+    top: 100%; /* 表示位置 */
+    margin-top: 12px; /* 表示位置 */
+    font-size: 40%; /* 文字サイズ */
+}
 
-  .balloon:after{
+.balloon:after {
     border-bottom: 12px solid rgba(229, 229, 248, 0.5); /* 吹き出し口の高さ・色 */
-    border-left: 10px solid transparent;    /* 吹き出し口の幅１／２ */
-    border-right: 10px solid transparent;   /* 吹き出し口の幅１／２ */
-    top: -12px;                             /* 吹き出し口の位置調整 */
-    left : 0%;                              /* 吹き出し口の横位置 */
-    content: "";                       /* コンテンツの挿入 */
-    position: absolute;                /* 親要素を基準 */
-  }
+    border-left: 10px solid transparent; /* 吹き出し口の幅１／２ */
+    border-right: 10px solid transparent; /* 吹き出し口の幅１／２ */
+    top: -12px; /* 吹き出し口の位置調整 */
+    left: 0%; /* 吹き出し口の横位置 */
+    content: ""; /* コンテンツの挿入 */
+    position: absolute; /* 親要素を基準 */
+}
+
+.title_label {
+    margin: 5px 0 0 10px;
+    font-size: 20px;
+}
+
+.top-title {
+    margin: 10px 0 10px 0;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.top-title-explain {
+    margin: 10px 0 10px 0;
+    font-size: 20px;
+}
+
+.container {
+    margin: auto;
+}
+
+.menu {
+    margin-top: 40px;
+    margin-bottom: 100px;
+    padding: 0;
+    color: #5a5d5f;
+}
+
+.text-date {
+    display: block;
+    padding-left: 10px;
+    text-align: left;
+    font-size: 15px;
+}
+
+.text-price {
+    text-align: left;
+    padding-left: 10px;
+    font-size: 15px;
+}
+
+.menu-card-inner {
+    border-left: solid 6px #5bb7ae;
+    box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.33);
+    padding: 3px;
+    border-radius: 7px;
+    border-color: black;
+    padding-bottom: 1px;
+    background-color: #f3f8f8;
+    width:200px;
+    margin:5px;
+}
+
+.menu-title {
+    margin: 1px 0 2px 0;
+    font-size: 15px;
+    text-align: left;
+    padding: 0 10px 0 10px;
+    width: 170px;
+}
+
+.menu-text {
+    text-align: left;
+    font-size: 15px;
+    padding: 0 10px 0 10px;
+}
+
+.menu-card-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 1px;
+}
+
+.menu-card {
+    width: 100%;
+}
+
+@media screen and (min-width: 768px) {
+    .top-title {
+        margin: 10px 0 10px 50px;
+    }
+
+    .top-title-explain {
+        margin: 10px 0 10px 50px;
+    }
+
+    .menu-card-wrapper {
+        margin-top: 1px;
+    }
+
+    .menu-card {
+        width: 100%;
+        margin: 5px 0 10px 0;
+    }
+
+    .menu-card-inner {
+        height: 130px;
+    }
+}
+
+@media screen and (min-width: 1025px) {
+    .top-title {
+        margin: 10px 0 10px 50px;
+        font-size: 30px;
+    }
+
+    .menu-card-wrapper {
+        margin-top: 5px;
+    }
+
+    .menu-card {
+        width: 20%;
+        margin: -20px 0 10px 0;
+    }
+}
+
+
+

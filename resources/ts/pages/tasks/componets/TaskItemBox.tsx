@@ -10,17 +10,12 @@ type Props = {
     compliteCss: string
     handleSearchWord: any
 }
-const TaskItem: React.VFC<Props> = ({ task, compliteCss, handleSearchWord }) => {
+const TaskItemBox: React.VFC<Props> = ({ task, compliteCss, handleSearchWord }) => {
     const childRef = useRef<ChildHandles>(null);
-
     const updateDoneTask = useUpdateDoneTask()
-
     const updateTask = useUpdateTask();
-
     const deleteTask = useDeleteTask()
-
     const [editTitle, setEditTitle] = useState<string | undefined>(undefined)
-
     const [editTerm, setEditTerm] = useState<any>(undefined)
 
     const handleToggleEdit = () => {
@@ -134,27 +129,59 @@ const TaskItem: React.VFC<Props> = ({ task, compliteCss, handleSearchWord }) => 
     }
 
     const itemText = () => {
+        let is_done: boolean;
+        task.is_done ? is_done = true : is_done = false;
         return (
             <>
-                <div>
-                    <span onClick={handleToggleEdit} className={`list-title ${compliteCss}`} style={{ color: todayColor() }}>{task.title}</span>
-                    {task.term && (
-                        <span onClick={handleToggleEdit} style={{ color: todayColor(), whiteSpace: 'nowrap' }}>
-                            {shortDate(task.term)}({getWeek(task.term)})
-                        </span>
-                    )}
+                <div className="menu-title">
+                    <input
+                        type="checkbox"
+                        checked={is_done}
+                        onChange={() => updateDone()}
+                    />
+                    <a
+                        style={{ marginRight: "5px", textDecoration: "none" }}
+                        href={`/detail?id=${task.id}`} target="_blank">
+                        <span style={{ color: todayColor() }}>{task.title}</span>
+                    </a>
+                </div>
+                <div className="menu-text">期限:{task.term}({getWeek(task.term)})</div>
+                <div className="menu-text">
+                    完了:
+                    {task.finishday ? `${task.finishday}(${getWeek(task.finishday)})` : "未完了"}
+                </div>
+                <ModalNew title={task.title} body={task.body} link={task.link} term={task.term}  {...{}} ref={childRef} />
+            </>
+        )
+    }
+    const openModal = () => {
+        childRef.current?.openModalFunc();
+    };
+
+    const backGroundColor = (done: boolean, date: Date) => {
+        if (done) {
+            return "#faf5a6"
+        }
+    }
+    return (
+        <>
+            <div
+                className="menu-card-inner"
+                style={{ backgroundColor: backGroundColor(task.is_done, task.term) }}
+            >
+                {editTitle === undefined ? itemText() : itemInput()}
+                <div className="menu-text">
                     <span
                         className="balloonoya"
                         style={{ cursor: "pointer", marginRight: "5px" }}
-                        onClick={() => window.scroll({ top: 0, behavior: 'smooth' })}
-                    >☝
-                        <span className="balloon">ページのトップへ</span>
+                        onClick={() => searchTitle(task.title)}>🔎
+                        <span className="balloon" style={{ fontSize: "10px" }}>タイトルで検索</span>
                     </span>
                     <span
                         className="balloonoya"
                         style={{ cursor: "pointer", marginRight: "5px" }}
                         onClick={() => updateImportant()}>🔥
-                        <span className="balloon">
+                        <span className="balloon" style={{ fontSize: "10px" }}>
                             {task.title.includes("🔥") ? "重要マークを除去" : "重要マークを付ける"}
                         </span>
                     </span>
@@ -162,73 +189,39 @@ const TaskItem: React.VFC<Props> = ({ task, compliteCss, handleSearchWord }) => 
                         className="balloonoya"
                         style={{ cursor: "pointer", marginRight: "5px" }}
                         onClick={() => copyToClipboard()}>📋
-                        <span className="balloon">タイトルをコピー</span>
+                        <span className="balloon" style={{ fontSize: "10px" }}>タイトルをコピー</span>
                     </span>
-                    <span
-                        className="balloonoya"
-                        style={{ cursor: "pointer", marginRight: "5px" }}
-                        onClick={() => searchTitle(task.title)}>🔎
-                        <span className="balloon">タイトルで検索</span>
-                    </span>
-                    <a
-                        className="balloonoya"
-                        style={{ marginRight: "5px", textDecoration: "none" }}
-                        href={`/detail?id=${task.id}`} target="_blank">📖
-                        <span className="balloon">詳細へ</span>
-                    </a>
-                    {task.link && (
-                        <a
-                            className="balloonoya"
-                            href={task.link}
-                            style={{ textDecoration: "none" }}
-                            target="_blank">📎
-                            <span className="balloon">リンク</span>
-                        </a>
-                    )}
-                </div>
-                <ModalNew title={task.title} body={task.body} link={task.link} term={task.term}  {...{}} ref={childRef} />
-                <button onClick={openModal} className="btn-sticky mr-2">
-                    <span className="balloonoya">
-                        ☸
-                        <span className="balloon" style={{ fontSize: "10px" }}>データコピー新規</span>
-                    </span>
-                </button>
-                <button
-                    onClick={
-                        () => {
-                            if (task.title == "入力用") {
-                                toast.error("入力用 は削除できません")
-                                return
-                            }
-                            if (window.confirm("本当に削除しますか？")) {
-                                deleteTask.mutate(task.id)
+                    <ModalNew title={task.title} body={task.body} link={task.link} term={task.term}  {...{}} ref={childRef} />
+                    <button
+                        onClick={openModal}
+                        style={{ height: "25px", width: "30px" }}
+                        className="ml-1">
+                        <span className="balloonoya">
+                            ☸
+                            <span className="balloon" style={{ fontSize: "10px" }}>データコピー新規</span>
+                        </span>
+                    </button>
+                    <button
+                        style={{ height: "25px", width: "30px", fontSize: "12px" }}
+                        className="ml-2"
+                        onClick={
+                            () => {
+                                if (task.title == "入力用") {
+                                    toast.error("入力用 は削除できません")
+                                    return
+                                }
+                                if (window.confirm("本当に削除しますか？")) {
+                                    deleteTask.mutate(task.id)
+                                }
                             }
                         }
-                    }
-                >
-                    🗑️
-                </button>
-            </>
-        )
-    }
-    const openModal = () => {
-        childRef.current?.openModalFunc();
-    };
-    return (
-        <li className={task.is_done ? 'done' : ''}>
-            <div>
-                <li>
-                    <label className="checkbox-label">
-                        <input
-                            type="checkbox"
-                            className="checkbox-input"
-                            onClick={updateDone} />
-                    </label>
-                    {editTitle === undefined ? itemText() : itemInput()}
-                </li>
-            </div>
-        </li>
+                    >
+                        🗑️
+                    </button>
+                </div>
+            </div >
+        </>
     );
 }
 
-export default TaskItem
+export default TaskItemBox

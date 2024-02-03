@@ -1,10 +1,9 @@
 import React, { useState, useRef } from 'react'
 import { useTasks } from '../../../queries/TaskQuery'
-import TaskItem from './TaskItem'
+import TaskItemTest from './TaskItemBox'
 import { Task } from '../../../types/Task'
 import { getToday } from '../../../functions/dateSet'
 import { toast } from 'react-toastify'
-import ModalForm from './ModalForm'
 import { ModalNew, ChildHandles } from "./ModalNew";
 import SearchForm from './SearchForm'
 
@@ -17,11 +16,6 @@ const TaskList = () => {
     const [searchTitle, setSearchTitle] = useState<string>("")
     const [compliteCssDis, setCompliteCssDis] = useState<string>("linethrough");
     const childRef = useRef<ChildHandles>(null);
-
-    const search = (title: string): void => {
-        setSearchTitle(title)
-        setCompliteCssDis("")
-    }
 
     const changeMode = () => {
         if (condition) {
@@ -100,10 +94,7 @@ const TaskList = () => {
             toast.error("検索に失敗しました")
         }
         window.scroll({ top: 0, behavior: 'smooth' })
-
-
     };
-
     return (
         <>
             <SearchForm handleSearchWord={handleSearchWord} />
@@ -113,14 +104,12 @@ const TaskList = () => {
             <ModalNew title="" body="" link="" term=""  {...{}} ref={childRef} />
             <button className="searchButton" style={{ marginTop: '10px' }} onClick={openModal}>新規</button>
             <div className="inner">
-                {(tasks_array.length == 0 && status === 'success') && (
-                    <div>対象はありません</div>
-                )}
-                <ul className="task-list">
+                <div style={{ margin: '20px 0 0 30px' }}></div>
+                <div className="menu-card-wrapper">
                     {tasks_array.map(task => (
-                        <TaskItem key={task.id} task={task} compliteCss={compliteCssDis} handleSearchWord={handleSearchWord} />
+                        <TaskItemTest key={task.id} task={task} compliteCss={compliteCssDis} handleSearchWord={handleSearchWord} />
                     ))}
-                </ul>
+                </div>
             </div>
         </>
     )

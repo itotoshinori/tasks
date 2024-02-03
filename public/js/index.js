@@ -3364,15 +3364,17 @@ var TaskItemBox = function TaskItemBox(_ref) {
     var _a;
     (_a = childRef.current) === null || _a === void 0 ? void 0 : _a.openModalFunc();
   };
-  var backGroundColor = function backGroundColor(done, date) {
+  var backGroundColor = function backGroundColor(done) {
     if (done) {
       return "#faf5a6";
+    } else if (String(task.term) == (0, dateSet_1.getToday)()) {
+      return "#c1fff3";
     }
   };
   return react_1["default"].createElement(react_1["default"].Fragment, null, react_1["default"].createElement("div", {
     className: "menu-card-inner",
     style: {
-      backgroundColor: backGroundColor(task.is_done, task.term)
+      backgroundColor: backGroundColor(task.is_done)
     }
   }, editTitle === undefined ? itemText() : itemInput(), react_1["default"].createElement("div", {
     className: "menu-text"

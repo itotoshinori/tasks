@@ -158,16 +158,18 @@ const TaskItemBox: React.VFC<Props> = ({ task, compliteCss, handleSearchWord }) 
         childRef.current?.openModalFunc();
     };
 
-    const backGroundColor = (done: boolean, date: Date) => {
+    const backGroundColor = (done: boolean) => {
         if (done) {
             return "#faf5a6"
+        } else if (String(task.term) == getToday()) {
+            return "#c1fff3"
         }
     }
     return (
         <>
             <div
                 className="menu-card-inner"
-                style={{ backgroundColor: backGroundColor(task.is_done, task.term) }}
+                style={{ backgroundColor: backGroundColor(task.is_done) }}
             >
                 {editTitle === undefined ? itemText() : itemInput()}
                 <div className="menu-text">

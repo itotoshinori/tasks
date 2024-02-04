@@ -162,7 +162,7 @@ const TaskItemBox: React.VFC<Props> = ({ task, compliteCss, handleSearchWord }) 
         if (done) {
             return "#faf5a6"
         } else if (task.title.includes("🔥")) {
-            return "#FFDDAA"
+            return "#A9E688"
         } else if (String(task.term) == getToday()) {
             return "#c1fff3"
         }

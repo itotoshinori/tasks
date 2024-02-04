@@ -187,7 +187,7 @@ const TaskItem: React.VFC<Props> = ({ task, compliteCss, handleSearchWord }) => 
                     )}
                 </div>
                 <ModalNew title={task.title} body={task.body} link={task.link} term={task.term}  {...{}} ref={childRef} />
-                <button onClick={openModal} className="btn-sticky mr-2">
+                <button onClick={openModal}>
                     <span className="balloonoya">
                         ☸
                         <span className="balloon" style={{ fontSize: "10px" }}>データコピー新規</span>

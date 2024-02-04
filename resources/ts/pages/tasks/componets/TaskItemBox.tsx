@@ -203,8 +203,8 @@ const TaskItemBox: React.VFC<Props> = ({ task, compliteCss, handleSearchWord }) 
                     <ModalNew title={task.title} body={task.body} link={task.link} term={task.term}  {...{}} ref={childRef} />
                     <button
                         onClick={openModal}
-                        style={{ height: "25px", width: "30px" }}
-                        className="ml-1">
+                        style={{ height: "25px", width: "30px", marginRight: "2px" }}
+                    >
                         <span className="balloonoya">
                             ☸
                             <span className="balloon" style={{ fontSize: "10px" }}>データコピー新規</span>
@@ -212,7 +212,6 @@ const TaskItemBox: React.VFC<Props> = ({ task, compliteCss, handleSearchWord }) 
                     </button>
                     <button
                         style={{ height: "25px", width: "30px", fontSize: "12px" }}
-                        className="ml-2"
                         onClick={
                             () => {
                                 if (task.title == "入力用") {

@@ -3727,7 +3727,7 @@ var TaskList = function TaskList() {
     style: {
       margin: '20px 0 0 30px'
     }
-  }), react_1["default"].createElement("div", {
+  }), tasks_array.length == 0 && react_1["default"].createElement("h3", null, "\u5BFE\u8C61\u306F\u3042\u308A\u307E\u305B\u3093"), react_1["default"].createElement("div", {
     className: "menu-card-wrapper"
   }, tasks_array.map(function (task) {
     return react_1["default"].createElement(TaskItemBox_1["default"], {

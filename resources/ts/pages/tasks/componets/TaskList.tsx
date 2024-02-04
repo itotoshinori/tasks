@@ -105,11 +105,13 @@ const TaskList = () => {
             <button className="searchButton" style={{ marginTop: '10px' }} onClick={openModal}>新規</button>
             <div className="inner">
                 <div style={{ margin: '20px 0 0 30px' }}></div>
+                {tasks_array.length == 0 && (<h3>対象はありません</h3>)}
                 <div className="menu-card-wrapper">
                     {tasks_array.map(task => (
                         <TaskItemTest key={task.id} task={task} compliteCss={compliteCssDis} handleSearchWord={handleSearchWord} />
                     ))}
                 </div>
+
             </div>
         </>
     )

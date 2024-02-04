@@ -525,13 +525,12 @@ ul.tag-list {
 }
 
 .menu-card-inner {
-    border-left: solid 6px #5bb7ae;
-    box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.33);
-    padding: 5px;
-    border-radius: 7px;
-    border-color: black;
-    background-color: whitesmoke;
-    width:300px;
+    padding: 0.5em 1em;
+    margin: 2em 0;
+    color: #232323;
+    background: #fff8e8;
+    border-left: solid 10px #ffc06e;
+    width:100%;
     margin:5px;
 }
 
@@ -555,13 +554,17 @@ ul.tag-list {
     margin-top: 1px;
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 400px) {
     .top-title {
         margin: 10px 0 10px 50px;
     }
 
     .top-title-explain {
         margin: 10px 0 10px 50px;
+    }
+
+    .menu-card-inner {
+        width:45%;
     }
 
     .menu-card-wrapper {
@@ -581,7 +584,7 @@ ul.tag-list {
 
     .menu-card-inner {
         width:300px;
-        margin:2px;
+        margin:7px;
     }
 }
 

@@ -243,11 +243,22 @@ const TaskItemBox: React.VFC<Props> = ({ task, compliteCss, handleSearchWord }) 
             return "#c1fff3"
         }
     }
+
+    const borderLeft = (done: boolean) => {
+        if (task.title.includes("🔥")) {
+            return "red"
+        } else if (String(task.term) == getToday()) {
+            return "blue"
+        }
+    }
     return (
         <>
             <div
                 className="menu-card-inner"
-                style={{ backgroundColor: backGroundColor(task.is_done) }}
+                style={{
+                    backgroundColor: backGroundColor(task.is_done),
+                    borderLeft: `solid 10px ${borderLeft(task.is_done)}`
+                }}
             >
                 {editTitle === undefined ? itemText() : itemInput()}
             </div >

@@ -108,7 +108,7 @@ const TaskItemBox: React.VFC<Props> = ({ task, compliteCss, handleSearchWord }) 
         return (
             <>
                 <form style={{ alignItems: 'center' }}>
-
+                    <div style={{ fontSize: '12px' }}>タイトル</div>
                     <input
                         type="text"
                         className="input_short"
@@ -117,15 +117,15 @@ const TaskItemBox: React.VFC<Props> = ({ task, compliteCss, handleSearchWord }) 
                         onChange={handleInputTitleChange}
                         onKeyDown={handleOnKey}
                     />
+                    <div style={{ marginTop: '4px', fontSize: '12px' }}>期限</div>
                     <input
                         type="date"
                         className="input_short"
-                        style={{ marginTop: '20px' }}
                         defaultValue={task.term ? formatDate(task.term) : ''}
                         onChange={handleInputTermChange}
                         onKeyDown={handleOnKey}
                     />
-                    <p>
+                    <div style={{ marginTop: '2px' }}>
                         <button
                             style={{ height: "25px", width: "50px", fontSize: "12px", marginRight: "5px" }}
                             onClick={handleUpdate}>
@@ -136,8 +136,8 @@ const TaskItemBox: React.VFC<Props> = ({ task, compliteCss, handleSearchWord }) 
                             onClick={() => setEditTitle(undefined)}>
                             Close
                         </button>
-                    </p>
-                </form>
+                    </div>
+                </form >
             </>
         )
     }

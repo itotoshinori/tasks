@@ -3307,23 +3307,33 @@ var TaskItemBox = function TaskItemBox(_ref) {
       style: {
         alignItems: 'center'
       }
-    }, react_1["default"].createElement("input", {
+    }, react_1["default"].createElement("div", {
+      style: {
+        fontSize: '12px'
+      }
+    }, "\u30BF\u30A4\u30C8\u30EB"), react_1["default"].createElement("input", {
       type: "text",
       className: "input_short",
       autoFocus: true,
       defaultValue: task.title,
       onChange: handleInputTitleChange,
       onKeyDown: handleOnKey
-    }), react_1["default"].createElement("input", {
+    }), react_1["default"].createElement("div", {
+      style: {
+        marginTop: '4px',
+        fontSize: '12px'
+      }
+    }, "\u671F\u9650"), react_1["default"].createElement("input", {
       type: "date",
       className: "input_short",
-      style: {
-        marginTop: '20px'
-      },
       defaultValue: task.term ? (0, dateSet_1.formatDate)(task.term) : '',
       onChange: handleInputTermChange,
       onKeyDown: handleOnKey
-    }), react_1["default"].createElement("p", null, react_1["default"].createElement("button", {
+    }), react_1["default"].createElement("div", {
+      style: {
+        marginTop: '2px'
+      }
+    }, react_1["default"].createElement("button", {
       style: {
         height: "25px",
         width: "50px",

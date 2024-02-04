@@ -532,7 +532,7 @@ ul.tag-list {
     border-color: black;
     padding-bottom: 1px;
     background-color: whitesmoke;
-    width:500px;
+    width:300px;
     margin:5px;
 }
 
@@ -556,10 +556,6 @@ ul.tag-list {
     margin-top: 1px;
 }
 
-.menu-card {
-    width: 100%;
-}
-
 @media screen and (min-width: 768px) {
     .top-title {
         margin: 10px 0 10px 50px;
@@ -571,15 +567,6 @@ ul.tag-list {
 
     .menu-card-wrapper {
         margin-top: 1px;
-    }
-
-    .menu-card {
-        width: 100%;
-        margin: 5px 0 10px 0;
-    }
-    .menu-card-inner {
-        width:200px;
-        margin:2px;
     }
 }
 
@@ -593,9 +580,9 @@ ul.tag-list {
         margin-top: 5px;
     }
 
-    .menu-card {
-        width: 20%;
-        margin: -20px 0 10px 0;
+    .menu-card-inner {
+        width:210px;
+        margin:2px;
     }
 }
 

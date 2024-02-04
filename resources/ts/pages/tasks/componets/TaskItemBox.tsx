@@ -89,8 +89,8 @@ const TaskItemBox: React.VFC<Props> = ({ task, compliteCss, handleSearchWord }) 
     }
 
     const updateImportant = () => {
-        if (task.title.length >= 30) {
-            toast.error('タイトルは30文字未満でお願いします')
+        if (task.title.length >= 20) {
+            toast.error('タイトルは20文字未満でお願いします')
             return
         }
         task.title.includes("🔥") ? task.title = task.title.replace("🔥", "") : task.title = "🔥" + task.title
@@ -170,18 +170,18 @@ const TaskItemBox: React.VFC<Props> = ({ task, compliteCss, handleSearchWord }) 
                 <div className="menu-text">
                     <span
                         onClick={handleToggleEdit}
-                        style={{ cursor: "pointer", marginRight: "3px" }}
+                        style={{ cursor: "pointer", marginRight: "2px" }}
                     >
                         ✎</span>
                     <span
                         className="balloonoya"
-                        style={{ cursor: "pointer", marginRight: "3px" }}
+                        style={{ cursor: "pointer", marginRight: "2px" }}
                         onClick={() => searchTitle(task.title)}>🔎
                         <span className="balloon" style={{ fontSize: "10px" }}>タイトルで検索</span>
                     </span>
                     <span
                         className="balloonoya"
-                        style={{ cursor: "pointer", marginRight: "3px" }}
+                        style={{ cursor: "pointer", marginRight: "2px" }}
                         onClick={() => updateImportant()}>🔥
                         <span className="balloon" style={{ fontSize: "10px" }}>
                             {task.title.includes("🔥") ? "重要マークを除去" : "重要マークを付ける"}
@@ -189,9 +189,16 @@ const TaskItemBox: React.VFC<Props> = ({ task, compliteCss, handleSearchWord }) 
                     </span>
                     <span
                         className="balloonoya"
-                        style={{ cursor: "pointer", marginRight: "3px" }}
+                        style={{ cursor: "pointer", marginRight: "2px" }}
                         onClick={() => copyToClipboard()}>📋
                         <span className="balloon" style={{ fontSize: "10px" }}>タイトルをコピー</span>
+                    </span>
+                    <span
+                        className="balloonoya"
+                        style={{ cursor: "pointer", marginRight: "2px" }}
+                        onClick={() => window.scroll({ top: 0, behavior: 'smooth' })}
+                    >☝
+                        <span className="balloon" style={{ fontSize: "10px" }}>ページのトップへ</span>
                     </span>
                     <ModalNew title={task.title} body={task.body} link={task.link} term={task.term}  {...{}} ref={childRef} />
                     <button

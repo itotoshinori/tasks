@@ -245,10 +245,10 @@ const TaskItemBox: React.VFC<Props> = ({ task, compliteCss, handleSearchWord }) 
     }
 
     const borderLeft = () => {
-        if (task.title.includes("🔥")) {
-            return "red"
-        } else if (String(task.term) == getToday()) {
+        if (String(task.term) == getToday()) {
             return "blue"
+        } else if (task.title.includes("🔥")) {
+            return "red"
         }
     }
     return (

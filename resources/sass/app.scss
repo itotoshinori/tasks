@@ -13,7 +13,7 @@ html {
 }
 
 .inner {
-    max-width: 80%;
+    max-width: 95%;
     margin: 30px auto 0 auto;
 }
 
@@ -28,7 +28,7 @@ html {
     border-radius: 7px;
 
     &:focus {
-        background: #f9f9f0;
+        background: #f9fFf0;
     }
 }
 
@@ -532,7 +532,7 @@ ul.tag-list {
     border-color: black;
     padding-bottom: 1px;
     background-color: whitesmoke;
-    width:200px;
+    width:500px;
     margin:5px;
 }
 
@@ -577,9 +577,9 @@ ul.tag-list {
         width: 100%;
         margin: 5px 0 10px 0;
     }
-
     .menu-card-inner {
-        height: 130px;
+        width:200px;
+        margin:2px;
     }
 }
 

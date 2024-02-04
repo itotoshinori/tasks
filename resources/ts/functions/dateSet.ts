@@ -1,4 +1,3 @@
-import React from 'react';
 export const getWeek = (timestamp: Date | null): string | null => {
     let dayOfWeekStr: string | null
     if (timestamp) {
@@ -21,7 +20,7 @@ export const formatDate = (date: Date) => {
 export const shortDate = (date: Date | null) => {
     if (date) {
         date = new Date(date);
-        return date.toISOString().split('T')[0].slice(5, 10).replace('-', '/');
+        return date.toISOString().split('T')[0].slice(2, 10).replace('-', '/').replace('-', '/');
     }
     return '';
 };

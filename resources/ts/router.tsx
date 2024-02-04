@@ -54,8 +54,6 @@ const Router = () => {
         <li><a href="/">タスク</a></li>
         <li onClick={() => logout.mutate()} style={{ cursor: 'pointer' }}>ログアウト</li>
         <li><Link to="/help">Help</Link></li>
-        <li><Link to="/testpage">テスト</Link></li>
-        <li><Link to="/testpage2">テスト2</Link></li>
       </ul>
     </header>
   )

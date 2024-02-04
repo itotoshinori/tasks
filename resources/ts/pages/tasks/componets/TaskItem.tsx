@@ -114,12 +114,12 @@ const TaskItem: React.VFC<Props> = ({ task, compliteCss, handleSearchWord }) => 
                 <form style={{ display: 'flex', alignItems: 'center' }}>
                     <input
                         type="text"
-                        className="input"
+                        className="input_short"
                         autoFocus
                         defaultValue={task.title}
                         onChange={handleInputTitleChange}
                         onKeyDown={handleOnKey}
-                    />
+                    /><br />
                     <input
                         type="date"
                         className="input"

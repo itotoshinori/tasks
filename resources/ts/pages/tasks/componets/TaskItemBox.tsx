@@ -99,6 +99,7 @@ const TaskItemBox: React.VFC<Props> = ({ task, compliteCss, handleSearchWord }) 
             task: task
         });
     }
+
     const searchTitle = (value: string) => {
         handleSearchWord(value)
     }
@@ -106,10 +107,11 @@ const TaskItemBox: React.VFC<Props> = ({ task, compliteCss, handleSearchWord }) 
     const itemInput = () => {
         return (
             <>
-                <form style={{ display: 'flex', alignItems: 'center' }}>
+                <form style={{ alignItems: 'center' }}>
+
                     <input
                         type="text"
-                        className="input"
+                        className="input_short"
                         autoFocus
                         defaultValue={task.title}
                         onChange={handleInputTitleChange}
@@ -117,12 +119,24 @@ const TaskItemBox: React.VFC<Props> = ({ task, compliteCss, handleSearchWord }) 
                     />
                     <input
                         type="date"
-                        className="input"
+                        className="input_short"
+                        style={{ marginTop: '20px' }}
                         defaultValue={task.term ? formatDate(task.term) : ''}
                         onChange={handleInputTermChange}
                         onKeyDown={handleOnKey}
                     />
-                    <button className="btn" onClick={handleUpdate}>更新</button>
+                    <p>
+                        <button
+                            style={{ height: "25px", width: "50px", fontSize: "12px", marginRight: "5px" }}
+                            onClick={handleUpdate}>
+                            更新
+                        </button>
+                        <button
+                            style={{ height: "25px", width: "50px", fontSize: "12px" }}
+                            onClick={() => setEditTitle(undefined)}>
+                            Close
+                        </button>
+                    </p>
                 </form>
             </>
         )
@@ -145,45 +159,29 @@ const TaskItemBox: React.VFC<Props> = ({ task, compliteCss, handleSearchWord }) 
                         <span style={{ color: todayColor() }}>{task.title}</span>
                     </a>
                 </div>
-                <div className="menu-text">期限:{task.term}({getWeek(task.term)})</div>
+                <div className="menu-text">
+                    期限:{shortDate(task.term)}({getWeek(task.term)})
+                </div>
                 <div className="menu-text">
                     完了:
-                    {task.finishday ? `${task.finishday}(${getWeek(task.finishday)})` : "未完了"}
+                    {task.finishday ? `${shortDate(task.finishday)}(${getWeek(task.finishday)})` : "未完了"}
                 </div>
                 <ModalNew title={task.title} body={task.body} link={task.link} term={task.term}  {...{}} ref={childRef} />
-            </>
-        )
-    }
-    const openModal = () => {
-        childRef.current?.openModalFunc();
-    };
-
-    const backGroundColor = (done: boolean) => {
-        if (done) {
-            return "#faf5a6"
-        } else if (task.title.includes("🔥")) {
-            return "#A9E688"
-        } else if (String(task.term) == getToday()) {
-            return "#c1fff3"
-        }
-    }
-    return (
-        <>
-            <div
-                className="menu-card-inner"
-                style={{ backgroundColor: backGroundColor(task.is_done) }}
-            >
-                {editTitle === undefined ? itemText() : itemInput()}
                 <div className="menu-text">
                     <span
+                        onClick={handleToggleEdit}
+                        style={{ cursor: "pointer", marginRight: "3px" }}
+                    >
+                        ✎</span>
+                    <span
                         className="balloonoya"
-                        style={{ cursor: "pointer", marginRight: "5px" }}
+                        style={{ cursor: "pointer", marginRight: "3px" }}
                         onClick={() => searchTitle(task.title)}>🔎
                         <span className="balloon" style={{ fontSize: "10px" }}>タイトルで検索</span>
                     </span>
                     <span
                         className="balloonoya"
-                        style={{ cursor: "pointer", marginRight: "5px" }}
+                        style={{ cursor: "pointer", marginRight: "3px" }}
                         onClick={() => updateImportant()}>🔥
                         <span className="balloon" style={{ fontSize: "10px" }}>
                             {task.title.includes("🔥") ? "重要マークを除去" : "重要マークを付ける"}
@@ -191,7 +189,7 @@ const TaskItemBox: React.VFC<Props> = ({ task, compliteCss, handleSearchWord }) 
                     </span>
                     <span
                         className="balloonoya"
-                        style={{ cursor: "pointer", marginRight: "5px" }}
+                        style={{ cursor: "pointer", marginRight: "3px" }}
                         onClick={() => copyToClipboard()}>📋
                         <span className="balloon" style={{ fontSize: "10px" }}>タイトルをコピー</span>
                     </span>
@@ -223,6 +221,29 @@ const TaskItemBox: React.VFC<Props> = ({ task, compliteCss, handleSearchWord }) 
                         🗑️
                     </button>
                 </div>
+            </>
+        )
+    }
+    const openModal = () => {
+        childRef.current?.openModalFunc();
+    };
+
+    const backGroundColor = (done: boolean) => {
+        if (done) {
+            return "#faf5a6"
+        } else if (task.title.includes("🔥")) {
+            return "#A9E688"
+        } else if (String(task.term) == getToday()) {
+            return "#c1fff3"
+        }
+    }
+    return (
+        <>
+            <div
+                className="menu-card-inner"
+                style={{ backgroundColor: backGroundColor(task.is_done) }}
+            >
+                {editTitle === undefined ? itemText() : itemInput()}
             </div >
         </>
     );

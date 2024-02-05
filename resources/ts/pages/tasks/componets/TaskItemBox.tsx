@@ -156,7 +156,7 @@ const TaskItemBox: React.VFC<Props> = ({ task, compliteCss, handleSearchWord }) 
                     <a
                         style={{ marginRight: "5px", textDecoration: "none" }}
                         href={`/detail?id=${task.id}`} target="_blank">
-                        <span style={{ color: todayColor() }}>{task.title}</span>
+                        <span style={{ color: "blue" }}>{task.title}</span>
                     </a>
                 </div>
                 <div className="menu-text">
@@ -237,8 +237,6 @@ const TaskItemBox: React.VFC<Props> = ({ task, compliteCss, handleSearchWord }) 
     const backGroundColor = (done: boolean) => {
         if (done) {
             return "#faf5a6"
-        } else if (task.title.includes("🔥")) {
-            return "#A9E688"
         } else if (String(task.term) == getToday()) {
             return "#c1fff3"
         }

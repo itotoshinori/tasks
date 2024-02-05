@@ -169,10 +169,13 @@ const TaskItemBox: React.VFC<Props> = ({ task, compliteCss, handleSearchWord }) 
                 <ModalNew title={task.title} body={task.body} link={task.link} term={task.term}  {...{}} ref={childRef} />
                 <div className="menu-text">
                     <span
+                        className="balloonoya"
                         onClick={handleToggleEdit}
                         style={{ cursor: "pointer", marginRight: "5px" }}
                     >
-                        ✎</span>
+                        ✎
+                        <span className="balloon" style={{ fontSize: "10px" }}>簡易編集</span>
+                    </span>
                     <span
                         className="balloonoya"
                         style={{ cursor: "pointer", marginRight: "5px" }}

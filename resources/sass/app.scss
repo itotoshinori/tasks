@@ -466,12 +466,13 @@ ul.tag-list {
     position: absolute; /* 親要素を基準 */
     display: none; /* 要素を非表示 */
     padding: 2px; /* テキストの前後の余白 */
-    background-color: rgba(229, 229, 248, 0.5); /* 背景色（透明度） */
+    background-color: rgba(5, 19, 84, 0.5); /* 背景色（透明度） */
     width: 100px; /* 吹き出し全体の幅 */
     left: -10%; /* 表示位置 */
     top: 100%; /* 表示位置 */
     margin-top: 12px; /* 表示位置 */
     font-size: 40%; /* 文字サイズ */
+    color:whitesmoke;
 }
 
 .balloon:after {
@@ -544,6 +545,7 @@ ul.tag-list {
 .menu-text {
     text-align: left;
     font-size: 15px;
+
 }
 
 .menu-card-wrapper {

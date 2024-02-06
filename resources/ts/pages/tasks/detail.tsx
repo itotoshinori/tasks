@@ -155,8 +155,10 @@ export const DetailPage: React.VFC = () => {
     }
     return (
         <>
-            <div className="login-page">
-                <div className="login-panel">
+            <div className="space_box">
+            </div>
+            <div className="middle-display-page">
+                <div className="middle-display-panel">
                     {editMode ? itemInput() : itemText()}
                 </div>
             </div>

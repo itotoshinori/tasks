@@ -28,13 +28,13 @@ const SearchForm = (props: any) => {
                         value={value}
                         onChange={(e) => setValue(e.target.value)}
                     />
-                    <button className="btn-flat-simple mr-2">検索</button>
+                    <button className="btn-flat-simple mr-1">検索</button>
                     <button
-                        className="btn-flat-simple mr-2"
+                        className="btn-flat-simple mr-1"
                         onClick={() => reset()}
                     >リセット</button>
                     <button
-                        className="btn-flat-simple mr-2"
+                        className="btn-flat-simple mr-1"
                         onClick={() => disImport()}
                     >重要</button>
                 </div>

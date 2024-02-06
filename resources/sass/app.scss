@@ -28,12 +28,12 @@ html {
     border-radius: 7px;
 
     &:focus {
-        background: #f9fFf0;
+        background: #f9fff0;
     }
 }
 
 .input_short {
-    width:95%;
+    width: 95%;
     border: solid 3px #d7d2cd;
     border-radius: 2px;
 }
@@ -374,6 +374,10 @@ ul.tag-list {
     margin-top: 30px;
 }
 
+.mr-1 {
+    margin-right: 5px;
+}
+
 .mr-2 {
     margin-right: 10px;
 }
@@ -440,13 +444,13 @@ ul.tag-list {
 .btn-flat-simple {
     position: relative;
     display: inline-block;
-    font-weight: bold;
-    padding: 0.25em 0.5em;
+    padding: 2px;
     text-decoration: none;
     color: white;
     background: rgb(24, 4, 114);
     transition: 0.4s;
-    width: 80px;
+    width: 60px;
+    font-size: 12px;
 }
 
 .btn-flat-simple:hover {
@@ -472,7 +476,7 @@ ul.tag-list {
     top: 100%; /* 表示位置 */
     margin-top: 12px; /* 表示位置 */
     font-size: 40%; /* 文字サイズ */
-    color:whitesmoke;
+    color: whitesmoke;
 }
 
 .balloon:after {
@@ -531,8 +535,8 @@ ul.tag-list {
     color: #232323;
     background: #fff8e8;
     border-left: solid 10px #ffc06e;
-    width:100%;
-    margin:5px;
+    width: 100%;
+    margin: 5px;
 }
 
 .menu-title {
@@ -545,13 +549,47 @@ ul.tag-list {
 .menu-text {
     text-align: left;
     font-size: 15px;
-
 }
 
 .menu-card-wrapper {
     display: flex;
     flex-wrap: wrap;
     margin-top: 1px;
+}
+
+.space_box {
+    border: none;
+    height: 80px;
+}
+
+.middle-display-page {
+    font-size: 20px;
+    width: 95%;
+}
+
+.middle-display-panel {
+    background: #fcfaf6;
+    padding: 10px;
+    border-radius: 20px;
+    box-shadow: 2px 2px 25px #e3dfd4;
+
+    .input-group {
+        margin-bottom: 10px;
+    }
+
+    label {
+        font-size: 0.8em;
+        width: 100%;
+        display: block;
+    }
+
+    .input {
+        width: 90%;
+    }
+
+    .btn {
+        margin-top: 5px;
+    }
 }
 
 @media screen and (min-width: 400px) {
@@ -564,7 +602,7 @@ ul.tag-list {
     }
 
     .menu-card-inner {
-        width:45%;
+        width: 45%;
     }
 
     .menu-card-wrapper {
@@ -583,10 +621,11 @@ ul.tag-list {
     }
 
     .menu-card-inner {
-        width:300px;
-        margin:7px;
+        width: 300px;
+        margin: 7px;
+    }
+    .middle-display-page {
+        margin:auto;
+        width: 500px;
     }
 }
-
-
-

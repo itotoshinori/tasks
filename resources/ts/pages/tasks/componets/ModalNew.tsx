@@ -11,7 +11,7 @@ import { toast } from "react-toastify";
 
 const customStyles = {
     content: {
-        width: '80%',
+        width: '100%',
         height: '80%',
         top: '50%',
         left: '50%',
@@ -19,7 +19,8 @@ const customStyles = {
         bottom: 'auto',
         marginRight: '-50%',
         transform: 'translate(-50%, -50%)',
-        backgroundColor: '#FFFF99',
+        backgroundColor: 'opacity: 0.1',
+        border: 'none'
     },
 }
 

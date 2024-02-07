@@ -5,14 +5,13 @@ import React, {
     useState
 } from "react";
 import Modal from 'react-modal'
-import { formatDate } from "../../../functions/dateSet";
 import { useTasks, useUpdateTask } from "../../../queries/TaskQuery";
 import { Task } from "../../../types/Task";
 import { toast } from "react-toastify";
 
 const customStyles = {
     content: {
-        width: '50%',
+        width: '80%',
         height: '80%',
         top: '50%',
         left: '50%',
@@ -20,7 +19,7 @@ const customStyles = {
         bottom: 'auto',
         marginRight: '-50%',
         transform: 'translate(-50%, -50%)',
-        backgroundColor: '#FFDBDB',
+        backgroundColor: '#FFFF99',
     },
 }
 
@@ -180,9 +179,10 @@ const ChildComponent: ForwardRefRenderFunction<ChildHandles, ChildProps> = (
                 contentLabel="新規フォーム"
                 isOpen={modalIsOpen}
                 style={customStyles}
+                //className="modal_style"
                 onRequestClose={closeModal}
             >
-                <div className="login-panel">
+                <div className="modal_box">
                     <h3>新規</h3>
                     {itemInput()}
                 </div>

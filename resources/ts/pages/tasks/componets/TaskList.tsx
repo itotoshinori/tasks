@@ -111,7 +111,6 @@ const TaskList = () => {
                         <TaskItemTest key={task.id} task={task} compliteCss={compliteCssDis} handleSearchWord={handleSearchWord} />
                     ))}
                 </div>
-
             </div>
         </>
     )

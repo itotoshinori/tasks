@@ -60,8 +60,8 @@ html {
             cursor: pointer;
         }
 
-        > form,
-        > div {
+        >form,
+        >div {
             display: block;
             width: calc(100% - 120px);
         }
@@ -116,6 +116,7 @@ html {
         border: solid 3px #d7d2cd;
         margin-right: 10px;
     }
+
     .btn {
         width: 20%;
     }
@@ -208,6 +209,7 @@ html {
             text-decoration: underline;
         }
     }
+
     ul {
         list-style: none;
         display: flex;
@@ -247,19 +249,19 @@ ul.tag-list {
     margin-top: -15px;
     padding: 0;
 
-    > li {
+    >li {
         display: inline-block;
         margin-left: 5px;
         margin-bottom: 7px;
         font-size: 93%;
 
         &.active {
-            > a {
+            >a {
                 background: none;
             }
         }
 
-        > a {
+        >a {
             text-decoration: none;
             background: #fce59f;
             border: solid 3px #fce59f;
@@ -329,6 +331,7 @@ ul.tag-list {
     width: 7em;
     height: 7em;
 }
+
 .loader {
     margin: auto;
     font-size: 10px;
@@ -345,6 +348,7 @@ ul.tag-list {
     0% {
         transform: rotate(0deg);
     }
+
     100% {
         transform: rotate(360deg);
     }
@@ -426,8 +430,10 @@ ul.tag-list {
     padding: 0.25em 0.5em;
     text-decoration: none;
     color: #fff;
-    background: #03a9f4; /*色*/
-    border: solid 1px #0f9ada; /*線色*/
+    background: #03a9f4;
+    /*色*/
+    border: solid 1px #0f9ada;
+    /*線色*/
     border-radius: 4px;
     box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2);
     text-shadow: 0 1px 0 rgba(0, 0, 0, 0.2);
@@ -459,34 +465,52 @@ ul.tag-list {
 }
 
 .balloonoya {
-    position: relative; /* 指定した分だけ相対的に移動 */
+    position: relative;
+    /* 指定した分だけ相対的に移動 */
 }
 
 .balloonoya:hover .balloon {
-    display: inline; /* インライン要素として表示 */
+    display: inline;
+    /* インライン要素として表示 */
 }
 
 .balloon {
-    position: absolute; /* 親要素を基準 */
-    display: none; /* 要素を非表示 */
-    padding: 2px; /* テキストの前後の余白 */
-    background-color: rgba(5, 19, 84, 0.5); /* 背景色（透明度） */
-    width: 100px; /* 吹き出し全体の幅 */
-    left: -10%; /* 表示位置 */
-    top: 100%; /* 表示位置 */
-    margin-top: 12px; /* 表示位置 */
-    font-size: 40%; /* 文字サイズ */
+    position: absolute;
+    /* 親要素を基準 */
+    display: none;
+    /* 要素を非表示 */
+    padding: 2px;
+    /* テキストの前後の余白 */
+    background-color: rgba(5, 19, 84, 0.5);
+    /* 背景色（透明度） */
+    width: 100px;
+    /* 吹き出し全体の幅 */
+    left: -10%;
+    /* 表示位置 */
+    top: 100%;
+    /* 表示位置 */
+    margin-top: 12px;
+    /* 表示位置 */
+    font-size: 40%;
+    /* 文字サイズ */
     color: whitesmoke;
 }
 
 .balloon:after {
-    border-bottom: 12px solid rgba(229, 229, 248, 0.5); /* 吹き出し口の高さ・色 */
-    border-left: 10px solid transparent; /* 吹き出し口の幅１／２ */
-    border-right: 10px solid transparent; /* 吹き出し口の幅１／２ */
-    top: -12px; /* 吹き出し口の位置調整 */
-    left: 0%; /* 吹き出し口の横位置 */
-    content: ""; /* コンテンツの挿入 */
-    position: absolute; /* 親要素を基準 */
+    border-bottom: 12px solid rgba(229, 229, 248, 0.5);
+    /* 吹き出し口の高さ・色 */
+    border-left: 10px solid transparent;
+    /* 吹き出し口の幅１／２ */
+    border-right: 10px solid transparent;
+    /* 吹き出し口の幅１／２ */
+    top: -12px;
+    /* 吹き出し口の位置調整 */
+    left: 0%;
+    /* 吹き出し口の横位置 */
+    content: "";
+    /* コンテンツの挿入 */
+    position: absolute;
+    /* 親要素を基準 */
 }
 
 .title_label {
@@ -592,6 +616,33 @@ ul.tag-list {
     }
 }
 
+.modal_box {
+    background: #f9f6fc;
+    padding: 10px;
+    border-radius: 20px;
+    box-shadow: 2px 2px 25px #e3dfd4;
+    width:100%;
+    margin:auto;
+
+    .input-group {
+        margin-bottom: 10px;
+    }
+
+    label {
+        font-size: 0.8em;
+        width: 100%;
+        display: block;
+    }
+
+    .input {
+        width: 90%;
+    }
+
+    .btn {
+        margin-top: 5px;
+    }
+}
+
 @media screen and (min-width: 400px) {
     .top-title {
         margin: 10px 0 10px 50px;
@@ -624,8 +675,13 @@ ul.tag-list {
         width: 300px;
         margin: 7px;
     }
+
     .middle-display-page {
-        margin:auto;
+        margin: auto;
         width: 500px;
+    }
+
+    .modal_box {
+        width:50%;
     }
 }

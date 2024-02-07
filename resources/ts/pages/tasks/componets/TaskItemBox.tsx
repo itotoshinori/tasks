@@ -203,6 +203,15 @@ const TaskItemBox: React.VFC<Props> = ({ task, compliteCss, handleSearchWord }) 
                     >☝
                         <span className="balloon" style={{ fontSize: "10px" }}>ページのトップへ</span>
                     </span>
+                    {task.link && (
+                        <a
+                            className="balloonoya"
+                            href={task.link}
+                            style={{ textDecoration: "none", marginRight: "5px" }}
+                            target="_blank">📎
+                            <span className="balloon">リンク</span>
+                        </a>
+                    )}
                     <ModalNew title={task.title} body={task.body} link={task.link} term={task.term}  {...{}} ref={childRef} />
                     <button
                         onClick={openModal}

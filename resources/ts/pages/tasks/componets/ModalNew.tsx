@@ -144,6 +144,7 @@ const ChildComponent: ForwardRefRenderFunction<ChildHandles, ChildProps> = (
                         <textarea
                             className="input"
                             defaultValue={body}
+                            style={{ height: '90px' }}
                             onChange={(e) => setBody(e.target.value)}
                         />
                     </div>

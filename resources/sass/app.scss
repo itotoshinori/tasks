@@ -643,6 +643,20 @@ ul.tag-list {
     }
 }
 
+.edit_style{
+    .input {
+        width: 90%;
+    }
+    .btn_short {
+        color: white;
+        font-size: 12px;
+        margin:5px 10px 5px 0;
+        width: 70px;
+        height: 30px;
+        padding:auto;
+    }
+}
+
 @media screen and (min-width: 400px) {
     .top-title {
         margin: 10px 0 10px 50px;

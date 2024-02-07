@@ -21,7 +21,6 @@ const TaskItemBox: React.VFC<Props> = ({ task, compliteCss, handleSearchWord }) 
     const handleToggleEdit = () => {
         setEditTitle(task.title)
         setEditTerm(task.term)
-        toast.info("タイトル編集モードになりました。escで解除。")
     }
 
     const handleInputTitleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -107,11 +106,11 @@ const TaskItemBox: React.VFC<Props> = ({ task, compliteCss, handleSearchWord }) 
     const itemInput = () => {
         return (
             <>
-                <form style={{ alignItems: 'center' }}>
+                <form style={{ alignItems: 'center' }} className="edit_style">
                     <div style={{ fontSize: '12px' }}>タイトル</div>
                     <input
                         type="text"
-                        className="input_short"
+                        className="input"
                         autoFocus
                         defaultValue={task.title}
                         onChange={handleInputTitleChange}
@@ -120,19 +119,21 @@ const TaskItemBox: React.VFC<Props> = ({ task, compliteCss, handleSearchWord }) 
                     <div style={{ marginTop: '4px', fontSize: '12px' }}>期限</div>
                     <input
                         type="date"
-                        className="input_short"
+                        className="input"
                         defaultValue={task.term ? formatDate(task.term) : ''}
                         onChange={handleInputTermChange}
                         onKeyDown={handleOnKey}
                     />
                     <div style={{ marginTop: '2px' }}>
                         <button
-                            style={{ height: "25px", width: "50px", fontSize: "12px", marginRight: "5px" }}
+                            style={{ backgroundColor: "blue" }}
+                            className="btn_short"
                             onClick={handleUpdate}>
                             更新
                         </button>
                         <button
-                            style={{ height: "25px", width: "50px", fontSize: "12px" }}
+                            style={{ backgroundColor: "red" }}
+                            className="btn_short"
                             onClick={() => setEditTitle(undefined)}>
                             Close
                         </button>

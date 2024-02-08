@@ -38,6 +38,16 @@ export const getToday = (): string => {
     const month: string = dateDigi(today.getMonth() + 1);
     const date: string = dateDigi(today.getDate());
     return year + "-" + month + "-" + date
+};
+
+export const compareToday = (date: Date): boolean => {
+    const thisDate = Number(String(date).replace("-", "").replace("-", ""))
+    const today = Number(getToday().replace("-", "").replace("-", ""))
+    if (thisDate > today) {
+        return true
+    } else {
+        return false
+    }
 }
 
 export const getLastYear = (): string => {

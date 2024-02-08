@@ -2,7 +2,7 @@ import React, { useState, useRef } from 'react'
 import { useTasks } from '../../../queries/TaskQuery'
 import TaskItem from './TaskItemBox'
 import { Task } from '../../../types/Task'
-import { getToday } from '../../../functions/dateSet'
+import { getToday, compareToday } from '../../../functions/dateSet'
 import { toast } from 'react-toastify'
 import { ModalNew, ChildHandles } from "./ModalNew";
 import SearchForm from './SearchForm'
@@ -109,7 +109,7 @@ const TaskList = () => {
                 <div className="menu-card-wrapper">
                     {tasks_array.map((task, index) => (
                         <React.Fragment key={task.id}>
-                            {!searchTitle && index > 0 && tasks_array[index - 1].term !== task.term && <br />}
+                            {index > 0 && tasks_array[index - 1].term !== task.term && compareToday(task.term) && <br />}
                             <TaskItem task={task} compliteCss={compliteCssDis} handleSearchWord={handleSearchWord} />
                         </React.Fragment>
                     ))}

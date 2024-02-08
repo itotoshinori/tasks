@@ -109,7 +109,7 @@ const TaskList = () => {
                 <div className="menu-card-wrapper">
                     {tasks_array.map((task, index) => (
                         <React.Fragment key={task.id}>
-                            {index > 0 && tasks_array[index - 1].term !== task.term && compareToday(task.term) && <br />}
+                            {!searchTitle && index > 0 && tasks_array[index - 1].term !== task.term && compareToday(task.term) && <br />}
                             <TaskItem task={task} compliteCss={compliteCssDis} handleSearchWord={handleSearchWord} />
                         </React.Fragment>
                     ))}

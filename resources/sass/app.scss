@@ -581,6 +581,12 @@ ul.tag-list {
     margin-top: 1px;
 }
 
+.menu-card-wrapper > br {
+    flex-basis: 100%;
+    width: 0;  /* Flexboxの仕様に合わせて、この行は必要です */
+    content: '';  /* Flexboxの仕様に合わせて、この行は必要です */
+}
+
 .space_box {
     border: none;
     height: 80px;

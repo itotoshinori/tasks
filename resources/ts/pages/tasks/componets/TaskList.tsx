@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react'
 import { useTasks } from '../../../queries/TaskQuery'
-import TaskItemTest from './TaskItemBox'
+import TaskItem from './TaskItemBox'
 import { Task } from '../../../types/Task'
 import { getToday } from '../../../functions/dateSet'
 import { toast } from 'react-toastify'
@@ -107,8 +107,11 @@ const TaskList = () => {
                 <div style={{ margin: '20px 0 0 30px' }}></div>
                 {tasks_array.length == 0 && (<h3>対象はありません</h3>)}
                 <div className="menu-card-wrapper">
-                    {tasks_array.map(task => (
-                        <TaskItemTest key={task.id} task={task} compliteCss={compliteCssDis} handleSearchWord={handleSearchWord} />
+                    {tasks_array.map((task, index) => (
+                        <React.Fragment key={task.id}>
+                            {!searchTitle && index > 0 && tasks_array[index - 1].term !== task.term && <br />}
+                            <TaskItem task={task} compliteCss={compliteCssDis} handleSearchWord={handleSearchWord} />
+                        </React.Fragment>
                     ))}
                 </div>
             </div>

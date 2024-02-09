@@ -3267,11 +3267,6 @@ var TaskItemBox = function TaskItemBox(_ref) {
       setEditTitle(undefined);
     }
   };
-  var toBottom = function toBottom() {
-    var element = document.documentElement;
-    var bottom = element.scrollHeight - element.clientHeight;
-    window.scroll(0, bottom);
-  };
   var copyToClipboard = function copyToClipboard() {
     return __awaiter(void 0, void 0, void 0, /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
       return _regeneratorRuntime().wrap(function _callee$(_context) {
@@ -3287,11 +3282,6 @@ var TaskItemBox = function TaskItemBox(_ref) {
         }
       }, _callee);
     }));
-  };
-  var todayColor = function todayColor() {
-    var textColor = '';
-    String(task.term) == (0, dateSet_1.getToday)() ? textColor = 'blue' : textColor = 'black';
-    return textColor;
   };
   var updateDone = function updateDone() {
     var _a;

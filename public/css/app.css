@@ -517,13 +517,13 @@ ul.tag-list > li > a:hover {
 }
 
 .menu-card-inner {
-  padding: 0.5em 1em;
+  padding: 7px;
   margin: 2em 0;
   color: #232323;
   background: #fff8e8;
   border-left: solid 10px #ffc06e;
   width: 100%;
-  margin: 5px;
+  margin: 1px;
 }
 
 .menu-title {
@@ -639,8 +639,8 @@ ul.tag-list > li > a:hover {
     margin-top: 5px;
   }
   .menu-card-inner {
-    width: 300px;
-    margin: 7px;
+    width: 250px;
+    margin: 3px;
   }
   .middle-display-page {
     margin: auto;

@@ -62,21 +62,9 @@ const TaskItemBox: React.VFC<Props> = ({ task, compliteCss, handleSearchWord }) 
         }
     }
 
-    const toBottom = () => {
-        const element = document.documentElement;
-        const bottom = element.scrollHeight - element.clientHeight;
-        window.scroll(0, bottom);
-    }
-
     const copyToClipboard = async () => {
         await global.navigator.clipboard.writeText(task.title);
         toast.info("タイトルをクリップボードにコピーしました")
-    }
-
-    const todayColor = (): string => {
-        let textColor: string = ''
-        String(task.term) == getToday() ? textColor = 'blue' : textColor = 'black'
-        return textColor
     }
 
     const updateDone = () => {

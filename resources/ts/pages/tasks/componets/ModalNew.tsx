@@ -181,7 +181,6 @@ const ChildComponent: ForwardRefRenderFunction<ChildHandles, ChildProps> = (
                 contentLabel="新規フォーム"
                 isOpen={modalIsOpen}
                 style={customStyles}
-                //className="modal_style"
                 onRequestClose={closeModal}
             >
                 <div className="modal_box">

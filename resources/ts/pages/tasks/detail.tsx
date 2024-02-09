@@ -16,7 +16,13 @@ export const DetailPage: React.VFC = () => {
     const [term, setTerm] = useState<any>('')
 
     if (status === 'loading') {
-        return <div className="loader" />
+        return (
+            <div className="align-center">
+                <div className="login-page">
+                    <div className="loader" />
+                </div>
+            </div>
+        )
     } else if (status === 'error') {
         return (
             <div className="login-page">

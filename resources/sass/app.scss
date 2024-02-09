@@ -559,7 +559,7 @@ ul.tag-list {
     background: #fff8e8;
     border-left: solid 10px #ffc06e;
     width: 100%;
-    margin: 0.2px 0 0 0.5px;
+    margin: 1px 0 0 0.5px;
 }
 
 .menu-title {
@@ -583,7 +583,7 @@ ul.tag-list {
 .menu-card-wrapper > br {
     flex-basis: 100%;
     width: 0;  /* Flexboxの仕様に合わせて、この行は必要です */
-    height: 20px;
+    height: 10px;
     content: '';  /* Flexboxの仕様に合わせて、この行は必要です */
 }
 

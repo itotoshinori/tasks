@@ -80,7 +80,11 @@ const TaskItemBox: React.VFC<Props> = ({ task, compliteCss, handleSearchWord }) 
             toast.error('タイトルは20文字未満でお願いします')
             return
         }
-        task.title.includes("🔥") ? task.title = task.title.replace("🔥", "") : task.title = "🔥" + task.title
+        if (task.title.includes("🔥")) {
+            task.title = task.title.replace("🔥", "")
+        } else {
+            task.title = "🔥" + task.title
+        }
         updateTask.mutate({
             id: task.id,
             task: task
@@ -89,6 +93,28 @@ const TaskItemBox: React.VFC<Props> = ({ task, compliteCss, handleSearchWord }) 
 
     const searchTitle = (value: string) => {
         handleSearchWord(value)
+    }
+
+    const openModal = () => {
+        childRef.current?.openModalFunc();
+    };
+
+    const backGroundColor = (done: boolean) => {
+        if (done) {
+            return "#faf5a6"
+        } else if (String(task.term) == getToday()) {
+            return "#c1fff3"
+        }
+    }
+
+    const borderLeft = (title: string) => {
+        if (title.includes("🔥")) {
+            return "red"
+        } else if (String(task.term) == getToday()) {
+            return "blue"
+        } else {
+            return "#ffc06e"
+        }
     }
 
     const itemInput = () => {
@@ -231,32 +257,14 @@ const TaskItemBox: React.VFC<Props> = ({ task, compliteCss, handleSearchWord }) 
             </>
         )
     }
-    const openModal = () => {
-        childRef.current?.openModalFunc();
-    };
 
-    const backGroundColor = (done: boolean) => {
-        if (done) {
-            return "#faf5a6"
-        } else if (String(task.term) == getToday()) {
-            return "#c1fff3"
-        }
-    }
-
-    const borderLeft = () => {
-        if (task.title.includes("🔥")) {
-            return "red"
-        } else if (String(task.term) == getToday()) {
-            return "blue"
-        }
-    }
     return (
         <>
             <div
                 className="menu-card-inner"
                 style={{
                     backgroundColor: backGroundColor(task.is_done),
-                    borderLeft: `solid 10px ${borderLeft()}`
+                    borderLeft: `solid 10px ${borderLeft(task.title)}`
                 }}
             >
                 {editTitle === undefined ? itemText() : itemInput()}

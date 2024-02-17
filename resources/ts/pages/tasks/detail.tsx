@@ -3,7 +3,6 @@ import { useTask, useUpdateTask } from '../../queries/TaskQuery'
 import { formatDate, getWeek, getYearDate } from '../../functions/dateSet'
 import { toast } from 'react-toastify';
 import { toShortText } from '../../functions/textSet'
-import TaxFight from './componets/TaxFight';
 
 export const DetailPage: React.VFC = () => {
     const searchParams: any = new URLSearchParams(window.location.search);
@@ -111,7 +110,6 @@ export const DetailPage: React.VFC = () => {
                     <span className="change_mode_text mr-2" onClick={() => window.close()}>閉じる</span>
                     <a href={llikGoogleCalendar()}>GoogleCalendar登録</a>
                 </div>
-                <TaxFight />
             </>
         );
     }

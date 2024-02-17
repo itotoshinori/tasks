@@ -12,15 +12,10 @@ type Props = {
 }
 const TaskItem: React.VFC<Props> = ({ task, compliteCss, handleSearchWord }) => {
     const childRef = useRef<ChildHandles>(null);
-
     const updateDoneTask = useUpdateDoneTask()
-
     const updateTask = useUpdateTask();
-
     const deleteTask = useDeleteTask()
-
     const [editTitle, setEditTitle] = useState<string | undefined>(undefined)
-
     const [editTerm, setEditTerm] = useState<any>(undefined)
 
     const handleToggleEdit = () => {
@@ -66,12 +61,6 @@ const TaskItem: React.VFC<Props> = ({ task, compliteCss, handleSearchWord }) => 
         if (['Escape', 'ESC'].includes(e.key)) {
             setEditTitle(undefined)
         }
-    }
-
-    const toBottom = () => {
-        const element = document.documentElement;
-        const bottom = element.scrollHeight - element.clientHeight;
-        window.scroll(0, bottom);
     }
 
     const copyToClipboard = async () => {
@@ -186,6 +175,7 @@ const TaskItem: React.VFC<Props> = ({ task, compliteCss, handleSearchWord }) => 
                         </a>
                     )}
                 </div>
+                <span id="rewardId" />
                 <ModalNew title={task.title} body={task.body} link={task.link} term={task.term}  {...{}} ref={childRef} />
                 <button onClick={openModal}>
                     <span className="balloonoya">

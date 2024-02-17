@@ -29,6 +29,8 @@
     },
     "dependencies": {
         "react-hooks-use-modal": "^3.3.1",
-        "react-modal": "^3.16.1"
+        "react-modal": "^3.16.1",
+        "react-rewards": "^2.0.4",
+        "timers": "^0.1.1"
     }
 }

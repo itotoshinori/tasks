@@ -4,6 +4,7 @@ import { useUpdateDoneTask, useUpdateTask, useDeleteTask } from "../../../querie
 import { toast } from "react-toastify"
 import { formatDate, getWeek, shortDate, getToday } from '../../../functions/dateSet'
 import { ModalNew, ChildHandles } from "./ModalNew";
+import { useReward } from "react-rewards";
 
 type Props = {
     task: Task
@@ -17,6 +18,7 @@ const TaskItemBox: React.VFC<Props> = ({ task, compliteCss, handleSearchWord }) 
     const deleteTask = useDeleteTask()
     const [editTitle, setEditTitle] = useState<string | undefined>(undefined)
     const [editTerm, setEditTerm] = useState<any>(undefined)
+    const { reward, isAnimating } = useReward("rewardId", "confetti");
 
     const handleToggleEdit = () => {
         setEditTitle(task.title)
@@ -69,6 +71,12 @@ const TaskItemBox: React.VFC<Props> = ({ task, compliteCss, handleSearchWord }) 
 
     const updateDone = () => {
         updateDoneTask.mutate(task)
+        if (!isAnimating && !task.is_done) {
+            reward();
+            window.setTimeout(function () {
+                reward();
+            }, 5000);
+        }
         if (task.title.includes('定期') && !task.is_done) {
             childRef.current?.openModalFunc()
             toast.info("タイトルに定期が含まれますのでコピー登録用フォームが表示されます。登録不要なら閉じて下さい。")
@@ -181,6 +189,7 @@ const TaskItemBox: React.VFC<Props> = ({ task, compliteCss, handleSearchWord }) 
                     完了:
                     {task.finishday ? `${shortDate(task.finishday)}(${getWeek(task.finishday)})` : "未完了"}
                 </div>
+                <span id="rewardId" />
                 <ModalNew title={task.title} body={task.body} link={task.link} term={task.term}  {...{}} ref={childRef} />
                 <div className="menu-text">
                     <span

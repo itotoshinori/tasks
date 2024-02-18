@@ -2,7 +2,7 @@ import React, { useRef, useState } from 'react'
 import { Task } from '../../../types/Task'
 import { useUpdateDoneTask, useUpdateTask, useDeleteTask } from "../../../queries/TaskQuery"
 import { toast } from "react-toastify"
-import { formatDate, getWeek, shortDate, getToday } from '../../../functions/dateSet'
+import { formatDate, getWeek, shortDate, getToday } from '../../../functions/DateSet'
 import { ModalNew, ChildHandles } from "./ModalNew";
 
 type Props = {

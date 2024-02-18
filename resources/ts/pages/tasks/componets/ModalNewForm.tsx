@@ -3,7 +3,7 @@ import Modal from 'react-modal'
 import { toast } from "react-toastify";
 import { useTasks, useUpdateTask } from "../../../queries/TaskQuery";
 import { Task } from '../../../types/Task'
-import { formatDate } from "../../../functions/dateSet";
+import { formatDate } from "../../../functions/DateSet";
 
 const customStyles = {
     content: {

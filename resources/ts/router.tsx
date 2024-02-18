@@ -13,9 +13,7 @@ import {
   BrowserRouter,
   Switch,
   Route,
-  Link,
-  RouteProps,
-  Redirect
+  Link
 } from "react-router-dom";
 
 const Router = () => {
@@ -28,16 +26,6 @@ const Router = () => {
       setIsAuth(true)
     }
   }, [authUser])
-
-  const GuardRoute = (props: RouteProps) => {
-    if (!isAuth) return <Redirect to="login" />
-    return <Route {...props} />
-  }
-
-  const LoginRoute = (props: RouteProps) => {
-    if (isAuth) return <Redirect to="/tasks" />
-    return <Route {...props} />
-  }
 
   const navigation = (
     <header className="global-head">

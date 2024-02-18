@@ -1,7 +1,5 @@
 import React, { useState } from 'react'
 import { Task } from '../../../types/Task'
-import { useUpdateDoneTask, useUpdateTask, useDeleteTask } from "../../../queries/TaskQuery"
-import { toast } from "react-toastify"
 
 type Props = {
     task: Task

@@ -2,14 +2,12 @@ import React, { useState, useRef } from 'react'
 import { useTasks } from '../../../queries/TaskQuery'
 import TaskItem from './TaskItemBox'
 import { Task } from '../../../types/Task'
-import { getToday, compareToday } from '../../../functions/dateSet'
+import { getToday, compareToday } from '../../../functions/DateSet'
 import { toast } from 'react-toastify'
 import { ModalNew, ChildHandles } from "./ModalNew";
 import SearchForm from './SearchForm'
 
 const TaskList = () => {
-    const searchParams: any = new URLSearchParams(window.location.search);
-    const urlId: number = parseInt(searchParams.get("id"));
     const { data: tasks, status } = useTasks()
     const [condition, setCondition] = useState<boolean>(true)
     const [conditionLink, setConditionLink] = useState<string>("完了済に変更")

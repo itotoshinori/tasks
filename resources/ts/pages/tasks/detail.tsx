@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { useTask, useUpdateTask } from '../../queries/TaskQuery'
-import { formatDate, getWeek, getYearDate } from '../../functions/dateSet'
+import { formatDate, getWeek, getYearDate } from '../../functions/DateSet'
 import { toast } from 'react-toastify';
-import { toShortText } from '../../functions/textSet'
+import { toShortText } from '../../functions/TextSet'
 
 export const DetailPage: React.VFC = () => {
     const searchParams: any = new URLSearchParams(window.location.search);

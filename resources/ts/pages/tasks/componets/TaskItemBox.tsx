@@ -2,7 +2,7 @@ import React, { useRef, useState } from 'react'
 import { Task } from '../../../types/Task'
 import { useUpdateDoneTask, useUpdateTask, useDeleteTask } from "../../../queries/TaskQuery"
 import { toast } from "react-toastify"
-import { formatDate, getWeek, shortDate, getToday } from '../../../functions/dateSet'
+import { formatDate, getWeek, shortDate, getToday } from '../../../functions/DateSet'
 import { ModalNew, ChildHandles } from "./ModalNew";
 import { useReward } from "react-rewards";
 
@@ -69,13 +69,19 @@ const TaskItemBox: React.VFC<Props> = ({ task, compliteCss, handleSearchWord }) 
         toast.info("タイトルをクリップボードにコピーしました")
     }
 
-    const updateDone = () => {
-        updateDoneTask.mutate(task)
-        if (!isAnimating && !task.is_done) {
-            reward();
-            window.setTimeout(function () {
+    const updateDone = async () => {
+        try {
+            updateDoneTask.mutate(task)
+            const sleep = (second: number) => new Promise(resolve => setTimeout(resolve, second * 1000))
+            if (!isAnimating && !task.is_done) {
                 reward();
-            }, 5000);
+                await sleep(2)
+                reward();
+                await sleep(2)
+                reward();
+            }
+        } catch (e: any) {
+            console.log(e)
         }
         if (task.title.includes('定期') && !task.is_done) {
             childRef.current?.openModalFunc()

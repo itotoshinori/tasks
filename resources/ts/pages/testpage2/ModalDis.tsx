@@ -5,7 +5,7 @@ import React, {
     useState
 } from "react";
 import Modal from 'react-modal'
-import { formatDate } from "../../functions/dateSet";
+import { formatDate } from "../../functions/DateSet";
 
 const customStyles = {
     content: {

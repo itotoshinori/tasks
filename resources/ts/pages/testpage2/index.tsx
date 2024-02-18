@@ -4,7 +4,9 @@ import { ModalDis, ChildHandles } from "./ModalDis";
 export const TestPage2: React.VFC = () => {
     const childRef = useRef<ChildHandles>(null);
 
-    const openModal = () => {
+    const openModal = async () => {
+        const sleep = (second: number) => new Promise(resolve => setTimeout(resolve, second * 1000))
+        await sleep(10)
         childRef.current?.openModalFunc();
     };
     return (

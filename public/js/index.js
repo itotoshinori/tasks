@@ -3213,6 +3213,7 @@ var react_toastify_1 = __webpack_require__(/*! react-toastify */ "./node_modules
 var DateSet_1 = __webpack_require__(/*! ../../../functions/DateSet */ "./resources/ts/functions/DateSet.ts");
 var ModalNew_1 = __webpack_require__(/*! ./ModalNew */ "./resources/ts/pages/tasks/componets/ModalNew.tsx");
 var react_rewards_1 = __webpack_require__(/*! react-rewards */ "./node_modules/react-rewards/dist/react-rewards.es.js");
+var TaskQuery_2 = __webpack_require__(/*! ../../../queries/TaskQuery */ "./resources/ts/queries/TaskQuery.ts");
 var TaskItemBox = function TaskItemBox(_ref) {
   var task = _ref.task,
     compliteCss = _ref.compliteCss,
@@ -3232,6 +3233,9 @@ var TaskItemBox = function TaskItemBox(_ref) {
   var _ref6 = (0, react_rewards_1.useReward)("rewardId", "confetti"),
     reward = _ref6.reward,
     isAnimating = _ref6.isAnimating;
+  var _ref7 = (0, TaskQuery_2.useTasks)(),
+    tasks = _ref7.data,
+    status = _ref7.status;
   var handleToggleEdit = function handleToggleEdit() {
     setEditTitle(task.title);
     setEditTerm(task.term);
@@ -3287,6 +3291,19 @@ var TaskItemBox = function TaskItemBox(_ref) {
       }, _callee);
     }));
   };
+  var taskPass = function taskPass() {
+    var tasks_array;
+    if (tasks && tasks.length > 0) {
+      var today = new Date();
+      tasks_array = tasks.filter(function (task) {
+        var taskTerm = new Date(task.term);
+        return task.is_done != true && taskTerm <= today;
+      });
+      return tasks_array.length;
+    } else {
+      console.log("Tasks data is not available.");
+    }
+  };
   var updateDone = function updateDone() {
     return __awaiter(void 0, void 0, void 0, /*#__PURE__*/_regeneratorRuntime().mark(function _callee2() {
       var _a, sleep;
@@ -3300,17 +3317,17 @@ var TaskItemBox = function TaskItemBox(_ref) {
                 return setTimeout(resolve, second * 1000);
               });
             };
-            if (!(!isAnimating && !task.is_done)) {
+            if (!(!isAnimating && !task.is_done && taskPass() === 1)) {
               _context2.next = 11;
               break;
             }
             reward();
             _context2.next = 7;
-            return sleep(2);
+            return sleep(3);
           case 7:
             reward();
             _context2.next = 10;
-            return sleep(2);
+            return sleep(3);
           case 10:
             reward();
           case 11:

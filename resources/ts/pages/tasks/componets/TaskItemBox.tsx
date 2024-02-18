@@ -5,6 +5,7 @@ import { toast } from "react-toastify"
 import { formatDate, getWeek, shortDate, getToday } from '../../../functions/DateSet'
 import { ModalNew, ChildHandles } from "./ModalNew";
 import { useReward } from "react-rewards";
+import { useTasks } from '../../../queries/TaskQuery'
 
 type Props = {
     task: Task
@@ -19,6 +20,7 @@ const TaskItemBox: React.VFC<Props> = ({ task, compliteCss, handleSearchWord }) 
     const [editTitle, setEditTitle] = useState<string | undefined>(undefined)
     const [editTerm, setEditTerm] = useState<any>(undefined)
     const { reward, isAnimating } = useReward("rewardId", "confetti");
+    const { data: tasks, status } = useTasks()
 
     const handleToggleEdit = () => {
         setEditTitle(task.title)
@@ -69,15 +71,29 @@ const TaskItemBox: React.VFC<Props> = ({ task, compliteCss, handleSearchWord }) 
         toast.info("タイトルをクリップボードにコピーしました")
     }
 
+    const taskPass = () => {
+        let tasks_array: Task[];
+        if (tasks && tasks.length > 0) {
+            const today = new Date();
+            tasks_array = tasks.filter((task) => {
+                const taskTerm = new Date(task.term);
+                return task.is_done != true && taskTerm <= today;
+            });
+            return tasks_array.length
+        } else {
+            console.log("Tasks data is not available.");
+        }
+    }
+
     const updateDone = async () => {
         try {
             updateDoneTask.mutate(task)
             const sleep = (second: number) => new Promise(resolve => setTimeout(resolve, second * 1000))
-            if (!isAnimating && !task.is_done) {
+            if (!isAnimating && !task.is_done && taskPass() === 1) {
                 reward();
-                await sleep(2)
+                await sleep(3)
                 reward();
-                await sleep(2)
+                await sleep(3)
                 reward();
             }
         } catch (e: any) {

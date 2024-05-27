@@ -9,6 +9,7 @@ export const LoginPage: React.VFC = () => {
     const handleLogin = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
         login.mutate({ email, password })
+        console.log(email)
     }
 
     return (

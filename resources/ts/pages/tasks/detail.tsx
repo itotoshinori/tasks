@@ -77,7 +77,7 @@ export const DetailPage: React.VFC = () => {
     const itemText = () => {
         return (
             <>
-                <div>■タイトル</div>
+                <div>■タイトル{task.id}</div>
                 <div>{task?.title}</div>
                 {task.body && (
                     <>

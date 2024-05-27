@@ -2,8 +2,6 @@ import React, { useEffect } from 'react'
 import { TaskPage } from './pages/tasks/index'
 import { LoginPage } from './pages/login/'
 import { HelpPage } from './pages/help/'
-import { TestPage } from './pages/testpage/'
-import { TestPage2 } from './pages/testpage2/'
 import { DetailPage } from './pages/tasks/detail'
 import { HomePage } from './pages/home/'
 import { useLogout, useUser } from './queries/AuthQuery'
@@ -64,7 +62,7 @@ const Router = () => {
           {isAuth ?
             <TaskPage />
             :
-            <HomePage />
+            <LoginPage />
           }
         </Route>
         <Route exact path="/login">
@@ -72,12 +70,6 @@ const Router = () => {
         </Route>
         <Route exact path="/help">
           <HelpPage />
-        </Route>
-        <Route exact path="/testpage">
-          <TestPage />
-        </Route>
-        <Route exact path="/testpage2">
-          <TestPage2 />
         </Route>
         <Route path="/detail">
           <DetailPage />

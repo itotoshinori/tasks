@@ -580,11 +580,13 @@ ul.tag-list {
     margin-top: 1px;
 }
 
-.menu-card-wrapper > br {
+.menu-card-wrapper>br {
     flex-basis: 100%;
-    width: 0;  /* Flexboxの仕様に合わせて、この行は必要です */
+    width: 0;
+    /* Flexboxの仕様に合わせて、この行は必要です */
     height: 10px;
-    content: '';  /* Flexboxの仕様に合わせて、この行は必要です */
+    content: '';
+    /* Flexboxの仕様に合わせて、この行は必要です */
 }
 
 .space_box {
@@ -627,8 +629,8 @@ ul.tag-list {
     padding: 10px;
     border-radius: 20px;
     box-shadow: 2px 2px 25px #e3dfd4;
-    width:100%;
-    margin:auto;
+    width: 100%;
+    margin: auto;
 
     .input-group {
         margin-bottom: 10px;
@@ -649,21 +651,22 @@ ul.tag-list {
     }
 }
 
-.edit_style{
+.edit_style {
     .input {
         width: 90%;
     }
+
     .btn_short {
         color: white;
         font-size: 12px;
-        margin:5px 10px 5px 0;
+        margin: 5px 10px 5px 0;
         width: 70px;
         height: 30px;
-        padding:auto;
+        padding: auto;
     }
 }
 
-@media screen and (min-width: 400px) {
+@media screen and (min-width: 500px) {
     .top-title {
         margin: 10px 0 10px 50px;
     }
@@ -692,16 +695,15 @@ ul.tag-list {
     }
 
     .menu-card-inner {
-        width: 235px;
+        width: calc((100% - 30px) / 5);
         margin: 3px;
     }
 
     .middle-display-page {
         margin: auto;
-        width: 500px;
     }
 
     .modal_box {
-        width:50%;
+        width: 50%;
     }
 }

@@ -16,16 +16,22 @@ const TaskItem: React.VFC<Props> = ({ task, compliteCss, handleSearchWord }) => 
     const updateTask = useUpdateTask();
     const deleteTask = useDeleteTask()
     const [editTitle, setEditTitle] = useState<string | undefined>(undefined)
+    const [editLink, setEditLink] = useState<string | undefined>(undefined)
     const [editTerm, setEditTerm] = useState<any>(undefined)
 
     const handleToggleEdit = () => {
         setEditTitle(task.title)
+        setEditLink(task.link)
         setEditTerm(task.term)
         toast.info("タイトル編集モードになりました。escで解除。")
     }
 
     const handleInputTitleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setEditTitle(e.target.value)
+    }
+
+    const handleInputLinkChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setEditLink(e.target.value)
     }
 
     const handleInputTermChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -110,13 +116,20 @@ const TaskItem: React.VFC<Props> = ({ task, compliteCss, handleSearchWord }) => 
                         onKeyDown={handleOnKey}
                     /><br />
                     <input
+                        type="text"
+                        className="input_short"
+                        defaultValue={task.link}
+                        onChange={handleInputLinkChange}
+                        onKeyDown={handleOnKey}
+                    /><br />
+                    <input
                         type="date"
                         className="input"
                         defaultValue={task.term ? formatDate(task.term) : ''}
                         onChange={handleInputTermChange}
                         onKeyDown={handleOnKey}
                     />
-                    <button className="btn" onClick={handleUpdate}>更新</button>
+                    <button className="btn" onClick={handleUpdate}>更新111</button>
                 </form>
             </>
         )
